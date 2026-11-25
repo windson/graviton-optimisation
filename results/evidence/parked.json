@@ -1,0 +1,30 @@
+{
+  "parked_at": "2026-11-24T11:47:13Z",
+  "active_stage": "c-graviton5-right-sized",
+  "node_groups": [
+    {
+      "name": "ApiNodeGroup-xxxxxxxxxxxx",
+      "scaling": {
+        "minSize": 3,
+        "maxSize": 3,
+        "desiredSize": 3
+      }
+    },
+    {
+      "name": "SystemNodeGroup-xxxxxxxxxxxx",
+      "scaling": {
+        "minSize": 2,
+        "maxSize": 2,
+        "desiredSize": 2
+      }
+    },
+    {
+      "name": "WebNodeGroup-xxxxxxxxxxxx",
+      "scaling": {
+        "minSize": 2,
+        "maxSize": 2,
+        "desiredSize": 2
+      }
+    }
+  ]
+}

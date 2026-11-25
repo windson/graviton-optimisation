@@ -1,0 +1,5 @@
+$ kubectl -n storefront logs storefront-api-5d9977c559-brng4 --timestamps --since-time=2026-11-23T17:25:35Z   # up to 2026-11-23T17:27:05Z, counted per second and kind of message
+17:26:00 WARN     15 x  PoolBase: storefront - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl# (No operations allowed after connection closed.). Possibly consider using
+17:26:00 WARN      9 x  ProxyConnection: storefront - Connection com.mysql.cj.jdbc.ConnectionImpl# marked as broken because of SQLSTATE(08S01), ErrorCode(#)
+17:26:00 ERROR     9 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.Recovera
+17:26:03 ERROR   152 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG

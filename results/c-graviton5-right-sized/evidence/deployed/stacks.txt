@@ -1,0 +1,11 @@
+$ aws cloudformation describe-stacks --query 'Stacks[?starts_with(StackName,`graviton-uplift`)].{Stack:StackName,Status:StackStatus,LastUpdated:LastUpdatedTime}' --output table
+-------------------------------------------------------------------------------------
+|                                  DescribeStacks                                   |
++-----------------------------------+----------------------------+------------------+
+|            LastUpdated            |           Stack            |     Status       |
++-----------------------------------+----------------------------+------------------+
+|  2026-11-23T20:29:52.167000+00:00 |  graviton-uplift-database  |  UPDATE_COMPLETE |
+|  2026-11-23T20:15:57.114000+00:00 |  graviton-uplift-eks       |  UPDATE_COMPLETE |
+|  None                             |  graviton-uplift-network   |  CREATE_COMPLETE |
+|  2026-11-23T14:48:40.541000+00:00 |  graviton-uplift-cicd      |  UPDATE_COMPLETE |
++-----------------------------------+----------------------------+------------------+

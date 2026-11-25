@@ -1,0 +1,6 @@
+$ kubectl -n storefront get pods -o custom-columns='NODE:.spec.nodeName' --no-headers | sort | uniq -c
+      8 ip-10-80-75-114.us-west-2.compute.internal
+      1 ip-10-80-76-128.us-west-2.compute.internal
+      1 ip-10-80-83-4.us-west-2.compute.internal
+      1 ip-10-80-83-81.us-west-2.compute.internal
+      8 ip-10-80-94-182.us-west-2.compute.internal

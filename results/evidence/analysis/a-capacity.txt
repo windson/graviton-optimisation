@@ -1,0 +1,18 @@
+$ uv run -q analysis/summarize.py results/a-graviton2-baseline/a-cap | grep -vE '^( {6}|$)'
+a-graviton2-baseline / a-cap (capacity, complete)
+  web 2 x c6g.4xlarge, API 3 x m6g.xlarge, database db.r6g.8xlarge; pods: web 32, API 6
+  load generators: 60/60 tasks, peak CPU 28% of reserved
+  Aurora datapoints cover the 60 s that start 43 s before their timestamp (measured in 4 steady runs: 43 to 46 s)
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  s01       8000   7999.7   0.000    6.1   17.4    27.0    50.9    52.3    56.9   2.036   0.686   2.275
+  s02       9600   9600.0   0.000    6.5   18.6    28.1    61.0    61.2    67.4   2.033   0.670   2.246
+  s03      11200  11200.0   0.000    6.9   20.6    30.7    69.4    71.2    76.4   1.982   0.668   2.184
+  s04      12000  12000.0   0.000    7.2   22.1    33.0    74.1    76.0    80.8   1.976   0.665   2.154
+  s05      12800  12800.0   0.000    7.6   24.9    37.9    78.5    82.1    84.9   1.961   0.673   2.123
+  s06      13600  13600.2   0.000    8.2   30.4    44.9    83.3    87.0    88.4   1.961   0.672   2.080
+  s07      14400  14400.0   0.000    9.4   39.1    58.3    88.2    93.5    92.0   1.960   0.681   2.046
+  s08      15200  15019.8  25.776  261.2 4990.3  4990.3    68.8   101.2    88.7   1.466   0.707   1.889
+  s09      16000  15986.8  31.004  285.8 4990.3  4990.3    64.1   101.0    88.0   1.283   0.663   1.762
+  s10      16800  16783.6  31.121  342.1 4990.3  4990.3    57.5   101.1    84.2   1.097   0.632   1.606
+  s11      17600  17586.2  31.022  393.6 4990.3  4990.3    52.3   101.1    83.5   0.952   0.604   1.519

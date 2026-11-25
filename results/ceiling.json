@@ -1,0 +1,141 @@
+{
+  "ceiling": 0.8,
+  "api_pod_cpu_limit": 1.75,
+  "stages": {
+    "a-graviton2-baseline": {
+      "prefix": "a2",
+      "source": "ceiling run",
+      "rated_rps": 11900.0,
+      "rated_rps_exact": 11890.5,
+      "limiting_tier": "api",
+      "ceiling_run": {
+        "run": "a2-ceiling",
+        "status": "complete",
+        "rate": 11799.89,
+        "target_rps": 11800.0,
+        "utilization": {
+          "web": 0.7162,
+          "api": 0.7939,
+          "api_share_of_node_vcpus": 0.6946,
+          "api_pods_only": 0.7508,
+          "db": 0.7883
+        },
+        "busiest_tier": "api",
+        "busiest_utilization": 0.7939,
+        "busiest_utilization_unrounded": 0.7939047619047619,
+        "within_range": true,
+        "within_limits": true,
+        "reasons": [],
+        "error_rate": 0.0,
+        "p50_ms": 6.997,
+        "p95_ms": 21.228,
+        "p99_ms": 31.662,
+        "generator_peak_cpu_share": 0.1593,
+        "attempts": [
+          "a2-ceiling"
+        ]
+      },
+      "letter": "A",
+      "title": "Graviton2 baseline",
+      "staircase_estimate_rps": 11857.2,
+      "staircase_limiting_tier": "db",
+      "cost": {
+        "on_demand_total": 12353.57,
+        "compute_database": 7307.3,
+        "compute_database_per_1000_rps": 614.0588235294117
+      }
+    },
+    "b-graviton5-same-size": {
+      "prefix": "b",
+      "source": "ceiling run",
+      "rated_rps": 28400.0,
+      "rated_rps_exact": 28407.1,
+      "limiting_tier": "web",
+      "ceiling_run": {
+        "run": "b-ceiling",
+        "status": "complete",
+        "rate": 28400.0,
+        "target_rps": 28400.0,
+        "utilization": {
+          "web": 0.7998,
+          "api": 0.6838,
+          "api_share_of_node_vcpus": 0.5983,
+          "api_pods_only": 0.6723,
+          "db": 0.7366
+        },
+        "busiest_tier": "web",
+        "busiest_utilization": 0.7998,
+        "busiest_utilization_unrounded": 0.7998,
+        "within_range": true,
+        "within_limits": true,
+        "reasons": [],
+        "error_rate": 0.0,
+        "p50_ms": 3.839,
+        "p95_ms": 13.134,
+        "p99_ms": 19.596,
+        "generator_peak_cpu_share": 0.2163,
+        "attempts": [
+          "b-ceiling"
+        ]
+      },
+      "letter": "B",
+      "title": "Graviton5, same size",
+      "staircase_estimate_rps": 28404.1,
+      "staircase_limiting_tier": "web",
+      "cost": {
+        "on_demand_total": 13144.71,
+        "compute_database": 8066.91,
+        "compute_database_per_1000_rps": 284.0461267605634
+      },
+      "rated_vs_baseline": 2.3866,
+      "rated_vs_baseline_unrounded": 2.3891,
+      "at_least_baseline": true
+    },
+    "c-graviton5-right-sized": {
+      "prefix": "c",
+      "source": "ceiling run",
+      "rated_rps": 14900.0,
+      "rated_rps_exact": 14927.0,
+      "limiting_tier": "web",
+      "ceiling_run": {
+        "run": "c-ceiling",
+        "status": "complete",
+        "rate": 14800.08,
+        "target_rps": 14800.0,
+        "utilization": {
+          "web": 0.7932,
+          "api": 0.532,
+          "api_share_of_node_vcpus": 0.4655,
+          "api_pods_only": 0.5034,
+          "db": 0.7644
+        },
+        "busiest_tier": "web",
+        "busiest_utilization": 0.7932,
+        "busiest_utilization_unrounded": 0.7932,
+        "within_range": true,
+        "within_limits": true,
+        "reasons": [],
+        "error_rate": 0.0,
+        "p50_ms": 4.415,
+        "p95_ms": 15.569,
+        "p99_ms": 23.227,
+        "generator_peak_cpu_share": 0.2245,
+        "attempts": [
+          "c-ceiling"
+        ]
+      },
+      "letter": "C",
+      "title": "Graviton5, right-sized",
+      "staircase_estimate_rps": 14854.7,
+      "staircase_limiting_tier": "web",
+      "cost": {
+        "on_demand_total": 9206.32,
+        "compute_database": 4104.88,
+        "compute_database_per_1000_rps": 275.4953020134228
+      },
+      "rated_vs_baseline": 1.2521,
+      "rated_vs_baseline_unrounded": 1.2554,
+      "at_least_baseline": true
+    }
+  }
+}

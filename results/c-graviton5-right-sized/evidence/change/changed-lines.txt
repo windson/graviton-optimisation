@@ -1,0 +1,23 @@
+$ git diff -U0 4dc8e5c 57fa045 -- infra/config deploy/values/active.yaml | grep -E '^(diff|[-+][^-+])'
+diff --git a/deploy/values/active.yaml b/deploy/values/active.yaml
+-# Graviton5 at the same sizes as the baseline.
++# Graviton5 right-sized: every tier at half the baseline size.
+-stage: b-graviton5-same-size
++stage: c-graviton5-right-sized
+-  replicas: 32
++  replicas: 16
+-  replicas: 6
++  replicas: 3
+-  dbPoolSize: 24
++  dbPoolSize: 48
+diff --git a/infra/config/ACTIVE_STAGE b/infra/config/ACTIVE_STAGE
+-b-graviton5-same-size
++c-graviton5-right-sized
+diff --git a/infra/config/database.json b/infra/config/database.json
+-    "DBInstanceClass": "db.r9g.8xlarge"
++    "DBInstanceClass": "db.r9g.4xlarge"
+diff --git a/infra/config/eks.json b/infra/config/eks.json
+-    "WebInstanceType": "c9g.4xlarge",
++    "WebInstanceType": "c9g.2xlarge",
+-    "ApiInstanceType": "m9g.xlarge",
++    "ApiInstanceType": "m9g.large",

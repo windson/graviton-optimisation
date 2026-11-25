@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 1609437,
+    "Com_delete": 333,
+    "Com_insert": 6428591,
+    "Com_select": 83787399,
+    "Com_stmt_execute": 93418269,
+    "Com_update": 3214079,
+    "Connections": 1769,
+    "Created_tmp_disk_tables": 15,
+    "Created_tmp_tables": 34468247,
+    "Innodb_buffer_pool_read_requests": 11454734609,
+    "Innodb_buffer_pool_reads": 309124,
+    "Innodb_row_lock_time": 1572,
+    "Innodb_row_lock_waits": 1201,
+    "Innodb_rows_deleted": 6524611,
+    "Innodb_rows_inserted": 4823489,
+    "Innodb_rows_read": 41314782637,
+    "Innodb_rows_updated": 6426106,
+    "Queries": 99403777,
+    "Questions": 98279508,
+    "Slow_queries": 0,
+    "Sort_rows": 366944429,
+    "Uptime": 4630,
+    "at": "2026-11-23T18:50:48Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 1838597,
+    "Com_delete": 333,
+    "Com_insert": 7345852,
+    "Com_select": 95718471,
+    "Com_stmt_execute": 106721888,
+    "Com_update": 3671627,
+    "Connections": 2093,
+    "Created_tmp_disk_tables": 18,
+    "Created_tmp_tables": 39375220,
+    "Innodb_buffer_pool_read_requests": 13080875893,
+    "Innodb_buffer_pool_reads": 309129,
+    "Innodb_row_lock_time": 1628,
+    "Innodb_row_lock_waits": 1267,
+    "Innodb_rows_deleted": 6524611,
+    "Innodb_rows_inserted": 5510211,
+    "Innodb_rows_read": 47234986503,
+    "Innodb_rows_updated": 7343038,
+    "Queries": 113563716,
+    "Questions": 112276745,
+    "Slow_queries": 0,
+    "Sort_rows": 419190828,
+    "Uptime": 5516,
+    "at": "2026-11-23T19:05:34Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 276477.0,
+      "container_cpu_cfs_throttled_periods_total": 1039.0,
+      "container_cpu_cfs_throttled_seconds_total": 16.491924
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 317747.0,
+      "container_cpu_cfs_throttled_periods_total": 1039.0,
+      "container_cpu_cfs_throttled_seconds_total": 16.491924
+    },
+    "web": {}
+  }
+}

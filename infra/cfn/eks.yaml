@@ -1,0 +1,586 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  graviton-uplift - Amazon EKS cluster with three managed node groups (system, web, api),
+  core add-ons, access entries, and the IAM role of the AWS Load Balancer Controller.
+  The instance type and size of each node group are parameters: changing them is how the
+  study moves between Graviton generations and sizes.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: graviton-uplift
+  KubernetesVersion:
+    Type: String
+    Default: "1.37"
+  AdminRoleArn:
+    Type: String
+    Description: IAM role that gets cluster administrator access for kubectl (the operator running the study).
+    AllowedPattern: ^arn:aws[a-z-]*:iam::[0-9]{12}:role/.+$
+  SystemInstanceType:
+    Type: String
+    Description: Instance type of the nodes that run cluster services (DNS, load balancer controller, metrics).
+  SystemNodeCount:
+    Type: Number
+    MinValue: 1
+  WebInstanceType:
+    Type: String
+    Description: Instance type of the nodes that run the React server-side rendering pods. Compute optimized (C family).
+  WebNodeCount:
+    Type: Number
+    MinValue: 1
+  ApiInstanceType:
+    Type: String
+    Description: Instance type of the nodes that run the Java API pods. General purpose (M family).
+  ApiNodeCount:
+    Type: Number
+    MinValue: 1
+  NodeVolumeSizeGiB:
+    Type: Number
+    Default: 40
+
+Resources:
+  # ---- Control plane --------------------------------------------------------------------
+  ClusterRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: eks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEKSClusterPolicy
+
+  Cluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: !Ref ProjectName
+      Version: !Ref KubernetesVersion
+      RoleArn: !GetAtt ClusterRole.Arn
+      # Access is granted only through the access entries below.
+      AccessConfig:
+        AuthenticationMode: API
+        BootstrapClusterCreatorAdminPermissions: false
+      # Networking, proxy and DNS are installed as managed add-ons below.
+      BootstrapSelfManagedAddons: false
+      ResourcesVpcConfig:
+        SubnetIds:
+          Fn::Split:
+            - ","
+            - Fn::ImportValue: !Sub ${ProjectName}:PrivateSubnetIds
+        EndpointPrivateAccess: true
+        EndpointPublicAccess: true
+      UpgradePolicy:
+        SupportType: STANDARD
+
+  # ---- Access entries -------------------------------------------------------------------
+  AdminAccessEntry:
+    Type: AWS::EKS::AccessEntry
+    Properties:
+      ClusterName: !Ref Cluster
+      PrincipalArn: !Ref AdminRoleArn
+      Type: STANDARD
+      AccessPolicies:
+        - PolicyArn: !Sub arn:${AWS::Partition}:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy
+          AccessScope:
+            Type: cluster
+
+  # The pipeline's Amazon EKS deploy action runs Helm as the pipeline role.
+  PipelineAccessEntry:
+    Type: AWS::EKS::AccessEntry
+    Properties:
+      ClusterName: !Ref Cluster
+      PrincipalArn:
+        Fn::ImportValue: !Sub ${ProjectName}:PipelineRoleArn
+      Type: STANDARD
+      AccessPolicies:
+        - PolicyArn: !Sub arn:${AWS::Partition}:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy
+          AccessScope:
+            Type: cluster
+
+  # The pipeline's platform and verify steps run kubectl and Helm as the deploy role.
+  DeployAccessEntry:
+    Type: AWS::EKS::AccessEntry
+    Properties:
+      ClusterName: !Ref Cluster
+      PrincipalArn:
+        Fn::ImportValue: !Sub ${ProjectName}:DeployRoleArn
+      Type: STANDARD
+      AccessPolicies:
+        - PolicyArn: !Sub arn:${AWS::Partition}:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy
+          AccessScope:
+            Type: cluster
+
+  # ---- Add-ons --------------------------------------------------------------------------
+  VpcCniAddon:
+    Type: AWS::EKS::Addon
+    Properties:
+      ClusterName: !Ref Cluster
+      AddonName: vpc-cni
+      ResolveConflicts: OVERWRITE
+
+  KubeProxyAddon:
+    Type: AWS::EKS::Addon
+    Properties:
+      ClusterName: !Ref Cluster
+      AddonName: kube-proxy
+      ResolveConflicts: OVERWRITE
+
+  PodIdentityAgentAddon:
+    Type: AWS::EKS::Addon
+    Properties:
+      ClusterName: !Ref Cluster
+      AddonName: eks-pod-identity-agent
+      ResolveConflicts: OVERWRITE
+
+  # CoreDNS and metrics-server run as Deployments, so they need the system nodes first.
+  CoreDnsAddon:
+    Type: AWS::EKS::Addon
+    DependsOn: SystemNodeGroup
+    Properties:
+      ClusterName: !Ref Cluster
+      AddonName: coredns
+      ResolveConflicts: OVERWRITE
+
+  MetricsServerAddon:
+    Type: AWS::EKS::Addon
+    DependsOn: SystemNodeGroup
+    Properties:
+      ClusterName: !Ref Cluster
+      AddonName: metrics-server
+      ResolveConflicts: OVERWRITE
+
+  # ---- Nodes ----------------------------------------------------------------------------
+  NodeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEKS_CNI_Policy
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonSSMManagedInstanceCore
+
+  # One launch template per node group. Changing the instance type creates a new template
+  # version, and the node group then replaces its nodes with a rolling update.
+  SystemLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: !Ref SystemInstanceType
+        # IMDSv2 only, and not reachable from pods: pods get AWS credentials from EKS Pod Identity.
+        MetadataOptions:
+          HttpEndpoint: enabled
+          HttpTokens: required
+          HttpPutResponseHopLimit: 1
+        Monitoring:
+          Enabled: true
+        BlockDeviceMappings:
+          - DeviceName: /dev/xvda
+            Ebs:
+              VolumeSize: !Ref NodeVolumeSizeGiB
+              VolumeType: gp3
+              Encrypted: true
+              DeleteOnTermination: true
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: !Sub ${ProjectName}-system
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: system
+          - ResourceType: volume
+            Tags:
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: system
+
+  WebLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: !Ref WebInstanceType
+        MetadataOptions:
+          HttpEndpoint: enabled
+          HttpTokens: required
+          HttpPutResponseHopLimit: 1
+        Monitoring:
+          Enabled: true
+        BlockDeviceMappings:
+          - DeviceName: /dev/xvda
+            Ebs:
+              VolumeSize: !Ref NodeVolumeSizeGiB
+              VolumeType: gp3
+              Encrypted: true
+              DeleteOnTermination: true
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: !Sub ${ProjectName}-web
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: web
+          - ResourceType: volume
+            Tags:
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: web
+
+  ApiLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: !Ref ApiInstanceType
+        MetadataOptions:
+          HttpEndpoint: enabled
+          HttpTokens: required
+          HttpPutResponseHopLimit: 1
+        Monitoring:
+          Enabled: true
+        BlockDeviceMappings:
+          - DeviceName: /dev/xvda
+            Ebs:
+              VolumeSize: !Ref NodeVolumeSizeGiB
+              VolumeType: gp3
+              Encrypted: true
+              DeleteOnTermination: true
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: !Sub ${ProjectName}-api
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: api
+          - ResourceType: volume
+            Tags:
+              - Key: Project
+                Value: !Ref ProjectName
+              - Key: Tier
+                Value: api
+
+  SystemNodeGroup:
+    Type: AWS::EKS::Nodegroup
+    DependsOn:
+      - VpcCniAddon
+      - KubeProxyAddon
+      - PodIdentityAgentAddon
+    Properties:
+      ClusterName: !Ref Cluster
+      NodeRole: !GetAtt NodeRole.Arn
+      AmiType: AL2023_ARM_64_STANDARD
+      CapacityType: ON_DEMAND
+      LaunchTemplate:
+        Id: !Ref SystemLaunchTemplate
+        Version: !GetAtt SystemLaunchTemplate.LatestVersionNumber
+      ScalingConfig:
+        MinSize: !Ref SystemNodeCount
+        DesiredSize: !Ref SystemNodeCount
+        MaxSize: !Ref SystemNodeCount
+      Subnets:
+        Fn::Split:
+          - ","
+          - Fn::ImportValue: !Sub ${ProjectName}:PrivateSubnetIds
+      Labels:
+        tier: system
+      UpdateConfig:
+        MaxUnavailable: 1
+
+  # Web and API nodes are tainted so that only their own tier's pods run on them. That keeps
+  # each node group's CPU a clean measure of one tier.
+  WebNodeGroup:
+    Type: AWS::EKS::Nodegroup
+    DependsOn:
+      - VpcCniAddon
+      - KubeProxyAddon
+      - PodIdentityAgentAddon
+    Properties:
+      ClusterName: !Ref Cluster
+      NodeRole: !GetAtt NodeRole.Arn
+      AmiType: AL2023_ARM_64_STANDARD
+      CapacityType: ON_DEMAND
+      LaunchTemplate:
+        Id: !Ref WebLaunchTemplate
+        Version: !GetAtt WebLaunchTemplate.LatestVersionNumber
+      ScalingConfig:
+        MinSize: !Ref WebNodeCount
+        DesiredSize: !Ref WebNodeCount
+        MaxSize: !Ref WebNodeCount
+      Subnets:
+        Fn::Split:
+          - ","
+          - Fn::ImportValue: !Sub ${ProjectName}:PrivateSubnetIds
+      Labels:
+        tier: web
+      Taints:
+        - Key: dedicated
+          Value: web
+          Effect: NO_SCHEDULE
+      UpdateConfig:
+        MaxUnavailable: 1
+
+  ApiNodeGroup:
+    Type: AWS::EKS::Nodegroup
+    DependsOn:
+      - VpcCniAddon
+      - KubeProxyAddon
+      - PodIdentityAgentAddon
+    Properties:
+      ClusterName: !Ref Cluster
+      NodeRole: !GetAtt NodeRole.Arn
+      AmiType: AL2023_ARM_64_STANDARD
+      CapacityType: ON_DEMAND
+      LaunchTemplate:
+        Id: !Ref ApiLaunchTemplate
+        Version: !GetAtt ApiLaunchTemplate.LatestVersionNumber
+      ScalingConfig:
+        MinSize: !Ref ApiNodeCount
+        DesiredSize: !Ref ApiNodeCount
+        MaxSize: !Ref ApiNodeCount
+      Subnets:
+        Fn::Split:
+          - ","
+          - Fn::ImportValue: !Sub ${ProjectName}:PrivateSubnetIds
+      Labels:
+        tier: api
+      Taints:
+        - Key: dedicated
+          Value: api
+          Effect: NO_SCHEDULE
+      UpdateConfig:
+        MaxUnavailable: 1
+
+  # ---- AWS Load Balancer Controller identity --------------------------------------------
+  # The controller itself is installed with Helm by the pipeline's platform step. Its
+  # policy is the one published with the controller release pinned there (v3.6.3).
+  LoadBalancerControllerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: pods.eks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+              - sts:TagSession
+      Policies:
+        - PolicyName: AWSLoadBalancerControllerIAMPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: "Allow"
+                Action:
+                  - "iam:CreateServiceLinkedRole"
+                Resource: "*"
+                Condition:
+                  StringEquals:
+                    iam:AWSServiceName: "elasticloadbalancing.amazonaws.com"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:DescribeAccountAttributes"
+                  - "ec2:DescribeAddresses"
+                  - "ec2:DescribeAvailabilityZones"
+                  - "ec2:DescribeInternetGateways"
+                  - "ec2:DescribeVpcs"
+                  - "ec2:DescribeVpcPeeringConnections"
+                  - "ec2:DescribeSubnets"
+                  - "ec2:DescribeSecurityGroups"
+                  - "ec2:DescribeInstances"
+                  - "ec2:DescribeNetworkInterfaces"
+                  - "ec2:DescribeTags"
+                  - "ec2:GetCoipPoolUsage"
+                  - "ec2:DescribeCoipPools"
+                  - "ec2:GetSecurityGroupsForVpc"
+                  - "ec2:DescribeIpamPools"
+                  - "ec2:DescribeRouteTables"
+                  - "elasticloadbalancing:DescribeLoadBalancers"
+                  - "elasticloadbalancing:DescribeLoadBalancerAttributes"
+                  - "elasticloadbalancing:DescribeListeners"
+                  - "elasticloadbalancing:DescribeListenerCertificates"
+                  - "elasticloadbalancing:DescribeSSLPolicies"
+                  - "elasticloadbalancing:DescribeRules"
+                  - "elasticloadbalancing:DescribeTargetGroups"
+                  - "elasticloadbalancing:DescribeTargetGroupAttributes"
+                  - "elasticloadbalancing:DescribeTargetHealth"
+                  - "elasticloadbalancing:DescribeTags"
+                  - "elasticloadbalancing:DescribeTrustStores"
+                  - "elasticloadbalancing:DescribeListenerAttributes"
+                  - "elasticloadbalancing:DescribeCapacityReservation"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "cognito-idp:DescribeUserPoolClient"
+                  - "acm:ListCertificates"
+                  - "acm:DescribeCertificate"
+                  - "iam:ListServerCertificates"
+                  - "iam:GetServerCertificate"
+                  - "waf-regional:GetWebACL"
+                  - "waf-regional:GetWebACLForResource"
+                  - "waf-regional:AssociateWebACL"
+                  - "waf-regional:DisassociateWebACL"
+                  - "wafv2:GetWebACL"
+                  - "wafv2:GetWebACLForResource"
+                  - "wafv2:AssociateWebACL"
+                  - "wafv2:DisassociateWebACL"
+                  - "shield:GetSubscriptionState"
+                  - "shield:DescribeProtection"
+                  - "shield:CreateProtection"
+                  - "shield:DeleteProtection"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:AuthorizeSecurityGroupIngress"
+                  - "ec2:RevokeSecurityGroupIngress"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:CreateSecurityGroup"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:CreateTags"
+                Resource: "arn:aws:ec2:*:*:security-group/*"
+                Condition:
+                  StringEquals:
+                    ec2:CreateAction: "CreateSecurityGroup"
+                  "Null":
+                    aws:RequestTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:CreateTags"
+                  - "ec2:DeleteTags"
+                Resource: "arn:aws:ec2:*:*:security-group/*"
+                Condition:
+                  "Null":
+                    aws:RequestTag/elbv2.k8s.aws/cluster: "true"
+                    aws:ResourceTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "ec2:AuthorizeSecurityGroupIngress"
+                  - "ec2:RevokeSecurityGroupIngress"
+                  - "ec2:DeleteSecurityGroup"
+                Resource: "*"
+                Condition:
+                  "Null":
+                    aws:ResourceTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:CreateLoadBalancer"
+                  - "elasticloadbalancing:CreateTargetGroup"
+                Resource: "*"
+                Condition:
+                  "Null":
+                    aws:RequestTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:CreateListener"
+                  - "elasticloadbalancing:DeleteListener"
+                  - "elasticloadbalancing:CreateRule"
+                  - "elasticloadbalancing:DeleteRule"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:AddTags"
+                  - "elasticloadbalancing:RemoveTags"
+                Resource:
+                  - "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*"
+                Condition:
+                  "Null":
+                    aws:RequestTag/elbv2.k8s.aws/cluster: "true"
+                    aws:ResourceTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:AddTags"
+                  - "elasticloadbalancing:RemoveTags"
+                Resource:
+                  - "arn:aws:elasticloadbalancing:*:*:listener/net/*/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:listener/app/*/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:listener-rule/net/*/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:listener-rule/app/*/*/*"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:ModifyLoadBalancerAttributes"
+                  - "elasticloadbalancing:SetIpAddressType"
+                  - "elasticloadbalancing:SetSecurityGroups"
+                  - "elasticloadbalancing:SetSubnets"
+                  - "elasticloadbalancing:DeleteLoadBalancer"
+                  - "elasticloadbalancing:ModifyTargetGroup"
+                  - "elasticloadbalancing:ModifyTargetGroupAttributes"
+                  - "elasticloadbalancing:DeleteTargetGroup"
+                  - "elasticloadbalancing:ModifyListenerAttributes"
+                  - "elasticloadbalancing:ModifyCapacityReservation"
+                  - "elasticloadbalancing:ModifyIpPools"
+                Resource: "*"
+                Condition:
+                  "Null":
+                    aws:ResourceTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:AddTags"
+                Resource:
+                  - "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*"
+                  - "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*"
+                Condition:
+                  StringEquals:
+                    elasticloadbalancing:CreateAction:
+                      - "CreateTargetGroup"
+                      - "CreateLoadBalancer"
+                  "Null":
+                    aws:RequestTag/elbv2.k8s.aws/cluster: "false"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:RegisterTargets"
+                  - "elasticloadbalancing:DeregisterTargets"
+                Resource: "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*"
+              - Effect: "Allow"
+                Action:
+                  - "elasticloadbalancing:SetWebAcl"
+                  - "elasticloadbalancing:ModifyListener"
+                  - "elasticloadbalancing:AddListenerCertificates"
+                  - "elasticloadbalancing:RemoveListenerCertificates"
+                  - "elasticloadbalancing:ModifyRule"
+                  - "elasticloadbalancing:SetRulePriorities"
+                Resource: "*"
+
+  LoadBalancerControllerPodIdentity:
+    Type: AWS::EKS::PodIdentityAssociation
+    Properties:
+      ClusterName: !Ref Cluster
+      Namespace: kube-system
+      ServiceAccount: aws-load-balancer-controller
+      RoleArn: !GetAtt LoadBalancerControllerRole.Arn
+
+Outputs:
+  ClusterName:
+    Description: Name of the EKS cluster.
+    Value: !Ref Cluster
+    Export:
+      Name: !Sub ${ProjectName}:ClusterName
+  ClusterSecurityGroupId:
+    Description: Security group shared by the control plane and the managed nodes.
+    Value: !GetAtt Cluster.ClusterSecurityGroupId
+    Export:
+      Name: !Sub ${ProjectName}:ClusterSecurityGroupId
+  NodeShape:
+    Description: Node groups as deployed, for the run records.
+    Value: !Sub system=${SystemNodeCount}x${SystemInstanceType} web=${WebNodeCount}x${WebInstanceType} api=${ApiNodeCount}x${ApiInstanceType}

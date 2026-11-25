@@ -1,0 +1,41 @@
+[02:37:33] reset: {'order_item': 672658, 'orders': 336631}
+[02:38:26] starting gu-a2p-warmup-11240236: steady, 4000.0 req/s over 14 tasks, 240 s
+[02:38:32] DLT gu-a2p-warmup-11240236: queued
+[02:38:53] DLT gu-a2p-warmup-11240236: provisioning
+[02:40:38] DLT gu-a2p-warmup-11240236: running
+[02:44:47] DLT gu-a2p-warmup-11240236: cleaning up
+[02:45:28] DLT gu-a2p-warmup-11240236: complete
+[02:45:36] waiting 129 s for CloudWatch metrics
+[02:47:47] deleted 28 raw k6 output objects
+[02:47:47] gu-a2p-warmup-11240236: status=complete tasks=14/14 requests=680008 failed=0 mean=6.333 p50=5.03 p95=14.959 p99=24.663 ms
+[02:47:47] achieved 4000.0 req/s of 4000.0 target
+[02:47:56] reset: {'order_item': 78130, 'orders': 39138}
+[02:48:50] starting gu-a2p-r1-11240247: steady, 8000.0 req/s over 28 tasks, 660 s
+[02:48:52] DLT gu-a2p-r1-11240247: queued
+[02:49:13] DLT gu-a2p-r1-11240247: provisioning
+[02:51:17] DLT gu-a2p-r1-11240247: running
+[03:02:41] DLT gu-a2p-r1-11240247: cleaning up
+[03:03:22] DLT gu-a2p-r1-11240247: complete
+[03:03:31] waiting 114 s for CloudWatch metrics
+[03:05:28] deleted 56 raw k6 output objects
+[03:05:28] gu-a2p-r1-11240247: status=complete tasks=28/28 requests=4720044 failed=0 mean=6.877 p50=5.786 p95=16.533 p99=25.926 ms
+[03:05:28] achieved 8000.1 req/s of 8000.0 target
+
+a-graviton2-baseline / a2p-r1 (steady, complete)
+  web 2 x c6g.4xlarge, API 3 x m6g.xlarge, database db.r6g.8xlarge; pods: web 32, API 6
+  load generators: 28/28 tasks, peak CPU 25% of reserved
+  Aurora datapoints cover the 60 s that start 57 s before their timestamp (measured in 2 steady runs: 56 to 58 s)
+  window  target achieved   err%   p50    p95     p99  web%  api%   db% web ms api ms  db ms
+  steady    8000   8000.1  0.000   5.8   16.5    25.9  48.1  47.7  55.6  1.924  0.716  2.225
+      api_cart_get     n=  942819 err=0.0000% p50=    1.8 p95=    2.4 p99=     2.8
+      api_cart_put     n=  424680 err=0.0000% p50=    6.7 p95=    9.1 p99=    10.3
+      api_catalog      n=  189018 err=0.0000% p50=    7.7 p95=   14.8 p99=    30.7
+      api_home         n=   94257 err=0.0000% p50=    5.1 p95=    7.2 p99=     7.8
+      api_order_post   n=  213049 err=0.0000% p50=    9.4 p95=   13.1 p99=    14.7
+      api_orders       n=  660103 err=0.0000% p50=    2.7 p95=    3.8 p99=     4.4
+      api_product      n=  661623 err=0.0000% p50=    4.1 p95=    7.4 p99=     8.5
+      api_search       n=   70673 err=0.0000% p50=    3.2 p95=   23.0 p99=    24.2
+      page_category    n=  472881 err=0.0000% p50=   15.1 p95=   23.5 p99=    37.9
+      page_home        n=  282967 err=0.0000% p50=   12.2 p95=   16.7 p99=    20.8
+      page_product     n=  566006 err=0.0000% p50=    8.6 p95=   13.4 p99=    16.5
+      page_search      n=  141968 err=0.0000% p50=    8.9 p95=   29.2 p99=    32.3

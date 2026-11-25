@@ -1,0 +1,48 @@
+{
+  "view": "timeSeries",
+  "stacked": false,
+  "width": 1520,
+  "height": 480,
+  "start": "2026-11-24T08:30:00Z",
+  "end": "2026-11-24T11:50:00Z",
+  "period": 60,
+  "timezone": "+0000",
+  "title": "Aurora MySQL: CPU utilization of both instances, percent of their vCPUs (UTC)",
+  "annotations": {
+    "vertical": [
+      {
+        "label": "C: upgrade and right-sizing",
+        "value": "2026-11-24T09:20:13Z"
+      }
+    ]
+  },
+  "stat": "Average",
+  "yAxis": {
+    "left": {
+      "min": 0,
+      "max": 100,
+      "label": "CPU utilization, percent",
+      "showUnits": false
+    }
+  },
+  "metrics": [
+    [
+      "AWS/RDS",
+      "CPUUtilization",
+      "DBInstanceIdentifier",
+      "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+      {
+        "label": "instance 1"
+      }
+    ],
+    [
+      "AWS/RDS",
+      "CPUUtilization",
+      "DBInstanceIdentifier",
+      "graviton-uplift-database-instance2-xxxxxxxxxxxx",
+      {
+        "label": "instance 2"
+      }
+    ]
+  ]
+}

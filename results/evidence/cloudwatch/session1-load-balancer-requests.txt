@@ -1,0 +1,1 @@
+$ aws cloudwatch get-metric-widget-image --metric-widget file://results/evidence/cloudwatch/session1-load-balancer-requests.json --output-format png --query MetricWidgetImage --output text | base64 -d > results/evidence/cloudwatch/session1-load-balancer-requests.png

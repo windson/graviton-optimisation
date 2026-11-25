@@ -1,0 +1,4 @@
+$ kubectl -n storefront get deployments -o custom-columns='NAME:.metadata.name,IMAGE:.spec.template.spec.containers[0].image'
+NAME             IMAGE
+storefront-api   <account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-api:src-6b03595622eb8465
+storefront-web   <account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-web:src-c8fcab34f24ea36c

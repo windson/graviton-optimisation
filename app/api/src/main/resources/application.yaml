@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: storefront-api
+  main:
+    banner-mode: "off"
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+  shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+  tomcat:
+    # Must be longer than the load balancer's idle timeout (60 s), otherwise the
+    # load balancer can reuse a connection that Tomcat has just closed.
+    keep-alive-timeout: 75s
+    max-keep-alive-requests: 1000
+    threads:
+      max: 200
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+storefront:
+  db:
+    host: ${DB_HOST:localhost}
+    port: ${DB_PORT:3306}
+    name: ${DB_NAME:storefront}
+    # When set, username and password are read from this AWS Secrets Manager secret.
+    secret-arn: ${DB_SECRET_ARN:}
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
+    pool-size: ${DB_POOL_SIZE:24}
+    ssl-mode: ${DB_SSL_MODE:REQUIRED}
+  catalog:
+    page-size: 48
+    category-cache-ttl: 60s
+  seed:
+    # The seed job sets this to true; API pods never seed.
+    enabled: false
+    version: ${SEED_VERSION:v1}
+    categories: ${SEED_CATEGORIES:500}
+    products: ${SEED_PRODUCTS:1000000}
+    customers: ${SEED_CUSTOMERS:2000000}
+    orders: ${SEED_ORDERS:8000000}
+    reviews: ${SEED_REVIEWS:5000000}
+

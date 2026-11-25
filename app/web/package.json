@@ -1,0 +1,25 @@
+{
+  "name": "storefront-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Server-side rendered React storefront used as the web tier of the Graviton upgrade study",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node dist/server.mjs",
+    "test": "node build.mjs --test && node --test dist/test/render.test.mjs"
+  },
+  "dependencies": {
+    "@fastify/compress": "^9.3.0",
+    "fastify": "^5.12.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "undici": "^8.13.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

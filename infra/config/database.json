@@ -1,0 +1,9 @@
+{
+  "Parameters": {
+    "ProjectName": "graviton-uplift",
+    "DBInstanceClass": "db.r6g.8xlarge"
+  },
+  "Tags": {
+    "Project": "graviton-uplift"
+  }
+}

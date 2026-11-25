@@ -1,0 +1,1310 @@
+{
+  "prices_retrieved_at": "2026-11-23T13:02:53Z",
+  "region": "us-west-2",
+  "usage": {
+    "average_rps": 4000,
+    "operating_rps": 8000,
+    "alb_processed_bytes_per_second": 32350907,
+    "response_share_of_bytes": 0.95,
+    "aurora_write_ios_per_second": 1882.6,
+    "aurora_read_ios_per_second": 0.0,
+    "aurora_storage_gb": 6.39,
+    "measured_on": "a-graviton2-baseline",
+    "windows": [
+      {
+        "from": "2026-11-23T16:04:41Z",
+        "to": "2026-11-23T16:14:31Z",
+        "requests_per_second": 8000.07
+      },
+      {
+        "from": "2026-11-23T16:22:24Z",
+        "to": "2026-11-23T16:32:14Z",
+        "requests_per_second": 8000.07
+      },
+      {
+        "from": "2026-11-23T16:40:06Z",
+        "to": "2026-11-23T16:49:56Z",
+        "requests_per_second": 8000.07
+      }
+    ],
+    "alb_lcus_per_hour_reported": 116.46,
+    "aurora_io_buckets": 2,
+    "other_configurations": {
+      "b-graviton5-same-size": {
+        "aurora_write_ios_per_second": 3207.4,
+        "alb_lcus_per_hour_reported": 116.31,
+        "alb_processed_bytes_per_second": 32307265
+      },
+      "c-graviton5-right-sized": {
+        "aurora_write_ios_per_second": 3170.0,
+        "alb_lcus_per_hour_reported": 116.36,
+        "alb_processed_bytes_per_second": 32322156
+      }
+    },
+    "aurora_io": {
+      "period": {
+        "from": "2026-11-23T15:30:00Z",
+        "to": "2026-11-24T03:50:00Z"
+      },
+      "study_end": "2026-11-24T03:02:03Z",
+      "covers_whole_study": true,
+      "billed_write_ios": 81917526,
+      "write_operations": 89447292,
+      "billed_per_operation": 0.9158,
+      "billed_per_operation_by_block": {
+        "lowest": 0.3427,
+        "highest": 2.1661,
+        "blocks": [
+          {
+            "from": "2026-11-23T15:30:00Z",
+            "to": "2026-11-23T16:50:00Z",
+            "billed_write_ios_per_second": 1882.6,
+            "write_operations_per_second": 2492.4,
+            "billed_per_operation": 0.7553
+          },
+          {
+            "from": "2026-11-23T16:50:00Z",
+            "to": "2026-11-23T18:10:00Z",
+            "billed_write_ios_per_second": 2018.3,
+            "write_operations_per_second": 1976.2,
+            "billed_per_operation": 1.0213
+          },
+          {
+            "from": "2026-11-23T18:10:00Z",
+            "to": "2026-11-23T19:15:00Z",
+            "billed_write_ios_per_second": 2784.4,
+            "write_operations_per_second": 3294.9,
+            "billed_per_operation": 0.8451
+          },
+          {
+            "from": "2026-11-23T19:15:00Z",
+            "to": "2026-11-23T20:25:00Z",
+            "billed_write_ios_per_second": 3207.4,
+            "write_operations_per_second": 2825.7,
+            "billed_per_operation": 1.1351
+          },
+          {
+            "from": "2026-11-23T20:25:00Z",
+            "to": "2026-11-23T21:50:00Z",
+            "billed_write_ios_per_second": 968.1,
+            "write_operations_per_second": 2825.0,
+            "billed_per_operation": 0.3427
+          },
+          {
+            "from": "2026-11-23T21:50:00Z",
+            "to": "2026-11-23T22:55:00Z",
+            "billed_write_ios_per_second": 3170.0,
+            "write_operations_per_second": 2697.8,
+            "billed_per_operation": 1.1751
+          },
+          {
+            "from": "2026-11-23T22:55:00Z",
+            "to": "2026-11-24T00:05:00Z",
+            "billed_write_ios_per_second": 1415.0,
+            "write_operations_per_second": 822.0,
+            "billed_per_operation": 1.7213
+          },
+          {
+            "from": "2026-11-24T00:05:00Z",
+            "to": "2026-11-24T01:15:00Z",
+            "billed_write_ios_per_second": 1373.0,
+            "write_operations_per_second": 1443.3,
+            "billed_per_operation": 0.9513
+          },
+          {
+            "from": "2026-11-24T01:15:00Z",
+            "to": "2026-11-24T02:30:00Z",
+            "billed_write_ios_per_second": 686.1,
+            "write_operations_per_second": 1269.6,
+            "billed_per_operation": 0.5404
+          },
+          {
+            "from": "2026-11-24T02:30:00Z",
+            "to": "2026-11-24T03:50:00Z",
+            "billed_write_ios_per_second": 1409.6,
+            "write_operations_per_second": 650.7,
+            "billed_per_operation": 2.1661
+          }
+        ]
+      },
+      "warmups": {
+        "a-warmup": {
+          "stage": "a-graviton2-baseline",
+          "from": "2026-11-23T15:23:17Z",
+          "to": "2026-11-23T15:26:07Z",
+          "requests_per_second": 4000.05,
+          "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+          "writer_class": "db.r6g.8xlarge",
+          "write_ops_per_second": 2332.3,
+          "write_bytes_per_second": 1010615,
+          "samples": 11,
+          "write_ops_per_request": 0.5831,
+          "billed_write_ios_per_second": 2136.0
+        },
+        "a2-warmup": {
+          "stage": "a-graviton2-baseline",
+          "from": "2026-11-24T01:52:04Z",
+          "to": "2026-11-24T01:54:54Z",
+          "requests_per_second": 4000.05,
+          "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+          "writer_class": "db.r6g.8xlarge",
+          "write_ops_per_second": 2374.6,
+          "write_bytes_per_second": 1042694,
+          "samples": 11,
+          "write_ops_per_request": 0.5936,
+          "billed_write_ios_per_second": 2174.7
+        },
+        "a2p-warmup": {
+          "stage": "a-graviton2-baseline",
+          "from": "2026-11-24T02:41:33Z",
+          "to": "2026-11-24T02:44:23Z",
+          "requests_per_second": 4000.05,
+          "writer": "graviton-uplift-database-instance2-xxxxxxxxxxxx",
+          "writer_class": "db.r6g.8xlarge",
+          "write_ops_per_second": 2322.7,
+          "write_bytes_per_second": 1043856,
+          "samples": 12,
+          "write_ops_per_request": 0.5807,
+          "billed_write_ios_per_second": 2127.2
+        },
+        "b-warmup": {
+          "stage": "b-graviton5-same-size",
+          "from": "2026-11-23T18:14:55Z",
+          "to": "2026-11-23T18:17:45Z",
+          "requests_per_second": 4000.05,
+          "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+          "writer_class": "db.r9g.8xlarge",
+          "write_ops_per_second": 2400.6,
+          "write_bytes_per_second": 1050827,
+          "samples": 11,
+          "write_ops_per_request": 0.6001,
+          "billed_write_ios_per_second": 2198.5
+        },
+        "c-warmup": {
+          "stage": "c-graviton5-right-sized",
+          "from": "2026-11-23T21:18:30Z",
+          "to": "2026-11-23T21:21:20Z",
+          "requests_per_second": 4000.05,
+          "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+          "writer_class": "db.r9g.4xlarge",
+          "write_ops_per_second": 2451.8,
+          "write_bytes_per_second": 1061181,
+          "samples": 12,
+          "write_ops_per_request": 0.6129,
+          "billed_write_ios_per_second": 2245.4
+        }
+      },
+      "at_tested_load": {
+        "a-r1": {
+          "requests_per_second": 8000.07,
+          "write_ops_per_second": 3753.1,
+          "write_ops_per_request": 0.4691,
+          "samples": 40
+        },
+        "b-r1": {
+          "requests_per_second": 8000.07,
+          "write_ops_per_second": 4343.6,
+          "write_ops_per_request": 0.5429,
+          "samples": 40
+        },
+        "c-r1": {
+          "requests_per_second": 8000.08,
+          "write_ops_per_second": 4541.3,
+          "write_ops_per_request": 0.5677,
+          "samples": 40
+        }
+      }
+    }
+  },
+  "stages": {
+    "a-graviton2-baseline": {
+      "title": "A: Graviton2 baseline",
+      "shape": {
+        "web": [
+          "c6g.4xlarge",
+          2
+        ],
+        "api": [
+          "m6g.xlarge",
+          3
+        ],
+        "system": [
+          "m6g.large",
+          2
+        ],
+        "database": [
+          "db.r6g.8xlarge",
+          2
+        ]
+      },
+      "on_demand": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c6g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.544,
+            "monthly_usd": 794.24,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m6g.xlarge",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.154,
+            "monthly_usd": 337.26,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m6g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.077,
+            "monthly_usd": 112.42,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r6g.8xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 4.153,
+            "monthly_usd": 6063.38,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5383.350488520001,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1076.67,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 7307.3,
+          "Rest of the stack": 5046.27
+        },
+        "total": 12353.57
+      },
+      "committed": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c6g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.3427,
+            "monthly_usd": 500.34,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m6g.xlarge",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.0966,
+            "monthly_usd": 211.55,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m6g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.0483,
+            "monthly_usd": 70.52,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r6g.8xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 2.721,
+            "monthly_usd": 3972.66,
+            "note": "Reserved Instance, 1 year, no upfront"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5383.350488520001,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1076.67,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 4755.07,
+          "Rest of the stack": 5046.27
+        },
+        "total": 9801.34
+      }
+    },
+    "b-graviton5-same-size": {
+      "title": "B: Graviton5, same size",
+      "shape": {
+        "web": [
+          "c9g.4xlarge",
+          2
+        ],
+        "api": [
+          "m9g.xlarge",
+          3
+        ],
+        "system": [
+          "m9g.large",
+          2
+        ],
+        "database": [
+          "db.r9g.8xlarge",
+          2
+        ]
+      },
+      "on_demand": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c9g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.69552,
+            "monthly_usd": 1015.46,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m9g.xlarge",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.19568,
+            "monthly_usd": 428.54,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m9g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.09784,
+            "monthly_usd": 142.85,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r9g.8xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 4.4384,
+            "monthly_usd": 6480.06,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5540.998663439999,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1108.2,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 8066.91,
+          "Rest of the stack": 5077.8
+        },
+        "total": 13144.71
+      },
+      "committed": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c9g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.45832,
+            "monthly_usd": 669.15,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m9g.xlarge",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.12944,
+            "monthly_usd": 283.47,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m9g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.06472,
+            "monthly_usd": 94.49,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r9g.8xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 4.4384,
+            "monthly_usd": 6480.06,
+            "note": "On-Demand: no one-year rate was returned"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5540.998663439999,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1108.2,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 7527.17,
+          "Rest of the stack": 5077.8
+        },
+        "total": 12604.97
+      }
+    },
+    "c-graviton5-right-sized": {
+      "title": "C: Graviton5, right-sized",
+      "shape": {
+        "web": [
+          "c9g.2xlarge",
+          2
+        ],
+        "api": [
+          "m9g.large",
+          3
+        ],
+        "system": [
+          "m9g.large",
+          2
+        ],
+        "database": [
+          "db.r9g.4xlarge",
+          2
+        ]
+      },
+      "on_demand": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c9g.2xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.34776,
+            "monthly_usd": 507.73,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m9g.large",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.09784,
+            "monthly_usd": 214.27,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m9g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.09784,
+            "monthly_usd": 142.85,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r9g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 2.2192,
+            "monthly_usd": 3240.03,
+            "note": "On-Demand"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5659.1770903199995,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1131.84,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 4104.88,
+          "Rest of the stack": 5101.44
+        },
+        "total": 9206.32
+      },
+      "committed": {
+        "rows": [
+          {
+            "group": "Compute and database",
+            "item": "Web tier nodes: 2 x c9g.2xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.22916,
+            "monthly_usd": 334.57,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "API tier nodes: 3 x m9g.large",
+            "quantity": 2190,
+            "unit": "instance-hours",
+            "unit_usd": 0.06472,
+            "monthly_usd": 141.74,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "System nodes: 2 x m9g.large",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 0.06472,
+            "monthly_usd": 94.49,
+            "note": "EC2 Instance Savings Plan, 1 year, no upfront"
+          },
+          {
+            "group": "Compute and database",
+            "item": "Aurora MySQL writer and reader: 2 x db.r9g.4xlarge",
+            "quantity": 1460,
+            "unit": "instance-hours",
+            "unit_usd": 2.2192,
+            "monthly_usd": 3240.03,
+            "note": "On-Demand: no one-year rate was returned"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Amazon EKS control plane",
+            "quantity": 730,
+            "unit": "cluster-hours",
+            "unit_usd": 0.1,
+            "monthly_usd": 73.0,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Node volumes: 7 x 40 GiB gp3",
+            "quantity": 280,
+            "unit": "GB-months",
+            "unit_usd": 0.08,
+            "monthly_usd": 22.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Application Load Balancer",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.0225,
+            "monthly_usd": 16.43,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Load balancer capacity units",
+            "quantity": 42509.091798,
+            "unit": "LCU-hours",
+            "unit_usd": 0.008,
+            "monthly_usd": 340.07,
+            "note": "bytes through the load balancer as measured in the baseline's runs at 8,000 requests per second, scaled to the average request rate; one LCU for each GB per hour of throughput"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "NAT gateway",
+            "quantity": 730,
+            "unit": "hours",
+            "unit_usd": 0.045,
+            "monthly_usd": 32.85,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora storage",
+            "quantity": 6.39,
+            "unit": "GB-months",
+            "unit_usd": 0.1,
+            "monthly_usd": 0.64,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Aurora I/O requests",
+            "quantity": 5659.1770903199995,
+            "unit": "million requests",
+            "unit_usd": 0.19999999999999998,
+            "monthly_usd": 1131.84,
+            "note": "estimated: the writer's write operations in this configuration at 4,000 requests per second, times the ratio of billed I/Os to write operations"
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Secrets Manager secret",
+            "quantity": 1,
+            "unit": "secrets",
+            "unit_usd": 0.4,
+            "monthly_usd": 0.4,
+            "note": ""
+          },
+          {
+            "group": "Rest of the stack",
+            "item": "Data transfer out to the internet",
+            "quantity": 40383.6372081,
+            "unit": "GB",
+            "unit_usd": 0.0863,
+            "monthly_usd": 3483.81,
+            "note": "the same bytes; 95% of them taken as responses (assumed), all sent to the internet, no CDN"
+          }
+        ],
+        "groups": {
+          "Compute and database": 3810.83,
+          "Rest of the stack": 5101.44
+        },
+        "total": 8912.27
+      }
+    }
+  },
+  "io_ratio": {
+    "billed_per_operation": 0.8783,
+    "lowest": 0.3427,
+    "highest": 2.1661,
+    "blocks": 8,
+    "blocks_left_out": 2,
+    "periods": [
+      [
+        "2026-11-23T15:30:00Z",
+        "2026-11-23T22:55:00Z"
+      ],
+      [
+        "2026-11-24T01:15:00Z",
+        "2026-11-24T03:50:00Z"
+      ]
+    ],
+    "over_all_blocks": 0.9158
+  },
+  "io_sensitivity": {
+    "lowest_block": {
+      "billed_per_operation": 0.3427,
+      "stages": {
+        "a-graviton2-baseline": {
+          "aurora_io": 420.1,
+          "total": 11697.0,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "aurora_io": 432.4,
+          "total": 12468.91,
+          "change_vs_baseline": 0.066
+        },
+        "c-graviton5-right-sized": {
+          "aurora_io": 441.63,
+          "total": 8516.11,
+          "change_vs_baseline": -0.2719
+        }
+      }
+    },
+    "highest_block": {
+      "billed_per_operation": 2.1661,
+      "stages": {
+        "a-graviton2-baseline": {
+          "aurora_io": 2655.33,
+          "total": 13932.23,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "aurora_io": 2733.09,
+          "total": 14769.6,
+          "change_vs_baseline": 0.0601
+        },
+        "c-graviton5-right-sized": {
+          "aurora_io": 2791.38,
+          "total": 10865.86,
+          "change_vs_baseline": -0.2201
+        }
+      }
+    },
+    "different_ratio_per_configuration": {
+      "b-graviton5-same-size": {
+        "least_favourable": 0.2627,
+        "most_favourable": -0.105
+      },
+      "c-graviton5-right-sized": {
+        "least_favourable": -0.0711,
+        "most_favourable": -0.3887
+      }
+    }
+  },
+  "load_sensitivity": {
+    "2000": {
+      "average_requests_per_second": 2000.0,
+      "stages": {
+        "a-graviton2-baseline": {
+          "total": 9928.9,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "total": 10704.27,
+          "change_vs_baseline": 0.0781
+        },
+        "c-graviton5-right-sized": {
+          "total": 6754.06,
+          "change_vs_baseline": -0.3198
+        }
+      }
+    },
+    "4000": {
+      "average_requests_per_second": 4000.0,
+      "stages": {
+        "a-graviton2-baseline": {
+          "total": 12353.57,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "total": 13144.71,
+          "change_vs_baseline": 0.064
+        },
+        "c-graviton5-right-sized": {
+          "total": 9206.32,
+          "change_vs_baseline": -0.2548
+        }
+      }
+    },
+    "8000": {
+      "average_requests_per_second": 8000.0,
+      "stages": {
+        "a-graviton2-baseline": {
+          "total": 16338.64,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "total": 17370.85,
+          "change_vs_baseline": 0.0632
+        },
+        "c-graviton5-right-sized": {
+          "total": 13500.08,
+          "change_vs_baseline": -0.1737
+        }
+      }
+    },
+    "11800": {
+      "average_requests_per_second": 11800.0,
+      "stages": {
+        "a-graviton2-baseline": {
+          "total": 20170.18,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "total": 21331.86,
+          "change_vs_baseline": 0.0576
+        },
+        "c-graviton5-right-sized": {
+          "total": 17504.45,
+          "change_vs_baseline": -0.1322
+        }
+      }
+    },
+    "comparison_load": {
+      "average_requests_per_second": 11800.0,
+      "stages": {
+        "a-graviton2-baseline": {
+          "total": 20170.18,
+          "change_vs_baseline": 0.0
+        },
+        "b-graviton5-same-size": {
+          "total": 21331.86,
+          "change_vs_baseline": 0.0576
+        },
+        "c-graviton5-right-sized": {
+          "total": 17504.45,
+          "change_vs_baseline": -0.1322
+        }
+      }
+    }
+  },
+  "without_data_transfer": {
+    "a-graviton2-baseline": {
+      "total": 8869.76,
+      "change_vs_baseline": 0.0
+    },
+    "b-graviton5-same-size": {
+      "total": 9660.9,
+      "change_vs_baseline": 0.0892
+    },
+    "c-graviton5-right-sized": {
+      "total": 5722.51,
+      "change_vs_baseline": -0.3548
+    }
+  },
+  "aurora_io_optimized": {
+    "a-graviton2-baseline": {
+      "standard": 7140.69,
+      "io_optimized": 7883.98,
+      "difference": 743.29,
+      "io_share_of_standard": 0.1508,
+      "total_with_io_optimized": 13096.86,
+      "total_with_io_optimized_vs_baseline_standard": 0.0602
+    },
+    "b-graviton5-same-size": {
+      "standard": 7588.9,
+      "io_optimized": 8429.73,
+      "difference": 840.83,
+      "io_share_of_standard": 0.146,
+      "total_with_io_optimized": 13985.54,
+      "total_with_io_optimized_vs_baseline_standard": 0.1321
+    },
+    "c-graviton5-right-sized": {
+      "standard": 4372.51,
+      "io_optimized": 4215.58,
+      "difference": -156.93,
+      "io_share_of_standard": 0.2589,
+      "total_with_io_optimized": 9049.39,
+      "total_with_io_optimized_vs_baseline_standard": -0.2675
+    }
+  },
+  "commitment_scenarios": {
+    "discount_by_instance_type": {
+      "c6g.4xlarge": 0.37,
+      "c9g.2xlarge": 0.341,
+      "c9g.4xlarge": 0.341,
+      "m6g.2xlarge": 0.3727,
+      "m6g.large": 0.3727,
+      "m6g.xlarge": 0.3727,
+      "m9g.2xlarge": 0.3385,
+      "m9g.large": 0.3385,
+      "m9g.xlarge": 0.3385,
+      "db.r6g.8xlarge": 0.3448,
+      "db.r9g.4xlarge": null,
+      "db.r9g.8xlarge": null
+    },
+    "assumed_aurora_discount": 0.3448,
+    "if_graviton5_aurora_had_the_same_reserved_discount": {
+      "a-graviton2-baseline": {
+        "total": 9801.34,
+        "change_vs_baseline": 0.0
+      },
+      "b-graviton5-same-size": {
+        "total": 10370.65,
+        "change_vs_baseline": 0.0581
+      },
+      "c-graviton5-right-sized": {
+        "total": 7795.11,
+        "change_vs_baseline": -0.2047
+      }
+    }
+  },
+  "not_in_the_bill": [
+    "data transfer between Availability Zones (API nodes to the database writer, web pods to API pods)",
+    "NAT gateway data processing and public IPv4 addresses",
+    "Aurora backup storage beyond the free allowance, and the growth of the database: a month of this traffic would add several hundred million orders",
+    "monitoring: Enhanced Monitoring at 15 seconds, Performance Insights, CloudWatch logs and metrics",
+    "the container registry, the delivery pipeline and support",
+    "the load generators, and the one-time cost of making the change"
+  ],
+  "saving_breakdown": {
+    "on_demand": {
+      "b-graviton5-same-size": {
+        "aurora_instances": -416.68,
+        "ec2_nodes": -342.93,
+        "rest": -31.53,
+        "total": -791.14,
+        "aurora_share_of_saving": 0.5267
+      },
+      "c-graviton5-right-sized": {
+        "aurora_instances": 2823.35,
+        "ec2_nodes": 379.07,
+        "rest": -55.17,
+        "total": 3147.25,
+        "aurora_share_of_saving": 0.8971
+      }
+    },
+    "committed": {
+      "b-graviton5-same-size": {
+        "aurora_instances": -2507.4,
+        "ec2_nodes": -264.7,
+        "rest": -31.53,
+        "total": -2803.63,
+        "aurora_share_of_saving": 0.8943
+      },
+      "c-graviton5-right-sized": {
+        "aurora_instances": 732.63,
+        "ec2_nodes": 211.61,
+        "rest": -55.17,
+        "total": 889.07,
+        "aurora_share_of_saving": 0.824
+      }
+    }
+  }
+}

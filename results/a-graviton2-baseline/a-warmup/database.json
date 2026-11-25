@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 491218,
+    "Com_delete": 92,
+    "Com_insert": 1966391,
+    "Com_select": 26409749,
+    "Com_stmt_execute": 29332596,
+    "Com_update": 975168,
+    "Connections": 3080,
+    "Created_tmp_disk_tables": 24,
+    "Created_tmp_tables": 11297238,
+    "Innodb_buffer_pool_read_requests": 4088130657,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 404,
+    "Innodb_row_lock_waits": 222,
+    "Innodb_rows_deleted": 1462650,
+    "Innodb_rows_inserted": 49459748,
+    "Innodb_rows_read": 14454435276,
+    "Innodb_rows_updated": 1963414,
+    "Queries": 31245020,
+    "Questions": 30858671,
+    "Slow_queries": 32,
+    "Sort_rows": 124659803,
+    "Uptime": 7352,
+    "at": "2026-11-23T15:19:58Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 530245,
+    "Com_delete": 92,
+    "Com_insert": 2121685,
+    "Com_select": 28437052,
+    "Com_stmt_execute": 31591550,
+    "Com_update": 1052649,
+    "Connections": 3261,
+    "Created_tmp_disk_tables": 26,
+    "Created_tmp_tables": 12132104,
+    "Innodb_buffer_pool_read_requests": 4363716429,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 424,
+    "Innodb_row_lock_waits": 232,
+    "Innodb_rows_deleted": 1462650,
+    "Innodb_rows_inserted": 49576340,
+    "Innodb_rows_read": 15464466194,
+    "Innodb_rows_updated": 2118356,
+    "Queries": 33656567,
+    "Questions": 33237811,
+    "Slow_queries": 32,
+    "Sort_rows": 133555255,
+    "Uptime": 7794,
+    "at": "2026-11-23T15:27:20Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 8930.0,
+      "container_cpu_cfs_throttled_periods_total": 431.0,
+      "container_cpu_cfs_throttled_seconds_total": 15.271628000000003
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 25936.0,
+      "container_cpu_cfs_throttled_periods_total": 478.0,
+      "container_cpu_cfs_throttled_seconds_total": 16.567134
+    },
+    "web": {}
+  }
+}

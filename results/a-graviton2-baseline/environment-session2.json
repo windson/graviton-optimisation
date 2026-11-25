@@ -1,0 +1,137 @@
+{
+  "stage": "a-graviton2-baseline",
+  "at": "2026-11-24T08:32:38Z",
+  "api": {
+    "java": "OpenJDK Runtime Environment Corretto-21.0.13.1.2 (build 21.0.13.1+2-LTS)",
+    "jvm_flags": "CICompilerCount=2,ConcGCThreads=1,MaxHeapSize=3007315968,ParallelGCThreads=2,ReservedCodeCacheSize=251658240,TieredCompilation=true,UseAES=true,UseG1GC=true,UseLSE=true,UseSVE=0",
+    "cpu": "CPU part : 0xd0c;Features : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp;"
+  },
+  "web": {
+    "node": "v24.22.3",
+    "arch": "arm64",
+    "cpuModel": "Neoverse-N1",
+    "cpus": 16,
+    "react": "19.3.1",
+    "fastify": "5.12.8"
+  },
+  "nodes": [
+    {
+      "tier": "api",
+      "type": "m6g.xlarge",
+      "zone": "us-west-2a",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "3920m"
+    },
+    {
+      "tier": "api",
+      "type": "m6g.xlarge",
+      "zone": "us-west-2b",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "3920m"
+    },
+    {
+      "tier": "api",
+      "type": "m6g.xlarge",
+      "zone": "us-west-2b",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "3920m"
+    },
+    {
+      "tier": "system",
+      "type": "m6g.large",
+      "zone": "us-west-2a",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "1930m"
+    },
+    {
+      "tier": "system",
+      "type": "m6g.large",
+      "zone": "us-west-2b",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "1930m"
+    },
+    {
+      "tier": "web",
+      "type": "c6g.4xlarge",
+      "zone": "us-west-2a",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "15890m"
+    },
+    {
+      "tier": "web",
+      "type": "c6g.4xlarge",
+      "zone": "us-west-2b",
+      "kubelet": "v1.37.1-eks-9adbfea",
+      "runtime": "containerd://2.3.7+unknown",
+      "os": "Amazon Linux 2023.12.20261118",
+      "kernel": "6.18.62-127.179.amzn2023.aarch64",
+      "allocatable_cpu": "15890m"
+    }
+  ],
+  "images": [
+    {
+      "image": "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-api:src-6b03595622eb8465",
+      "imageID": "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-api@sha256:007ec5a2ddd932bc1d98ae5b2b79a7dd28de10ca6ad7da6055983c3edd491282"
+    },
+    {
+      "image": "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-web:src-c8fcab34f24ea36c",
+      "imageID": "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-web@sha256:7458cfaa3bd696f0439e431eaf1ceab47cfdd609f38e5d28b371d23a649959c9"
+    }
+  ],
+  "addons": [
+    {
+      "name": "coredns",
+      "version": "v1.14.7-eksbuild.35"
+    },
+    {
+      "name": "eks-pod-identity-agent",
+      "version": "v1.4.1-eksbuild.3"
+    },
+    {
+      "name": "kube-proxy",
+      "version": "v1.37.0-eksbuild.39"
+    },
+    {
+      "name": "metrics-server",
+      "version": "v0.9.1-eksbuild.2"
+    },
+    {
+      "name": "vpc-cni",
+      "version": "v1.22.4-eksbuild.14"
+    }
+  ],
+  "load_balancer_controller": "public.ecr.aws/eks/aws-load-balancer-controller:v3.6.3",
+  "database": {
+    "engine": "aurora-mysql",
+    "version": "8.0.mysql_aurora.3.10.6",
+    "storage": null,
+    "members": [
+      {
+        "id": "graviton-uplift-database-instance2-xxxxxxxxxxxx",
+        "writer": false
+      },
+      {
+        "id": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+        "writer": true
+      }
+    ]
+  }
+}

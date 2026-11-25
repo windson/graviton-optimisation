@@ -1,0 +1,4 @@
+$ uv run -q analysis/summarize.py results/b-graviton5-same-size/b-ceiling | awk '/^  (window|unit) / { if (!shown[$1]++) print; next } /^  steady /'
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  steady   28400  28400.0   0.000    3.8   13.1    19.6    80.0    68.4    73.7   0.901   0.253   0.830

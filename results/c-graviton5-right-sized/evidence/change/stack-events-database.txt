@@ -1,0 +1,8 @@
+$ aws cloudformation describe-stack-events --stack-name graviton-uplift-database --output json | jq -r '.StackEvents[] | select(.Timestamp >= "2026-11-23T20:08:41Z" and .Timestamp <= "2026-11-23T20:51:46Z") | [.Timestamp[0:19], .LogicalResourceId, .ResourceStatus] | @tsv' | sort | column -t
+2026-11-23T20:29:52  graviton-uplift-database  UPDATE_IN_PROGRESS
+2026-11-23T20:29:57  Instance1                 UPDATE_IN_PROGRESS
+2026-11-23T20:37:36  Instance1                 UPDATE_COMPLETE
+2026-11-23T20:37:37  Instance2                 UPDATE_IN_PROGRESS
+2026-11-23T20:45:15  Instance2                 UPDATE_COMPLETE
+2026-11-23T20:45:18  graviton-uplift-database  UPDATE_COMPLETE
+2026-11-23T20:45:18  graviton-uplift-database  UPDATE_COMPLETE_CLEANUP_IN_PROGRESS

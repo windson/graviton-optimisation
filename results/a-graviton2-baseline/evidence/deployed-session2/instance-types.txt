@@ -1,0 +1,14 @@
+$ aws ec2 describe-instances --filters Name=tag:eks:cluster-name,Values=graviton-uplift Name=instance-state-name,Values=running --query 'Reservations[].Instances[].{Type:InstanceType,Zone:Placement.AvailabilityZone,Architecture:Architecture,NodeGroup:Tags[?Key==`eks:nodegroup-name`]|[0].Value}' --output table
+-------------------------------------------------------------------------------
+|                              DescribeInstances                              |
++--------------+--------------------------------+--------------+--------------+
+| Architecture |           NodeGroup            |    Type      |    Zone      |
++--------------+--------------------------------+--------------+--------------+
+|  arm64       |  SystemNodeGroup-xxxxxxxxxxxx  |  m6g.large   |  us-west-2b  |
+|  arm64       |  WebNodeGroup-xxxxxxxxxxxx     |  c6g.4xlarge |  us-west-2b  |
+|  arm64       |  WebNodeGroup-xxxxxxxxxxxx     |  c6g.4xlarge |  us-west-2a  |
+|  arm64       |  SystemNodeGroup-xxxxxxxxxxxx  |  m6g.large   |  us-west-2a  |
+|  arm64       |  ApiNodeGroup-xxxxxxxxxxxx     |  m6g.xlarge  |  us-west-2a  |
+|  arm64       |  ApiNodeGroup-xxxxxxxxxxxx     |  m6g.xlarge  |  us-west-2b  |
+|  arm64       |  ApiNodeGroup-xxxxxxxxxxxx     |  m6g.xlarge  |  us-west-2b  |
++--------------+--------------------------------+--------------+--------------+

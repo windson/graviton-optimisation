@@ -1,0 +1,4 @@
+$ uv run -q analysis/summarize.py results/a-graviton2-baseline/a2p-r1 | awk '/^  (window|unit) / { if (!shown[$1]++) print; next } /^  steady /'
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  steady    8000   8000.1   0.000    5.8   16.5    25.9    48.1    54.5    55.6   1.924   0.716   2.225

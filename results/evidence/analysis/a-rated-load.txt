@@ -1,0 +1,6 @@
+$ uv run -q analysis/summarize.py results/a-graviton2-baseline/a2-ceiling results/a-graviton2-baseline/a3-rated-1 results/a-graviton2-baseline/a3-rated-2 | awk '/^[a-z0-9-]+ \/ / { run = $3 } /^  window / { if (!shown[$1]++) printf "  %-12s%s\n", "run", substr($0, 3); next } /^  unit / { if (!shown[$1]++) printf "  %-12s%s\n", "", substr($0, 3); next } /^  steady / { printf "  %-12s%s\n", run, substr($0, 3) }'
+  run         window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+              unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  a2-ceiling  steady   11800  11799.9   0.000    7.0   21.2    31.7    71.6    79.4    78.8   1.942   0.706   2.138
+  a3-rated-1  steady   11800  11799.9   0.000    7.1   22.1    33.3    73.2    78.4    79.3   1.985   0.697   2.151
+  a3-rated-2  steady   11800  11799.9   0.000    7.1   22.1    33.3    73.5    78.7    79.4   1.992   0.700   2.153

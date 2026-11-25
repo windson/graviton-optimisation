@@ -1,0 +1,132 @@
+[15:19:05] reset: {'order_item': 788655, 'orders': 394272}
+[15:19:58] starting gu-a-warmup-11231518: steady, 4000.0 req/s over 14 tasks, 240 s
+[15:20:04] DLT gu-a-warmup-11231518: queued
+[15:20:25] DLT gu-a-warmup-11231518: provisioning
+[15:22:09] DLT gu-a-warmup-11231518: running
+[15:26:38] DLT gu-a-warmup-11231518: cleaning up
+[15:27:19] DLT gu-a-warmup-11231518: complete
+[15:27:26] waiting 122 s for CloudWatch metrics
+[15:29:31] deleted 28 raw k6 output objects
+[15:29:31] gu-a-warmup-11231518: status=complete tasks=14/14 requests=680008 failed=0 mean=6.707 p50=5.342 p95=15.726 p99=25.669 ms
+[15:29:31] achieved 4000.0 req/s of 4000.0 target
+[15:29:40] reset: {'order_item': 77481, 'orders': 38806}
+[15:30:32] starting gu-a-cap-11231529: capacity, 8000.0 req/s over 60 tasks, 1380 s
+[15:30:35] DLT gu-a-cap-11231529: queued
+[15:30:55] DLT gu-a-cap-11231529: provisioning
+[15:32:59] DLT gu-a-cap-11231529: running
+[15:57:01] DLT gu-a-cap-11231529: cleaning up
+[15:57:42] DLT gu-a-cap-11231529: complete
+[15:57:54] waiting 81 s for CloudWatch metrics
+[15:59:18] deleted 120 raw k6 output objects
+[15:59:18] gu-a-cap-11231529: status=complete tasks=60/60 requests=16167412 failed=2145773 mean=775.562 p50=21.656 p95=4990.258 p99=4990.258 ms
+[15:59:18]   s01 x1.0  target=    8000 achieved=  7999.7 req/s  err=0.0000% p50=6.144 p95=17.38 p99=26.984 ms
+[15:59:18]   s02 x1.2  target=    9600 achieved=  9600.0 req/s  err=0.0000% p50=6.459 p95=18.641 p99=28.084 ms
+[15:59:18]   s03 x1.4  target=   11200 achieved= 11200.0 req/s  err=0.0000% p50=6.859 p95=20.601 p99=30.727 ms
+[15:59:18]   s04 x1.5  target=   12000 achieved= 12000.0 req/s  err=0.0000% p50=7.21 p95=22.092 p99=32.954 ms
+[15:59:18]   s05 x1.6  target=   12800 achieved= 12800.0 req/s  err=0.0000% p50=7.579 p95=24.91 p99=37.906 ms
+[15:59:18]   s06 x1.7  target=   13600 achieved= 13600.2 req/s  err=0.0000% p50=8.211 p95=30.422 p99=44.933 ms
+[15:59:18]   s07 x1.8  target=   14400 achieved= 14400.0 req/s  err=0.0000% p50=9.352 p95=39.061 p99=58.279 ms
+[15:59:18]   s08 x1.9  target=   15200 achieved= 15019.8 req/s  err=25.7765% p50=261.183 p95=4990.258 p99=4990.258 ms
+[15:59:18]   s09 x2.0  target=   16000 achieved= 15986.8 req/s  err=31.0041% p50=285.778 p95=4990.258 p99=4990.258 ms
+[15:59:18]   s10 x2.1  target=   16800 achieved= 16783.6 req/s  err=31.1209% p50=342.142 p95=4990.258 p99=4990.258 ms
+[15:59:18]   s11 x2.2  target=   17600 achieved= 17586.2 req/s  err=31.0224% p50=393.56 p95=4990.258 p99=4990.258 ms
+
+a-graviton2-baseline / a-cap (capacity, complete)  web=2xc6g.4xlarge api=3xm6g.xlarge db=db.r6g.8xlarge pods={'storefront-web': 32, 'storefront-api': 6}
+  load generators: 60/60 tasks, peak CPU 28% of reserved
+  window     target  achieved    err%     p50     p95      p99   web%   api%    db%  web ms  api ms   db ms
+  s01          8000    7999.7   0.000     6.1    17.4     27.0   50.9   45.8   51.0   2.036   0.686   2.039
+  s02          9600    9600.0   0.000     6.5    18.6     28.1   61.0   53.6   61.5   2.033   0.670   2.050
+  s03         11200   11200.0   0.000     6.9    20.6     30.7   69.4   62.3   71.2   1.982   0.668   2.035
+  s04         12000   12000.0   0.000     7.2    22.1     33.0   74.1   66.5   78.4   1.976   0.665   2.090
+  s05         12800   12800.0   0.000     7.6    24.9     37.9   78.5   71.8   82.6   1.961   0.673   2.066
+  s06         13600   13600.2   0.000     8.2    30.4     44.9   83.3   76.1   86.4   1.961   0.672   2.034
+  s07         14400   14400.0   0.000     9.4    39.1     58.3   88.2   81.8   89.9   1.960   0.681   1.999
+  s08         15200   15019.8  25.776   261.2  4990.3   4990.3   68.8   88.5   89.6   1.466   0.707   1.908
+  s09         16000   15986.8  31.004   285.8  4990.3   4990.3   64.1   88.4   88.9   1.283   0.663   1.780
+  s10         16800   16783.6  31.121   342.1  4990.3   4990.3   57.5   88.4   87.3   1.097   0.632   1.664
+  s11         17600   17586.2  31.022   393.6  4990.3   4990.3   52.3   88.5   84.5   0.952   0.604   1.538
+[16:00:23] reset: {'order_item': 1609313, 'orders': 804372}
+[16:01:16] starting gu-a-r1-11231559: steady, 8000.0 req/s over 28 tasks, 660 s
+[16:01:22] DLT gu-a-r1-11231559: queued
+[16:01:43] DLT gu-a-r1-11231559: provisioning
+[16:03:48] DLT gu-a-r1-11231559: running
+[16:15:09] DLT gu-a-r1-11231559: parsing results
+[16:15:29] DLT gu-a-r1-11231559: cleaning up
+[16:15:50] DLT gu-a-r1-11231559: complete
+[16:15:59] waiting 114 s for CloudWatch metrics
+[16:17:56] deleted 56 raw k6 output objects
+[16:17:56] gu-a-r1-11231559: status=complete tasks=28/28 requests=4720044 failed=0 mean=7.176 p50=6.083 p95=17.036 p99=26.715 ms
+[16:17:56] achieved 8000.1 req/s of 8000.0 target
+
+a-graviton2-baseline / a-r1 (steady, complete)  web=2xc6g.4xlarge api=3xm6g.xlarge db=db.r6g.8xlarge pods={'storefront-web': 32, 'storefront-api': 6}
+  load generators: 28/28 tasks, peak CPU 21% of reserved
+  window     target  achieved    err%     p50     p95      p99   web%   api%    db%  web ms  api ms   db ms
+  steady       8000    8000.1   0.000     6.1    17.0     26.7   49.8   45.8   56.6   1.990   0.687   2.262
+      api_cart_get     n=  943485 err=0.0000% p50=    1.9 p95=    2.5 p99=     2.8
+      api_cart_put     n=  424937 err=0.0000% p50=    6.9 p95=    9.2 p99=    10.5
+      api_catalog      n=  188895 err=0.0000% p50=    7.9 p95=   15.1 p99=    31.3
+      api_home         n=   94522 err=0.0000% p50=    6.1 p95=    7.1 p99=     7.7
+      api_order_post   n=  212483 err=0.0000% p50=   10.4 p95=   13.3 p99=    14.7
+      api_orders       n=  661715 err=0.0000% p50=    2.9 p95=    3.8 p99=     4.3
+      api_product      n=  660197 err=0.0000% p50=    4.3 p95=    7.5 p99=     8.8
+      api_search       n=   70146 err=0.0000% p50=    3.3 p95=   23.5 p99=    24.7
+      page_category    n=  471443 err=0.0000% p50=   15.6 p95=   24.2 p99=    38.3
+      page_home        n=  283855 err=0.0000% p50=   12.7 p95=   17.2 p99=    22.1
+      page_product     n=  566902 err=0.0000% p50=    9.0 p95=   14.1 p99=    17.6
+      page_search      n=  141464 err=0.0000% p50=    9.2 p95=   30.1 p99=    33.3
+[16:18:19] reset: {'order_item': 458865, 'orders': 228932}
+[16:19:11] starting gu-a-r2-11231618: steady, 8000.0 req/s over 28 tasks, 660 s
+[16:19:14] DLT gu-a-r2-11231618: queued
+[16:19:34] DLT gu-a-r2-11231618: provisioning
+[16:21:17] DLT gu-a-r2-11231618: running
+[16:32:58] DLT gu-a-r2-11231618: cleaning up
+[16:33:39] DLT gu-a-r2-11231618: complete
+[16:33:48] waiting 107 s for CloudWatch metrics
+[16:35:38] deleted 56 raw k6 output objects
+[16:35:38] gu-a-r2-11231618: status=complete tasks=28/28 requests=4720044 failed=0 mean=7.124 p50=6.083 p95=16.867 p99=26.45 ms
+[16:35:38] achieved 8000.1 req/s of 8000.0 target
+
+a-graviton2-baseline / a-r2 (steady, complete)  web=2xc6g.4xlarge api=3xm6g.xlarge db=db.r6g.8xlarge pods={'storefront-web': 32, 'storefront-api': 6}
+  load generators: 28/28 tasks, peak CPU 21% of reserved
+  window     target  achieved    err%     p50     p95      p99   web%   api%    db%  web ms  api ms   db ms
+  steady       8000    8000.1   0.000     6.1    16.9     26.4   49.4   45.1   56.7   1.974   0.676   2.269
+      api_cart_get     n=  944130 err=0.0000% p50=    1.9 p95=    2.4 p99=     2.7
+      api_cart_put     n=  425677 err=0.0000% p50=    6.9 p95=    9.2 p99=    10.4
+      api_catalog      n=  188698 err=0.0000% p50=    7.8 p95=   15.1 p99=    31.3
+      api_home         n=   94486 err=0.0000% p50=    6.0 p95=    7.0 p99=     7.6
+      api_order_post   n=  211903 err=0.0000% p50=   10.4 p95=   13.1 p99=    14.5
+      api_orders       n=  659581 err=0.0000% p50=    2.8 p95=    3.8 p99=     4.3
+      api_product      n=  660611 err=0.0000% p50=    4.3 p95=    7.5 p99=     8.8
+      api_search       n=   70678 err=0.0000% p50=    3.3 p95=   23.5 p99=    24.7
+      page_category    n=  471343 err=0.0000% p50=   15.4 p95=   23.9 p99=    38.3
+      page_home        n=  283494 err=0.0000% p50=   12.6 p95=   17.0 p99=    21.9
+      page_product     n=  568035 err=0.0000% p50=    8.9 p95=   13.9 p99=    17.4
+      page_search      n=  141408 err=0.0000% p50=    9.1 p95=   29.8 p99=    33.3
+[16:36:01] reset: {'order_item': 456299, 'orders': 228425}
+[16:36:54] starting gu-a-r3-11231635: steady, 8000.0 req/s over 28 tasks, 660 s
+[16:36:56] DLT gu-a-r3-11231635: queued
+[16:37:16] DLT gu-a-r3-11231635: provisioning
+[16:38:59] DLT gu-a-r3-11231635: running
+[16:50:41] DLT gu-a-r3-11231635: cleaning up
+[16:51:22] DLT gu-a-r3-11231635: complete
+[16:51:30] waiting 107 s for CloudWatch metrics
+[16:53:20] deleted 56 raw k6 output objects
+[16:53:20] gu-a-r3-11231635: status=complete tasks=28/28 requests=4720044 failed=0 mean=7.122 p50=6.083 p95=16.867 p99=26.45 ms
+[16:53:20] achieved 8000.1 req/s of 8000.0 target
+
+a-graviton2-baseline / a-r3 (steady, complete)  web=2xc6g.4xlarge api=3xm6g.xlarge db=db.r6g.8xlarge pods={'storefront-web': 32, 'storefront-api': 6}
+  load generators: 28/28 tasks, peak CPU 18% of reserved
+  window     target  achieved    err%     p50     p95      p99   web%   api%    db%  web ms  api ms   db ms
+  steady       8000    8000.1   0.000     6.1    16.9     26.4   49.2   44.6   56.7   1.968   0.670   2.269
+      api_cart_get     n=  943635 err=0.0000% p50=    1.9 p95=    2.4 p99=     2.7
+      api_cart_put     n=  425098 err=0.0000% p50=    7.0 p95=    9.4 p99=    10.9
+      api_catalog      n=  188314 err=0.0000% p50=    7.8 p95=   15.0 p99=    31.0
+      api_home         n=   94094 err=0.0000% p50=    6.0 p95=    7.0 p99=     7.6
+      api_order_post   n=  213135 err=0.0000% p50=   10.4 p95=   13.3 p99=    14.8
+      api_orders       n=  659930 err=0.0000% p50=    2.8 p95=    3.7 p99=     4.3
+      api_product      n=  661641 err=0.0000% p50=    4.2 p95=    7.5 p99=     8.8
+      api_search       n=   71117 err=0.0000% p50=    3.2 p95=   23.5 p99=    24.7
+      page_category    n=  472367 err=0.0000% p50=   15.4 p95=   23.9 p99=    38.3
+      page_home        n=  282348 err=0.0000% p50=   12.6 p95=   17.0 p99=    21.9
+      page_product     n=  566734 err=0.0000% p50=    8.9 p95=   13.8 p99=    17.2
+      page_search      n=  141631 err=0.0000% p50=    9.0 p95=   29.8 p99=    33.0

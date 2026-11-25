@@ -1,0 +1,1103 @@
+{
+  "test_id": "gu-b-cap-11231821",
+  "stage": "b-graviton5-same-size",
+  "kind": "capacity",
+  "name": "b-cap",
+  "status": "complete",
+  "tasks": {
+    "requested": 110,
+    "reporting": 110,
+    "start_spread_seconds": 1.963
+  },
+  "shape": {
+    "nodes": {
+      "system": [
+        "m9g.large"
+      ],
+      "web": [
+        "c9g.4xlarge"
+      ],
+      "api": [
+        "m9g.xlarge"
+      ]
+    },
+    "node_count": {
+      "system": 2,
+      "web": 2,
+      "api": 3
+    },
+    "pods": {
+      "storefront-web": 32,
+      "storefront-api": 6
+    },
+    "database": [
+      "db.r9g.8xlarge"
+    ]
+  },
+  "rds_metric_lag": {
+    "seconds": 1.1,
+    "source": "measured",
+    "runs": 5,
+    "min": 0.7,
+    "max": 1.1
+  },
+  "windows": [
+    {
+      "from": "2026-11-23T18:25:42Z",
+      "to": "2026-11-23T18:27:32Z",
+      "seconds": 110,
+      "target_rps": 8000.0,
+      "achieved_rps": 8001.0,
+      "achieved_share": 1.00012,
+      "client": {
+        "requests": 880110,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 840489,
+          "201": 39621
+        },
+        "mean_ms": 3.681,
+        "min_ms": 0.558,
+        "p50_ms": 3.207,
+        "p90_ms": 7.068,
+        "p95_ms": 7.968,
+        "p99_ms": 10.752,
+        "p99_9_ms": 15.414,
+        "max_ms": 231.136
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 2.004,
+          "app_cores_used": 1.831,
+          "span_seconds": 90.057,
+          "node_utilization": [
+            0.169,
+            0.1599,
+            0.1721
+          ],
+          "utilization": 0.167,
+          "cpu_ms_per_request": 0.2505
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 7.097,
+          "app_cores_used": 7.176,
+          "span_seconds": 90.13,
+          "node_utilization": [
+            0.2226,
+            0.221
+          ],
+          "utilization": 0.2218,
+          "cpu_ms_per_request": 0.887
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 20.3983,
+          "cpu_percent_max_minute": 20.39833333333333,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 2.1268,
+          "select_latency_ms": 0.2783,
+          "dml_latency_ms": 0.0391,
+          "queries_per_second": 22272.1333,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 6.527,
+          "cpu_ms_per_request": 0.8158
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3417,
+          "cpu_percent_max_minute": 0.3416666666666667,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1126,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.6002,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 1.0,
+          "vcpus": 32,
+          "cores_used": 0.109,
+          "cpu_ms_per_request": 0.0136
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 8000.85,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 32344170,
+        "web_target_p50_ms": 5.0,
+        "web_target_p99_ms": 11.3,
+        "api_target_p50_ms": 1.4,
+        "api_target_p99_ms": 8.0
+      },
+      "label": "s01",
+      "factor": 1.0
+    },
+    {
+      "from": "2026-11-23T18:27:42Z",
+      "to": "2026-11-23T18:29:32Z",
+      "seconds": 110,
+      "target_rps": 12000.0,
+      "achieved_rps": 11999.0,
+      "achieved_share": 0.99992,
+      "client": {
+        "requests": 1319890,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 1260219,
+          "201": 59671
+        },
+        "mean_ms": 3.771,
+        "min_ms": 0.562,
+        "p50_ms": 3.339,
+        "p90_ms": 7.139,
+        "p95_ms": 8.211,
+        "p99_ms": 11.081,
+        "p99_9_ms": 15.726,
+        "max_ms": 238.402
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 3.04,
+          "app_cores_used": 2.942,
+          "span_seconds": 90.059,
+          "node_utilization": [
+            0.2611,
+            0.2665,
+            0.2326
+          ],
+          "utilization": 0.2534,
+          "cpu_ms_per_request": 0.2534
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 10.597,
+          "app_cores_used": 10.72,
+          "span_seconds": 90.13,
+          "node_utilization": [
+            0.3353,
+            0.327
+          ],
+          "utilization": 0.3311,
+          "cpu_ms_per_request": 0.8832
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 30.6717,
+          "cpu_percent_max_minute": 30.671666666666667,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 2.3369,
+          "select_latency_ms": 0.2852,
+          "dml_latency_ms": 0.0403,
+          "queries_per_second": 33057.099,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 9.815,
+          "cpu_ms_per_request": 0.818
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3567,
+          "cpu_percent_max_minute": 0.3566666666666667,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.111,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.8665,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 6.0,
+          "vcpus": 32,
+          "cores_used": 0.114,
+          "cpu_ms_per_request": 0.0095
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 11999.12,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 48544810,
+        "web_target_p50_ms": 5.1,
+        "web_target_p99_ms": 11.7,
+        "api_target_p50_ms": 1.4,
+        "api_target_p99_ms": 8.2
+      },
+      "label": "s02",
+      "factor": 1.5
+    },
+    {
+      "from": "2026-11-23T18:29:42Z",
+      "to": "2026-11-23T18:31:32Z",
+      "seconds": 110,
+      "target_rps": 16000.0,
+      "achieved_rps": 15999.75,
+      "achieved_share": 0.99998,
+      "client": {
+        "requests": 1759973,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 1681258,
+          "201": 78715
+        },
+        "mean_ms": 3.933,
+        "min_ms": 0.564,
+        "p50_ms": 3.44,
+        "p90_ms": 7.504,
+        "p95_ms": 8.632,
+        "p99_ms": 11.533,
+        "p99_9_ms": 16.205,
+        "max_ms": 239.203
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 4.108,
+          "app_cores_used": 3.979,
+          "span_seconds": 90.062,
+          "node_utilization": [
+            0.3572,
+            0.3473,
+            0.3224
+          ],
+          "utilization": 0.3423,
+          "cpu_ms_per_request": 0.2568
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 14.266,
+          "app_cores_used": 14.384,
+          "span_seconds": 90.138,
+          "node_utilization": [
+            0.4518,
+            0.4398
+          ],
+          "utilization": 0.4458,
+          "cpu_ms_per_request": 0.8916
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 41.2683,
+          "cpu_percent_max_minute": 41.26833333333334,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 2.5637,
+          "select_latency_ms": 0.2933,
+          "dml_latency_ms": 0.042,
+          "queries_per_second": 44101.4316,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 13.206,
+          "cpu_ms_per_request": 0.8254
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.4167,
+          "cpu_percent_max_minute": 0.4166736112268538,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1207,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 10.1165,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 1.0,
+          "vcpus": 32,
+          "cores_used": 0.133,
+          "cpu_ms_per_request": 0.0083
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 15999.62,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 64594441,
+        "web_target_p50_ms": 5.4,
+        "web_target_p99_ms": 12.2,
+        "api_target_p50_ms": 1.5,
+        "api_target_p99_ms": 8.5
+      },
+      "label": "s03",
+      "factor": 2.0
+    },
+    {
+      "from": "2026-11-23T18:31:42Z",
+      "to": "2026-11-23T18:33:32Z",
+      "seconds": 110,
+      "target_rps": 20000.0,
+      "achieved_rps": 19999.97,
+      "achieved_share": 1.0,
+      "client": {
+        "requests": 2199997,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 2100487,
+          "201": 99510
+        },
+        "mean_ms": 4.101,
+        "min_ms": 0.567,
+        "p50_ms": 3.545,
+        "p90_ms": 7.889,
+        "p95_ms": 9.075,
+        "p99_ms": 12.245,
+        "p99_9_ms": 17.38,
+        "max_ms": 225.608
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 5.153,
+          "app_cores_used": 5.216,
+          "span_seconds": 90.071,
+          "node_utilization": [
+            0.4576,
+            0.4543,
+            0.3763
+          ],
+          "utilization": 0.4294,
+          "cpu_ms_per_request": 0.2577
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 17.911,
+          "app_cores_used": 17.594,
+          "span_seconds": 90.147,
+          "node_utilization": [
+            0.5623,
+            0.5571
+          ],
+          "utilization": 0.5597,
+          "cpu_ms_per_request": 0.8956
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 51.9333,
+          "cpu_percent_max_minute": 51.93333333333333,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 2.7695,
+          "select_latency_ms": 0.2983,
+          "dml_latency_ms": 0.0426,
+          "queries_per_second": 55289.1715,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 16.619,
+          "cpu_ms_per_request": 0.831
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.37,
+          "cpu_percent_max_minute": 0.37,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1262,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.6835,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 4.0,
+          "vcpus": 32,
+          "cores_used": 0.118,
+          "cpu_ms_per_request": 0.0059
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 19999.88,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 80864327,
+        "web_target_p50_ms": 5.6,
+        "web_target_p99_ms": 13.1,
+        "api_target_p50_ms": 1.5,
+        "api_target_p99_ms": 8.7
+      },
+      "label": "s04",
+      "factor": 2.5
+    },
+    {
+      "from": "2026-11-23T18:33:42Z",
+      "to": "2026-11-23T18:35:32Z",
+      "seconds": 110,
+      "target_rps": 24000.0,
+      "achieved_rps": 24000.03,
+      "achieved_share": 1.0,
+      "client": {
+        "requests": 2640003,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 2521155,
+          "201": 118848
+        },
+        "mean_ms": 4.42,
+        "min_ms": 0.542,
+        "p50_ms": 3.652,
+        "p90_ms": 8.632,
+        "p95_ms": 10.128,
+        "p99_ms": 13.948,
+        "p99_9_ms": 20.396,
+        "max_ms": 237.059
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 6.206,
+          "app_cores_used": 6.076,
+          "span_seconds": 90.072,
+          "node_utilization": [
+            0.5255,
+            0.5531,
+            0.473
+          ],
+          "utilization": 0.5172,
+          "cpu_ms_per_request": 0.2586
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 21.641,
+          "app_cores_used": 21.769,
+          "span_seconds": 90.165,
+          "node_utilization": [
+            0.6851,
+            0.6675
+          ],
+          "utilization": 0.6763,
+          "cpu_ms_per_request": 0.9017
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 62.6233,
+          "cpu_percent_max_minute": 62.62333333333332,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 2.9964,
+          "select_latency_ms": 0.3032,
+          "dml_latency_ms": 0.0435,
+          "queries_per_second": 66449.8467,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 20.039,
+          "cpu_ms_per_request": 0.835
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3817,
+          "cpu_percent_max_minute": 0.3816666666666666,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1249,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.6828,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 6.0,
+          "vcpus": 32,
+          "cores_used": 0.122,
+          "cpu_ms_per_request": 0.0051
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 24000.47,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 97082215,
+        "web_target_p50_ms": 6.2,
+        "web_target_p99_ms": 15.6,
+        "api_target_p50_ms": 1.6,
+        "api_target_p99_ms": 9.2
+      },
+      "label": "s05",
+      "factor": 3.0
+    },
+    {
+      "from": "2026-11-23T18:35:42Z",
+      "to": "2026-11-23T18:37:32Z",
+      "seconds": 110,
+      "target_rps": 25600.0,
+      "achieved_rps": 25600.73,
+      "achieved_share": 1.00003,
+      "client": {
+        "requests": 2816080,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 2689736,
+          "201": 126344
+        },
+        "mean_ms": 4.584,
+        "min_ms": 0.581,
+        "p50_ms": 3.689,
+        "p90_ms": 9.075,
+        "p95_ms": 10.752,
+        "p99_ms": 15.261,
+        "p99_9_ms": 22.767,
+        "max_ms": 239.046
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 6.501,
+          "app_cores_used": 6.482,
+          "span_seconds": 90.086,
+          "node_utilization": [
+            0.5648,
+            0.5818,
+            0.4787
+          ],
+          "utilization": 0.5418,
+          "cpu_ms_per_request": 0.2539
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 23.128,
+          "app_cores_used": 23.639,
+          "span_seconds": 90.185,
+          "node_utilization": [
+            0.733,
+            0.7125
+          ],
+          "utilization": 0.7228,
+          "cpu_ms_per_request": 0.9034
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 66.68,
+          "cpu_percent_max_minute": 66.67999999999999,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 3.2286,
+          "select_latency_ms": 0.3046,
+          "dml_latency_ms": 0.0436,
+          "queries_per_second": 71033.6139,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 21.338,
+          "cpu_ms_per_request": 0.8335
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3917,
+          "cpu_percent_max_minute": 0.3916666666666666,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1217,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.666,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 5.0,
+          "vcpus": 32,
+          "cores_used": 0.125,
+          "cpu_ms_per_request": 0.0049
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 25600.65,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 103433281,
+        "web_target_p50_ms": 6.5,
+        "web_target_p99_ms": 16.8,
+        "api_target_p50_ms": 1.6,
+        "api_target_p99_ms": 9.3
+      },
+      "label": "s06",
+      "factor": 3.2
+    },
+    {
+      "from": "2026-11-23T18:37:42Z",
+      "to": "2026-11-23T18:39:32Z",
+      "seconds": 110,
+      "target_rps": 27200.0,
+      "achieved_rps": 27199.02,
+      "achieved_share": 0.99996,
+      "client": {
+        "requests": 2991892,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 2856996,
+          "201": 134896
+        },
+        "mean_ms": 4.89,
+        "min_ms": 0.553,
+        "p50_ms": 3.8,
+        "p90_ms": 9.829,
+        "p95_ms": 11.884,
+        "p99_ms": 17.38,
+        "p99_9_ms": 25.669,
+        "max_ms": 238.997
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 6.982,
+          "app_cores_used": 7.095,
+          "span_seconds": 90.081,
+          "node_utilization": [
+            0.6004,
+            0.6118,
+            0.5333
+          ],
+          "utilization": 0.5818,
+          "cpu_ms_per_request": 0.2567
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 24.509,
+          "app_cores_used": 24.807,
+          "span_seconds": 90.201,
+          "node_utilization": [
+            0.7728,
+            0.7591
+          ],
+          "utilization": 0.7659,
+          "cpu_ms_per_request": 0.9011
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 70.675,
+          "cpu_percent_max_minute": 70.675,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 3.3394,
+          "select_latency_ms": 0.3061,
+          "dml_latency_ms": 0.0437,
+          "queries_per_second": 75566.4422,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 22.616,
+          "cpu_ms_per_request": 0.8315
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3883,
+          "cpu_percent_max_minute": 0.3883333333333333,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1332,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.867,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 1.0,
+          "vcpus": 32,
+          "cores_used": 0.124,
+          "cpu_ms_per_request": 0.0046
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 27199.6,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 109821310,
+        "web_target_p50_ms": 7.0,
+        "web_target_p99_ms": 19.0,
+        "api_target_p50_ms": 1.7,
+        "api_target_p99_ms": 9.8
+      },
+      "label": "s07",
+      "factor": 3.4
+    },
+    {
+      "from": "2026-11-23T18:39:42Z",
+      "to": "2026-11-23T18:41:32Z",
+      "seconds": 110,
+      "target_rps": 28800.0,
+      "achieved_rps": 28799.95,
+      "achieved_share": 1.0,
+      "client": {
+        "requests": 3167994,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 3025184,
+          "201": 142810
+        },
+        "mean_ms": 5.361,
+        "min_ms": 0.58,
+        "p50_ms": 3.878,
+        "p90_ms": 11.192,
+        "p95_ms": 13.809,
+        "p99_ms": 20.601,
+        "p99_9_ms": 31.036,
+        "max_ms": 243.239
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 7.362,
+          "app_cores_used": 7.68,
+          "span_seconds": 90.08,
+          "node_utilization": [
+            0.6351,
+            0.6534,
+            0.552
+          ],
+          "utilization": 0.6135,
+          "cpu_ms_per_request": 0.2556
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 25.96,
+          "app_cores_used": 26.288,
+          "span_seconds": 90.213,
+          "node_utilization": [
+            0.8163,
+            0.8062
+          ],
+          "utilization": 0.8112,
+          "cpu_ms_per_request": 0.9014
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 74.5183,
+          "cpu_percent_max_minute": 74.51833333333332,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 3.5342,
+          "select_latency_ms": 0.3078,
+          "dml_latency_ms": 0.0441,
+          "queries_per_second": 80025.1525,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 23.846,
+          "cpu_ms_per_request": 0.828
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.4217,
+          "cpu_percent_max_minute": 0.4216666666666666,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.117,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.7502,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 6.0,
+          "vcpus": 32,
+          "cores_used": 0.135,
+          "cpu_ms_per_request": 0.0047
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 28800.1,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 116401782,
+        "web_target_p50_ms": 7.8,
+        "web_target_p99_ms": 22.8,
+        "api_target_p50_ms": 1.7,
+        "api_target_p99_ms": 10.4
+      },
+      "label": "s08",
+      "factor": 3.6
+    },
+    {
+      "from": "2026-11-23T18:41:42Z",
+      "to": "2026-11-23T18:43:32Z",
+      "seconds": 110,
+      "target_rps": 30400.0,
+      "achieved_rps": 30400.3,
+      "achieved_share": 1.00001,
+      "client": {
+        "requests": 3344033,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 3193857,
+          "201": 150176
+        },
+        "mean_ms": 6.084,
+        "min_ms": 0.563,
+        "p50_ms": 4.036,
+        "p90_ms": 13.4,
+        "p95_ms": 16.533,
+        "p99_ms": 25.161,
+        "p99_9_ms": 37.906,
+        "max_ms": 235.557
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 7.697,
+          "app_cores_used": 8.024,
+          "span_seconds": 90.097,
+          "node_utilization": [
+            0.6802,
+            0.6584,
+            0.5855
+          ],
+          "utilization": 0.6414,
+          "cpu_ms_per_request": 0.2532
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 27.273,
+          "app_cores_used": 27.342,
+          "span_seconds": 90.21,
+          "node_utilization": [
+            0.8562,
+            0.8484
+          ],
+          "utilization": 0.8523,
+          "cpu_ms_per_request": 0.8971
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 78.06,
+          "cpu_percent_max_minute": 78.06,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 3.8681,
+          "select_latency_ms": 0.3084,
+          "dml_latency_ms": 0.0441,
+          "queries_per_second": 84498.4334,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 24.979,
+          "cpu_ms_per_request": 0.8217
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3833,
+          "cpu_percent_max_minute": 0.3833333333333333,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1271,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.5835,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 3.0,
+          "vcpus": 32,
+          "cores_used": 0.123,
+          "cpu_ms_per_request": 0.004
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 30400.9,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 122979101,
+        "web_target_p50_ms": 9.3,
+        "web_target_p99_ms": 28.3,
+        "api_target_p50_ms": 1.8,
+        "api_target_p99_ms": 11.3
+      },
+      "label": "s09",
+      "factor": 3.8
+    },
+    {
+      "from": "2026-11-23T18:43:42Z",
+      "to": "2026-11-23T18:45:32Z",
+      "seconds": 110,
+      "target_rps": 32000.0,
+      "achieved_rps": 32000.99,
+      "achieved_share": 1.00003,
+      "client": {
+        "requests": 3520109,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 3362040,
+          "201": 158069
+        },
+        "mean_ms": 7.243,
+        "min_ms": 0.577,
+        "p50_ms": 4.243,
+        "p90_ms": 16.7,
+        "p95_ms": 21.017,
+        "p99_ms": 32.627,
+        "p99_9_ms": 48.677,
+        "max_ms": 242.958
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 12,
+          "nodes": 3,
+          "cores_used": 8.165,
+          "app_cores_used": 8.341,
+          "span_seconds": 90.086,
+          "node_utilization": [
+            0.6991,
+            0.7052,
+            0.637
+          ],
+          "utilization": 0.6804,
+          "cpu_ms_per_request": 0.2551
+        },
+        "web": {
+          "vcpus": 32,
+          "nodes": 2,
+          "cores_used": 28.364,
+          "app_cores_used": 28.401,
+          "span_seconds": 90.223,
+          "node_utilization": [
+            0.8895,
+            0.8832
+          ],
+          "utilization": 0.8864,
+          "cpu_ms_per_request": 0.8863
+        },
+        "db_writer": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 81.7083,
+          "cpu_percent_max_minute": 81.70833333333334,
+          "minutes": 1,
+          "connections": 144.0,
+          "commit_latency_ms": 4.3256,
+          "select_latency_ms": 0.3116,
+          "dml_latency_ms": 0.0448,
+          "queries_per_second": 88872.0607,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 32,
+          "cores_used": 26.147,
+          "cpu_ms_per_request": 0.8171
+        },
+        "db_reader": {
+          "class": "db.r9g.8xlarge",
+          "cpu_percent": 0.3933,
+          "cpu_percent_max_minute": 0.3933267778870351,
+          "minutes": 1,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1245,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.6833,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 1.0,
+          "vcpus": 32,
+          "cores_used": 0.126,
+          "cpu_ms_per_request": 0.0039
+        }
+      },
+      "load_balancer": {
+        "minutes": 1,
+        "requests_per_second": 32001.2,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 129632858,
+        "web_target_p50_ms": 11.7,
+        "web_target_p99_ms": 36.3,
+        "api_target_p50_ms": 1.9,
+        "api_target_p99_ms": 13.0
+      },
+      "label": "s10",
+      "factor": 4.0
+    }
+  ],
+  "generator": {
+    "peak_cpu_share": 0.242,
+    "tasks": 110
+  },
+  "database_counters": {
+    "Aborted_clients": 0,
+    "Com_commit": 1220656,
+    "Com_delete": 0,
+    "Com_insert": 4877840,
+    "Com_select": 63601822,
+    "Com_stmt_execute": 70915356,
+    "Com_update": 2439531,
+    "Connections": 560,
+    "Created_tmp_disk_tables": 5,
+    "Created_tmp_tables": 26162891,
+    "Innodb_buffer_pool_read_requests": 8557331071,
+    "Innodb_buffer_pool_reads": 24,
+    "Innodb_row_lock_time": 1486,
+    "Innodb_row_lock_waits": 1156,
+    "Innodb_rows_deleted": 0,
+    "Innodb_rows_inserted": 3660195,
+    "Innodb_rows_read": 31321564786,
+    "Innodb_rows_updated": 4876811,
+    "Queries": 75424014,
+    "Questions": 74587705,
+    "Slow_queries": 0,
+    "Sort_rows": 278586133,
+    "statements_per_request": 2.752,
+    "rows_read_per_request": 1155.4
+  },
+  "cpu_throttling": {
+    "api": {
+      "periods": 77434.0,
+      "throttled_periods": 856.0,
+      "throttled_share": 0.01105
+    }
+  }
+}

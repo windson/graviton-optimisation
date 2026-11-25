@@ -1,0 +1,3 @@
+2026-11-24T02:33:58Z writer graviton-uplift-database-instance1-xxxxxxxxxxxx is in us-west-2a, with 1 API node(s) in that zone; wanted: 2
+2026-11-24T02:34:01Z failing over to graviton-uplift-database-instance2-xxxxxxxxxxxx in us-west-2b
+2026-11-24T02:35:44Z writer graviton-uplift-database-instance2-xxxxxxxxxxxx is in us-west-2b, with 2 API node(s) in that zone

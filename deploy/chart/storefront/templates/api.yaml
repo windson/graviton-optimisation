@@ -1,0 +1,105 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: storefront-api
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront-api
+  labels:
+    app: storefront-api
+    {{- include "storefront.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.api.replicas }}
+  selector:
+    matchLabels:
+      app: storefront-api
+  strategy:
+    # Nodes are sized to hold exactly the configured replicas, so a rollout replaces pods
+    # in place instead of surging.
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: storefront-api
+        {{- include "storefront.labels" . | nindent 8 }}
+    spec:
+      serviceAccountName: storefront-api
+      terminationGracePeriodSeconds: 60
+      {{- include "storefront.scheduling" (dict "tier" .Values.api.nodeTier "app" "storefront-api") | nindent 6 }}
+      containers:
+        - name: api
+          image: "{{ .Values.image.apiRepository }}:{{ .Values.image.apiTag }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.api.port }}
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: {{ .Values.api.javaToolOptions | quote }}
+            - name: DB_POOL_SIZE
+              value: {{ .Values.api.dbPoolSize | quote }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.environmentConfigMap }}
+          resources:
+            requests:
+              cpu: {{ .Values.api.cpu }}
+              memory: {{ .Values.api.memory }}
+            limits:
+              cpu: {{ .Values.api.cpu }}
+              memory: {{ .Values.api.memory }}
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            periodSeconds: 3
+            failureThreshold: 40
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          lifecycle:
+            # Keep serving while the load balancer stops sending new requests to this pod.
+            preStop:
+              sleep:
+                seconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: storefront-api
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /api/healthz
+spec:
+  selector:
+    app: storefront-api
+  ports:
+    - name: http
+      port: {{ .Values.api.port }}
+      targetPort: http
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: storefront-api
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+spec:
+  maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: storefront-api

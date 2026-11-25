@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 39287,
+    "Com_delete": 45,
+    "Com_insert": 155783,
+    "Com_select": 2027436,
+    "Com_stmt_execute": 2258571,
+    "Com_update": 77587,
+    "Connections": 385,
+    "Created_tmp_disk_tables": 3,
+    "Created_tmp_tables": 833003,
+    "Innodb_buffer_pool_read_requests": 283671888,
+    "Innodb_buffer_pool_reads": 304881,
+    "Innodb_row_lock_time": 13,
+    "Innodb_row_lock_waits": 8,
+    "Innodb_rows_deleted": 804404,
+    "Innodb_rows_inserted": 116899,
+    "Innodb_rows_read": 1005839509,
+    "Innodb_rows_updated": 155228,
+    "Queries": 2415912,
+    "Questions": 2382643,
+    "Slow_queries": 9,
+    "Sort_rows": 8854439,
+    "Uptime": 866,
+    "at": "2026-11-24T08:45:35Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 378415,
+    "Com_delete": 45,
+    "Com_insert": 1509005,
+    "Com_select": 19636579,
+    "Com_stmt_execute": 21895060,
+    "Com_update": 753976,
+    "Connections": 742,
+    "Created_tmp_disk_tables": 6,
+    "Created_tmp_tables": 8072694,
+    "Innodb_buffer_pool_read_requests": 2624908630,
+    "Innodb_buffer_pool_reads": 305123,
+    "Innodb_row_lock_time": 696,
+    "Innodb_row_lock_waits": 319,
+    "Innodb_rows_deleted": 804404,
+    "Innodb_rows_inserted": 1132426,
+    "Innodb_rows_read": 9692656737,
+    "Innodb_rows_updated": 1507029,
+    "Queries": 23317317,
+    "Questions": 23042783,
+    "Slow_queries": 9,
+    "Sort_rows": 85881611,
+    "Uptime": 1757,
+    "at": "2026-11-24T09:00:26Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 30222.0,
+      "container_cpu_cfs_throttled_periods_total": 401.0,
+      "container_cpu_cfs_throttled_seconds_total": 5.9622150000000005
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 72823.0,
+      "container_cpu_cfs_throttled_periods_total": 806.0,
+      "container_cpu_cfs_throttled_seconds_total": 13.126007
+    },
+    "web": {}
+  }
+}

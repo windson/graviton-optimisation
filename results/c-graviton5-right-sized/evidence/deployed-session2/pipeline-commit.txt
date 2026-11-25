@@ -1,0 +1,7 @@
+$ aws codepipeline list-pipeline-executions --pipeline-name graviton-uplift --query 'pipelineExecutionSummaries[0].{Status:status,Started:startTime,Commit:sourceRevisions[0].revisionId,Message:sourceRevisions[0].revisionSummary}' --output json
+{
+    "Status": "Succeeded",
+    "Started": "2026-11-24T09:26:15.266000+00:00",
+    "Commit": "5f10eebd00e872c8afa34ee927b0f92076c6bfe8",
+    "Message": "Upgrade to Graviton5 and right-size in one change (configuration C, from A)\n\nWeb nodes c6g.4xlarge to c9g.2xlarge, API nodes m6g.xlarge to m9g.large, Aurora\ndb.r6g.8xlarge to db.r9g.4xlarge. Node counts are unchanged. Web pods 32 to 16\nand API pods 6 to 3, with the connection pool per pod doubled, were applied in\nthe commit before this one, while the nodes were still large.\n"
+}

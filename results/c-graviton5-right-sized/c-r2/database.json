@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 1399737,
+    "Com_delete": 394,
+    "Com_insert": 5587974,
+    "Com_select": 72841378,
+    "Com_stmt_execute": 81207889,
+    "Com_update": 2793044,
+    "Connections": 2150,
+    "Created_tmp_disk_tables": 19,
+    "Created_tmp_tables": 29967347,
+    "Innodb_buffer_pool_read_requests": 10024424401,
+    "Innodb_buffer_pool_reads": 318456,
+    "Innodb_row_lock_time": 1983,
+    "Innodb_row_lock_waits": 943,
+    "Innodb_rows_deleted": 7661757,
+    "Innodb_rows_inserted": 4192829,
+    "Innodb_rows_read": 36049938429,
+    "Innodb_rows_updated": 5584388,
+    "Queries": 86440668,
+    "Questions": 85447550,
+    "Slow_queries": 0,
+    "Sort_rows": 319062682,
+    "Uptime": 5692,
+    "at": "2026-11-23T22:13:51Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 1629234,
+    "Com_delete": 394,
+    "Com_insert": 6505455,
+    "Com_select": 84777716,
+    "Com_stmt_execute": 94516917,
+    "Com_update": 3250481,
+    "Connections": 2473,
+    "Created_tmp_disk_tables": 22,
+    "Created_tmp_tables": 34879617,
+    "Innodb_buffer_pool_read_requests": 11609240853,
+    "Innodb_buffer_pool_reads": 318456,
+    "Innodb_row_lock_time": 2070,
+    "Innodb_row_lock_waits": 1025,
+    "Innodb_rows_deleted": 7661757,
+    "Innodb_rows_inserted": 4879781,
+    "Innodb_rows_read": 41967852886,
+    "Innodb_rows_updated": 6500749,
+    "Queries": 100608510,
+    "Questions": 99451076,
+    "Slow_queries": 0,
+    "Sort_rows": 371361965,
+    "Uptime": 6567,
+    "at": "2026-11-23T22:28:26Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 155618.0,
+      "container_cpu_cfs_throttled_periods_total": 318.0,
+      "container_cpu_cfs_throttled_seconds_total": 1.9071630000000002
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 176359.0,
+      "container_cpu_cfs_throttled_periods_total": 318.0,
+      "container_cpu_cfs_throttled_seconds_total": 1.9071630000000002
+    },
+    "web": {}
+  }
+}

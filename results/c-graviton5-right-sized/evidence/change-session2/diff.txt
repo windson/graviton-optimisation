@@ -1,0 +1,59 @@
+$ git diff 7f86837 5f10eeb -- infra/config deploy/values/active.yaml
+diff --git a/deploy/values/active.yaml b/deploy/values/active.yaml
+index 3141cda..3a2e156 100644
+--- a/deploy/values/active.yaml
++++ b/deploy/values/active.yaml
+@@ -1,9 +1,9 @@
+-# Graviton2 baseline.
++# Graviton5 right-sized: every tier at half the baseline size.
+ # Replica counts fill the node groups defined in eks.json for this configuration.
+-stage: a-graviton2-baseline
++stage: c-graviton5-right-sized
+ web:
+-  replicas: 32
++  replicas: 16
+ api:
+-  replicas: 6
++  replicas: 3
+   # Connections per pod. Replicas times this is 144 in every configuration.
+-  dbPoolSize: 24
++  dbPoolSize: 48
+diff --git a/infra/config/ACTIVE_STAGE b/infra/config/ACTIVE_STAGE
+index a0cfb4a..b4c1069 100644
+--- a/infra/config/ACTIVE_STAGE
++++ b/infra/config/ACTIVE_STAGE
+@@ -1 +1 @@
+-a-graviton2-baseline
++c-graviton5-right-sized
+diff --git a/infra/config/database.json b/infra/config/database.json
+index 56fb404..2d653fc 100644
+--- a/infra/config/database.json
++++ b/infra/config/database.json
+@@ -1,7 +1,7 @@
+ {
+   "Parameters": {
+     "ProjectName": "graviton-uplift",
+-    "DBInstanceClass": "db.r6g.8xlarge"
++    "DBInstanceClass": "db.r9g.4xlarge"
+   },
+   "Tags": {
+     "Project": "graviton-uplift"
+diff --git a/infra/config/eks.json b/infra/config/eks.json
+index 8e09c29..b8f10c0 100644
+--- a/infra/config/eks.json
++++ b/infra/config/eks.json
+@@ -2,11 +2,11 @@
+   "Parameters": {
+     "ProjectName": "graviton-uplift",
+     "AdminRoleArn": "arn:aws:iam::<account-id>:role/<admin-role>",
+-    "SystemInstanceType": "m6g.large",
++    "SystemInstanceType": "m9g.large",
+     "SystemNodeCount": "2",
+-    "WebInstanceType": "c6g.4xlarge",
++    "WebInstanceType": "c9g.2xlarge",
+     "WebNodeCount": "2",
+-    "ApiInstanceType": "m6g.xlarge",
++    "ApiInstanceType": "m9g.large",
+     "ApiNodeCount": "3"
+   },
+   "Tags": {

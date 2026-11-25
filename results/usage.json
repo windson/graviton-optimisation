@@ -1,0 +1,213 @@
+{
+  "measured_on": "a-graviton2-baseline",
+  "windows": [
+    {
+      "from": "2026-11-23T16:04:41Z",
+      "to": "2026-11-23T16:14:31Z",
+      "requests_per_second": 8000.07
+    },
+    {
+      "from": "2026-11-23T16:22:24Z",
+      "to": "2026-11-23T16:32:14Z",
+      "requests_per_second": 8000.07
+    },
+    {
+      "from": "2026-11-23T16:40:06Z",
+      "to": "2026-11-23T16:49:56Z",
+      "requests_per_second": 8000.07
+    }
+  ],
+  "operating_rps": 8000,
+  "alb_processed_bytes_per_second": 32350907,
+  "alb_lcus_per_hour_reported": 116.46,
+  "aurora_write_ios_per_second": 1882.6,
+  "aurora_read_ios_per_second": 0.0,
+  "aurora_io_buckets": 2,
+  "aurora_storage_gb": 6.39,
+  "other_configurations": {
+    "b-graviton5-same-size": {
+      "aurora_write_ios_per_second": 3207.4,
+      "alb_lcus_per_hour_reported": 116.31,
+      "alb_processed_bytes_per_second": 32307265
+    },
+    "c-graviton5-right-sized": {
+      "aurora_write_ios_per_second": 3170.0,
+      "alb_lcus_per_hour_reported": 116.36,
+      "alb_processed_bytes_per_second": 32322156
+    }
+  },
+  "aurora_io": {
+    "period": {
+      "from": "2026-11-23T15:30:00Z",
+      "to": "2026-11-24T03:50:00Z"
+    },
+    "study_end": "2026-11-24T03:02:03Z",
+    "covers_whole_study": true,
+    "billed_write_ios": 81917526,
+    "write_operations": 89447292,
+    "billed_per_operation": 0.9158,
+    "billed_per_operation_by_block": {
+      "lowest": 0.3427,
+      "highest": 2.1661,
+      "blocks": [
+        {
+          "from": "2026-11-23T15:30:00Z",
+          "to": "2026-11-23T16:50:00Z",
+          "billed_write_ios_per_second": 1882.6,
+          "write_operations_per_second": 2492.4,
+          "billed_per_operation": 0.7553
+        },
+        {
+          "from": "2026-11-23T16:50:00Z",
+          "to": "2026-11-23T18:10:00Z",
+          "billed_write_ios_per_second": 2018.3,
+          "write_operations_per_second": 1976.2,
+          "billed_per_operation": 1.0213
+        },
+        {
+          "from": "2026-11-23T18:10:00Z",
+          "to": "2026-11-23T19:15:00Z",
+          "billed_write_ios_per_second": 2784.4,
+          "write_operations_per_second": 3294.9,
+          "billed_per_operation": 0.8451
+        },
+        {
+          "from": "2026-11-23T19:15:00Z",
+          "to": "2026-11-23T20:25:00Z",
+          "billed_write_ios_per_second": 3207.4,
+          "write_operations_per_second": 2825.7,
+          "billed_per_operation": 1.1351
+        },
+        {
+          "from": "2026-11-23T20:25:00Z",
+          "to": "2026-11-23T21:50:00Z",
+          "billed_write_ios_per_second": 968.1,
+          "write_operations_per_second": 2825.0,
+          "billed_per_operation": 0.3427
+        },
+        {
+          "from": "2026-11-23T21:50:00Z",
+          "to": "2026-11-23T22:55:00Z",
+          "billed_write_ios_per_second": 3170.0,
+          "write_operations_per_second": 2697.8,
+          "billed_per_operation": 1.1751
+        },
+        {
+          "from": "2026-11-23T22:55:00Z",
+          "to": "2026-11-24T00:05:00Z",
+          "billed_write_ios_per_second": 1415.0,
+          "write_operations_per_second": 822.0,
+          "billed_per_operation": 1.7213
+        },
+        {
+          "from": "2026-11-24T00:05:00Z",
+          "to": "2026-11-24T01:15:00Z",
+          "billed_write_ios_per_second": 1373.0,
+          "write_operations_per_second": 1443.3,
+          "billed_per_operation": 0.9513
+        },
+        {
+          "from": "2026-11-24T01:15:00Z",
+          "to": "2026-11-24T02:30:00Z",
+          "billed_write_ios_per_second": 686.1,
+          "write_operations_per_second": 1269.6,
+          "billed_per_operation": 0.5404
+        },
+        {
+          "from": "2026-11-24T02:30:00Z",
+          "to": "2026-11-24T03:50:00Z",
+          "billed_write_ios_per_second": 1409.6,
+          "write_operations_per_second": 650.7,
+          "billed_per_operation": 2.1661
+        }
+      ]
+    },
+    "warmups": {
+      "a-warmup": {
+        "stage": "a-graviton2-baseline",
+        "from": "2026-11-23T15:23:17Z",
+        "to": "2026-11-23T15:26:07Z",
+        "requests_per_second": 4000.05,
+        "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+        "writer_class": "db.r6g.8xlarge",
+        "write_ops_per_second": 2332.3,
+        "write_bytes_per_second": 1010615,
+        "samples": 11,
+        "write_ops_per_request": 0.5831,
+        "billed_write_ios_per_second": 2136.0
+      },
+      "a2-warmup": {
+        "stage": "a-graviton2-baseline",
+        "from": "2026-11-24T01:52:04Z",
+        "to": "2026-11-24T01:54:54Z",
+        "requests_per_second": 4000.05,
+        "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+        "writer_class": "db.r6g.8xlarge",
+        "write_ops_per_second": 2374.6,
+        "write_bytes_per_second": 1042694,
+        "samples": 11,
+        "write_ops_per_request": 0.5936,
+        "billed_write_ios_per_second": 2174.7
+      },
+      "a2p-warmup": {
+        "stage": "a-graviton2-baseline",
+        "from": "2026-11-24T02:41:33Z",
+        "to": "2026-11-24T02:44:23Z",
+        "requests_per_second": 4000.05,
+        "writer": "graviton-uplift-database-instance2-xxxxxxxxxxxx",
+        "writer_class": "db.r6g.8xlarge",
+        "write_ops_per_second": 2322.7,
+        "write_bytes_per_second": 1043856,
+        "samples": 12,
+        "write_ops_per_request": 0.5807,
+        "billed_write_ios_per_second": 2127.2
+      },
+      "b-warmup": {
+        "stage": "b-graviton5-same-size",
+        "from": "2026-11-23T18:14:55Z",
+        "to": "2026-11-23T18:17:45Z",
+        "requests_per_second": 4000.05,
+        "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+        "writer_class": "db.r9g.8xlarge",
+        "write_ops_per_second": 2400.6,
+        "write_bytes_per_second": 1050827,
+        "samples": 11,
+        "write_ops_per_request": 0.6001,
+        "billed_write_ios_per_second": 2198.5
+      },
+      "c-warmup": {
+        "stage": "c-graviton5-right-sized",
+        "from": "2026-11-23T21:18:30Z",
+        "to": "2026-11-23T21:21:20Z",
+        "requests_per_second": 4000.05,
+        "writer": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+        "writer_class": "db.r9g.4xlarge",
+        "write_ops_per_second": 2451.8,
+        "write_bytes_per_second": 1061181,
+        "samples": 12,
+        "write_ops_per_request": 0.6129,
+        "billed_write_ios_per_second": 2245.4
+      }
+    },
+    "at_tested_load": {
+      "a-r1": {
+        "requests_per_second": 8000.07,
+        "write_ops_per_second": 3753.1,
+        "write_ops_per_request": 0.4691,
+        "samples": 40
+      },
+      "b-r1": {
+        "requests_per_second": 8000.07,
+        "write_ops_per_second": 4343.6,
+        "write_ops_per_request": 0.5429,
+        "samples": 40
+      },
+      "c-r1": {
+        "requests_per_second": 8000.08,
+        "write_ops_per_second": 4541.3,
+        "write_ops_per_request": 0.5677,
+        "samples": 40
+      }
+    }
+  }
+}

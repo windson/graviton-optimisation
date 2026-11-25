@@ -1,0 +1,16 @@
+$ aws cloudformation describe-stack-events --stack-name graviton-uplift-eks --output json | jq -r '.StackEvents[] | select(.Timestamp >= "2026-11-24T09:19:59Z" and .Timestamp <= "2026-11-24T10:01:06Z") | [.Timestamp[0:19], .LogicalResourceId, .ResourceStatus] | @tsv' | sort | column -t
+2026-11-24T09:27:25  graviton-uplift-eks   UPDATE_IN_PROGRESS
+2026-11-24T09:27:31  ApiLaunchTemplate     UPDATE_IN_PROGRESS
+2026-11-24T09:27:31  SystemLaunchTemplate  UPDATE_IN_PROGRESS
+2026-11-24T09:27:31  WebLaunchTemplate     UPDATE_IN_PROGRESS
+2026-11-24T09:27:33  ApiLaunchTemplate     UPDATE_COMPLETE
+2026-11-24T09:27:33  SystemLaunchTemplate  UPDATE_COMPLETE
+2026-11-24T09:27:33  WebLaunchTemplate     UPDATE_COMPLETE
+2026-11-24T09:27:35  ApiNodeGroup          UPDATE_IN_PROGRESS
+2026-11-24T09:27:35  SystemNodeGroup       UPDATE_IN_PROGRESS
+2026-11-24T09:27:35  WebNodeGroup          UPDATE_IN_PROGRESS
+2026-11-24T09:38:39  SystemNodeGroup       UPDATE_COMPLETE
+2026-11-24T09:39:20  WebNodeGroup          UPDATE_COMPLETE
+2026-11-24T09:42:39  ApiNodeGroup          UPDATE_COMPLETE
+2026-11-24T09:42:40  graviton-uplift-eks   UPDATE_COMPLETE_CLEANUP_IN_PROGRESS
+2026-11-24T09:42:41  graviton-uplift-eks   UPDATE_COMPLETE

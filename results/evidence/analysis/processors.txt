@@ -1,0 +1,7 @@
+$ jq -r '[.stage, .at, (.api.cpu | capture("CPU part\\s*: (?<p>0x[0-9a-f]+)").p), (.api.jvm_flags | capture("(?<f>UseSVE=[0-9])").f), (.api.jvm_flags | capture("(?<f>ParallelGCThreads=[0-9]+)").f), (.api.java | capture("(?<v>Corretto-[0-9.]+)").v), .web.node] | @tsv' results/*/environment*.json | sort -k2 | column -t
+a-graviton2-baseline     2026-11-23T16:02:22Z  0xd0c  UseSVE=0  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3
+b-graviton5-same-size    2026-11-23T18:10:03Z  0xd84  UseSVE=2  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3
+c-graviton5-right-sized  2026-11-23T21:12:35Z  0xd84  UseSVE=2  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3
+a-graviton2-baseline     2026-11-24T01:46:41Z  0xd0c  UseSVE=0  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3
+a-graviton2-baseline     2026-11-24T08:32:38Z  0xd0c  UseSVE=0  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3
+c-graviton5-right-sized  2026-11-24T10:02:52Z  0xd84  UseSVE=2  ParallelGCThreads=2  Corretto-21.0.13.1.2  v24.22.3

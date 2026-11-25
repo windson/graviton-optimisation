@@ -1,0 +1,16 @@
+$ uv run -q analysis/summarize.py results/calibration/cal3-cap | grep -vE '^( {6}|$)'
+a-graviton2-baseline / cal3-cap (capacity, complete)
+  web 2 x c6g.4xlarge, API 2 x m6g.2xlarge, database db.r6g.8xlarge; pods: web 32, API 8
+  load generators: 40/40 tasks, peak CPU 21% of reserved
+  Aurora datapoints cover the 60 s that start 43 s before their timestamp (measured in 2 steady runs: 43 to 43 s)
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  s01       4000   4000.0   0.000    5.3   15.4    25.2    25.5    23.0    28.9   2.039   0.804   2.312
+  s02       5000   5000.0   0.000    5.5   15.9    25.7    31.6    27.7    36.1   2.022   0.775   2.311
+  s03       6000   6000.0   0.000    5.7   16.4    25.9    37.9    34.5    43.1   2.020   0.804   2.299
+  s04       7000   7000.0   0.000    5.9   16.9    26.2    43.9    38.4    49.9   2.004   0.769   2.283
+  s05       8000   8000.0   0.000    6.1   17.4    26.7    50.4    40.9    57.0   2.016   0.715   2.280
+  s06       9000   9000.0   0.000    6.2   17.9    27.3    56.1    46.9    63.6   1.995   0.730   2.260
+  s07      10000  10000.0   0.000    6.4   18.8    28.4    62.2    52.2    69.8   1.990   0.731   2.232
+  s08      11000  11000.0   0.000    6.7   20.0    29.8    67.9    57.1    76.0   1.976   0.727   2.211
+  s09      12000  12000.0   0.000    6.9   21.7    32.3    73.5    64.6    80.6   1.959   0.754   2.150

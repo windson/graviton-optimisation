@@ -1,0 +1,44 @@
+a-cap, steps within the latency and error limits:
+     req/s     web     API  database
+      8000   50.9%   52.3%     56.9%
+      9600   61.0%   61.2%     67.4%
+     11200   69.4%   71.2%     76.4%
+     12000   74.1%   76.0%     80.8%
+     12800   78.5%   82.1%     84.9%
+     13600   83.3%   87.0%     88.4%
+     14400   88.2%   93.5%     92.0%
+  Web reaches 80% at about 13,054 req/s
+  API reaches 80% at about 12,525 req/s
+  Database writer reaches 80% at about 11,857 req/s
+ceiling run: 11,800 req/s with 42 tasks (limited by: Database writer)
+[02:16:22] reset: {'order_item': 456492, 'orders': 228614}
+[02:17:15] starting gu-a2-ceiling-11240216: steady, 11800.0 req/s over 42 tasks, 660 s
+[02:17:18] DLT gu-a2-ceiling-11240216: queued
+[02:17:38] DLT gu-a2-ceiling-11240216: provisioning
+[02:19:42] DLT gu-a2-ceiling-11240216: running
+[02:31:25] DLT gu-a2-ceiling-11240216: cleaning up
+[02:32:07] DLT gu-a2-ceiling-11240216: complete
+[02:32:17] waiting 95 s for CloudWatch metrics
+[02:33:55] deleted 84 raw k6 output objects
+[02:33:55] gu-a2-ceiling-11240216: status=complete tasks=42/42 requests=6961936 failed=0 mean=8.584 p50=6.997 p95=21.228 p99=31.662 ms
+[02:33:55] achieved 11799.9 req/s of 11800.0 target
+
+a-graviton2-baseline / a2-ceiling (steady, complete)
+  web 2 x c6g.4xlarge, API 3 x m6g.xlarge, database db.r6g.8xlarge; pods: web 32, API 6
+  load generators: 42/42 tasks, peak CPU 16% of reserved
+  Aurora datapoints cover the 60 s that start 16 s before their timestamp (measured in 2 steady runs: 16 to 16 s)
+  window  target achieved   err%   p50    p95     p99  web%  api%   db% web ms api ms  db ms
+  steady   11800  11799.9  0.000   7.0   21.2    31.7  71.6  69.5  78.8  1.942  0.706  2.138
+      api_cart_get     n= 1391766 err=0.0000% p50=    2.1 p95=    2.9 p99=     3.8
+      api_cart_put     n=  628902 err=0.0000% p50=    8.7 p95=   14.1 p99=    17.6
+      api_catalog      n=  278695 err=0.0000% p50=    8.5 p95=   16.0 p99=    32.0
+      api_home         n=  139325 err=0.0000% p50=    6.7 p95=    8.5 p99=    10.9
+      api_order_post   n=  312174 err=0.0000% p50=   12.5 p95=   18.5 p99=    22.3
+      api_orders       n=  974697 err=0.0000% p50=    3.2 p95=    4.5 p99=     6.0
+      api_product      n=  974641 err=0.0000% p50=    4.8 p95=    8.2 p99=     9.8
+      api_search       n=  104799 err=0.0000% p50=    3.6 p95=   23.9 p99=    26.4
+      page_category    n=  695700 err=0.0000% p50=   18.3 p95=   31.3 p99=    44.0
+      page_home        n=  417765 err=0.0000% p50=   15.6 p95=   24.9 p99=    35.7
+      page_product     n=  834655 err=0.0000% p50=   11.3 p95=   19.8 p99=    28.4
+      page_search      n=  208817 err=0.0000% p50=   11.9 p95=   34.6 p99=    41.5
+a2-ceiling: 11,800 req/s, busiest tier API at 79.4%, p99 31.662 ms, errors 0.0000%

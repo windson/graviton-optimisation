@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 268751,
+    "Com_delete": 73,
+    "Com_insert": 1072319,
+    "Com_select": 13967183,
+    "Com_stmt_execute": 15567040,
+    "Com_update": 534090,
+    "Connections": 1180,
+    "Created_tmp_disk_tables": 8,
+    "Created_tmp_tables": 5747195,
+    "Innodb_buffer_pool_read_requests": 1882713393,
+    "Innodb_buffer_pool_reads": 304539,
+    "Innodb_row_lock_time": 208,
+    "Innodb_row_lock_waits": 116,
+    "Innodb_rows_deleted": 1298806,
+    "Innodb_rows_inserted": 802873,
+    "Innodb_rows_read": 6925777459,
+    "Innodb_rows_updated": 1070239,
+    "Queries": 16594781,
+    "Questions": 16392026,
+    "Slow_queries": 9,
+    "Sort_rows": 61186620,
+    "Uptime": 2569,
+    "at": "2026-11-24T02:17:15Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 605828,
+    "Com_delete": 73,
+    "Com_insert": 2423723,
+    "Com_select": 31569891,
+    "Com_stmt_execute": 35191539,
+    "Com_update": 1206748,
+    "Connections": 1524,
+    "Created_tmp_disk_tables": 11,
+    "Created_tmp_tables": 12988225,
+    "Innodb_buffer_pool_read_requests": 4237535051,
+    "Innodb_buffer_pool_reads": 304594,
+    "Innodb_row_lock_time": 834,
+    "Innodb_row_lock_waits": 431,
+    "Innodb_rows_deleted": 1298806,
+    "Innodb_rows_inserted": 1812619,
+    "Innodb_rows_read": 15615767655,
+    "Innodb_rows_updated": 2420593,
+    "Queries": 37474376,
+    "Questions": 37033957,
+    "Slow_queries": 9,
+    "Sort_rows": 138306895,
+    "Uptime": 3461,
+    "at": "2026-11-24T02:32:07Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 68264.0,
+      "container_cpu_cfs_throttled_periods_total": 595.0,
+      "container_cpu_cfs_throttled_seconds_total": 19.763041
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 111017.0,
+      "container_cpu_cfs_throttled_periods_total": 929.0,
+      "container_cpu_cfs_throttled_seconds_total": 23.137089
+    },
+    "web": {}
+  }
+}

@@ -1,0 +1,35 @@
+<svg class="gu-fig" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 334" role="img" aria-labelledby="gu-cpureq-t gu-cpureq-d" style="display:block;width:100%;height:auto;max-width:760px">
+<style>.gu-fig text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#1c1f23;font-size:13px}.gu-fig .gu-title{font-size:16px;font-weight:600}.gu-fig .gu-sub{fill:#5d6673;font-size:12.5px}.gu-fig .gu-tick{fill:#5d6673;font-size:12px;font-variant-numeric:tabular-nums}.gu-fig .gu-axis{fill:#5d6673;font-size:12px}.gu-fig .gu-val{font-size:12.5px;font-variant-numeric:tabular-nums}.gu-fig .gu-note{fill:#5d6673;font-size:11.5px}.gu-fig .gu-grid{stroke:#e6e8eb;stroke-width:1}.gu-fig .gu-base{stroke:#5d6673;stroke-width:1}</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<title id="gu-cpureq-t">CPU time spent per request, at the same instance size</title>
+<desc id="gu-cpureq-d">Bar chart comparing CPU milliseconds per request on Graviton2 and Graviton5 for each tier.</desc>
+<text class="gu-title" x="0" y="18">CPU time spent per request, at the same instance size</text>
+<text class="gu-sub" x="0" y="37">Milliseconds of CPU time per request at 8,000 requests per second: median of three 590-second runs. Lower is better.</text>
+<text x="0.0" y="74.0" style="font-weight:600">Web tier (React rendering on Node.js)</text>
+<text x="0.0" y="99.0" class="gu-val" style="fill:#5b6770">Graviton2  c6g</text>
+<rect x="150.0" y="84.0" width="358.3" height="20.0" rx="2" fill="#5b6770"/>
+<text x="514.3" y="99.0" class="gu-val">1.97 ms</text>
+<text x="0.0" y="125.0" class="gu-val" style="fill:#2a78d6">Graviton5  c9g</text>
+<rect x="150.0" y="110.0" width="161.7" height="20.0" rx="2" fill="#2a78d6"/>
+<text x="317.7" y="125.0" class="gu-val">0.89 ms</text>
+<text x="756.0" y="112.0" class="gu-title" text-anchor="end" style="fill:#2a78d6">55% less</text>
+<text x="756.0" y="128.0" class="gu-note" text-anchor="end">CPU time on Graviton5</text>
+<text x="0.0" y="152.0" style="font-weight:600">API tier (Java 21, Spring Boot)</text>
+<text x="0.0" y="177.0" class="gu-val" style="fill:#5b6770">Graviton2  m6g</text>
+<rect x="150.0" y="162.0" width="122.7" height="20.0" rx="2" fill="#5b6770"/>
+<text x="278.7" y="177.0" class="gu-val">0.68 ms</text>
+<text x="0.0" y="203.0" class="gu-val" style="fill:#2a78d6">Graviton5  m9g</text>
+<rect x="150.0" y="188.0" width="43.8" height="20.0" rx="2" fill="#2a78d6"/>
+<text x="199.8" y="203.0" class="gu-val">0.24 ms</text>
+<text x="756.0" y="190.0" class="gu-title" text-anchor="end" style="fill:#2a78d6">64% less</text>
+<text x="756.0" y="206.0" class="gu-note" text-anchor="end">CPU time on Graviton5</text>
+<text x="0.0" y="230.0" style="font-weight:600">Database (Aurora MySQL writer)</text>
+<text x="0.0" y="255.0" class="gu-val" style="fill:#5b6770">Graviton2  db.r6g</text>
+<rect x="150.0" y="240.0" width="411.8" height="20.0" rx="2" fill="#5b6770"/>
+<text x="567.8" y="255.0" class="gu-val">2.27 ms</text>
+<text x="0.0" y="281.0" class="gu-val" style="fill:#2a78d6">Graviton5  db.r9g</text>
+<rect x="150.0" y="266.0" width="147.7" height="20.0" rx="2" fill="#2a78d6"/>
+<text x="303.7" y="281.0" class="gu-val">0.81 ms</text>
+<text x="756.0" y="268.0" class="gu-title" text-anchor="end" style="fill:#2a78d6">64% less</text>
+<text x="756.0" y="284.0" class="gu-note" text-anchor="end">CPU time on Graviton5</text>
+</svg>

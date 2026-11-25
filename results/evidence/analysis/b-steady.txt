@@ -1,0 +1,6 @@
+$ uv run -q analysis/summarize.py results/b-graviton5-same-size/b-r1 results/b-graviton5-same-size/b-r2 results/b-graviton5-same-size/b-r3 | awk '/^  (window|unit) / { if (!shown[$1]++) print; next } /^  steady /'
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  steady    8000   8000.1   0.000    3.2    7.9    10.8    22.3    18.4    20.4   0.892   0.242   0.814
+  steady    8000   8000.1   0.000    3.1    7.8    10.8    22.2    18.3    20.3   0.887   0.240   0.814
+  steady    8000   8000.1   0.000    3.1    7.8    10.8    22.3    18.4    20.3   0.891   0.241   0.813

@@ -1,0 +1,41 @@
+# One internet-facing Application Load Balancer, created by the AWS Load Balancer
+# Controller. /api/* goes to the API pods (browser and mobile clients call it directly);
+# everything else goes to the web pods.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: storefront
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.ingress.loadBalancerName }}
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    # Register pod IPs directly, so traffic does not take an extra hop through a node port.
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "10"
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"
+    # Send each request to the pod with the fewest requests in flight.
+    alb.ingress.kubernetes.io/target-group-attributes: >-
+      deregistration_delay.timeout_seconds={{ .Values.ingress.deregistrationDelaySeconds }},load_balancing.algorithm.type=least_outstanding_requests
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=60
+    alb.ingress.kubernetes.io/tags: Project=graviton-uplift
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: storefront-api
+                port:
+                  name: http
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: storefront-web
+                port:
+                  name: http

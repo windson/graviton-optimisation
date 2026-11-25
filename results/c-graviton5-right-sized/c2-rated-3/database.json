@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 717634,
+    "Com_delete": 167,
+    "Com_insert": 2864121,
+    "Com_select": 37227733,
+    "Com_stmt_execute": 41516360,
+    "Com_update": 1432278,
+    "Connections": 1165,
+    "Created_tmp_disk_tables": 10,
+    "Created_tmp_tables": 15317359,
+    "Innodb_buffer_pool_read_requests": 5038089767,
+    "Innodb_buffer_pool_reads": 306574,
+    "Innodb_row_lock_time": 527,
+    "Innodb_row_lock_waits": 391,
+    "Innodb_rows_deleted": 3160460,
+    "Innodb_rows_inserted": 2149917,
+    "Innodb_rows_read": 18428825129,
+    "Innodb_rows_updated": 2862650,
+    "Queries": 44203269,
+    "Questions": 43690710,
+    "Slow_queries": 9,
+    "Sort_rows": 163077188,
+    "Uptime": 3040,
+    "at": "2026-11-24T10:52:08Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 1055861,
+    "Com_delete": 167,
+    "Com_insert": 4216882,
+    "Com_select": 54830597,
+    "Com_stmt_execute": 61145257,
+    "Com_update": 2107873,
+    "Connections": 1520,
+    "Created_tmp_disk_tables": 13,
+    "Created_tmp_tables": 22560129,
+    "Innodb_buffer_pool_read_requests": 7382416690,
+    "Innodb_buffer_pool_reads": 306577,
+    "Innodb_row_lock_time": 759,
+    "Innodb_row_lock_waits": 561,
+    "Innodb_rows_deleted": 3160460,
+    "Innodb_rows_inserted": 3163739,
+    "Innodb_rows_read": 27130985949,
+    "Innodb_rows_updated": 4215009,
+    "Queries": 65090700,
+    "Questions": 64340670,
+    "Slow_queries": 9,
+    "Sort_rows": 240150390,
+    "Uptime": 3952,
+    "at": "2026-11-24T11:07:21Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 61450.0,
+      "container_cpu_cfs_throttled_periods_total": 67.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.656399
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 82375.0,
+      "container_cpu_cfs_throttled_periods_total": 67.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.656399
+    },
+    "web": {}
+  }
+}

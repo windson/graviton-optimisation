@@ -1,0 +1,2 @@
+2026-11-24T01:46:33Z writer graviton-uplift-database-instance1-xxxxxxxxxxxx is in us-west-2a, with 1 API node(s) in that zone; wanted: 1
+2026-11-24T01:46:33Z placement is as wanted; no failover

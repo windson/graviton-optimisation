@@ -1,0 +1,111 @@
+<svg class="gu-fig" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 447" role="img" aria-labelledby="gu-rated-t gu-rated-d" style="display:block;width:100%;height:auto;max-width:760px">
+<style>.gu-fig text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#1c1f23;font-size:13px}.gu-fig .gu-title{font-size:16px;font-weight:600}.gu-fig .gu-sub{fill:#5d6673;font-size:12.5px}.gu-fig .gu-tick{fill:#5d6673;font-size:12px;font-variant-numeric:tabular-nums}.gu-fig .gu-axis{fill:#5d6673;font-size:12px}.gu-fig .gu-val{font-size:12.5px;font-variant-numeric:tabular-nums}.gu-fig .gu-note{fill:#5d6673;font-size:11.5px}.gu-fig .gu-grid{stroke:#e6e8eb;stroke-width:1}.gu-fig .gu-base{stroke:#5d6673;stroke-width:1}</style>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<title id="gu-rated-t">Graviton2 and Graviton5 at the comparison load of 11,800 requests per second</title>
+<desc id="gu-rated-d">Bar chart of the CPU utilization of the web tier, the API tier and the database writer of the configurations measured at 11,800 requests per second and of those shown from a staircase step near it, against the ceiling of 80% CPU utilization, and a dot plot of their p50, p95 and p99 response time.</desc>
+<text class="gu-title" x="0" y="18">Graviton2 and Graviton5 at the comparison load of 11,800 requests per second</text>
+<text class="gu-sub" x="0" y="37">A and C: median of 3 runs of 590 seconds. B: one 110-second step at 12,000 requests per second.</text>
+<text x="0.0" y="62.0" style="font-weight:600">CPU utilization of each tier</text>
+<text x="0.0" y="80.0" class="gu-note">Web, share of the web nodes&#x27; vCPUs</text>
+<line class="gu-grid" x1="20.0" y1="88.0" x2="20.0" y2="155.0"/>
+<text x="20.0" y="169.0" class="gu-tick" text-anchor="middle">0%</text>
+<line class="gu-grid" x1="101.7" y1="88.0" x2="101.7" y2="155.0"/>
+<text x="101.7" y="169.0" class="gu-tick" text-anchor="middle">50%</text>
+<line class="gu-grid" x1="183.3" y1="88.0" x2="183.3" y2="155.0"/>
+<text x="183.3" y="169.0" class="gu-tick" text-anchor="middle">100%</text>
+<text x="0.0" y="104.0" class="gu-val" style="fill:#5b6770;font-weight:600">A</text>
+<rect x="20.0" y="92.0" width="119.5" height="15.0" rx="2" fill="#5b6770"/>
+<text x="227.3" y="104.0" class="gu-val" text-anchor="end">73%</text>
+<text x="0.0" y="125.0" class="gu-val" style="fill:#2a78d6;font-weight:600">B</text>
+<rect x="20.8" y="113.8" width="52.6" height="13.5" rx="2" fill="#fff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="227.3" y="125.0" class="gu-val" text-anchor="end" style="font-weight:600">33%</text>
+<text x="0.0" y="146.0" class="gu-val" style="fill:#0d7a6e;font-weight:600">C</text>
+<rect x="20.0" y="134.0" width="107.1" height="15.0" rx="2" fill="#0d7a6e"/>
+<text x="227.3" y="146.0" class="gu-val" text-anchor="end" style="font-weight:600">66%</text>
+<line class="gu-base" x1="150.7" y1="88.0" x2="150.7" y2="158.0" style="stroke:#1c1f23;stroke-dasharray:4 3"/>
+<text x="150.7" y="183.0" class="gu-note" text-anchor="middle">80% ceiling</text>
+<text x="253.3" y="80.0" class="gu-note">API, share of the API pods&#x27; CPU limits</text>
+<line class="gu-grid" x1="273.3" y1="88.0" x2="273.3" y2="155.0"/>
+<text x="273.3" y="169.0" class="gu-tick" text-anchor="middle">0%</text>
+<line class="gu-grid" x1="355.0" y1="88.0" x2="355.0" y2="155.0"/>
+<text x="355.0" y="169.0" class="gu-tick" text-anchor="middle">50%</text>
+<line class="gu-grid" x1="436.7" y1="88.0" x2="436.7" y2="155.0"/>
+<text x="436.7" y="169.0" class="gu-tick" text-anchor="middle">100%</text>
+<text x="253.3" y="104.0" class="gu-val" style="fill:#5b6770;font-weight:600">A</text>
+<rect x="273.3" y="92.0" width="128.5" height="15.0" rx="2" fill="#5b6770"/>
+<text x="480.7" y="104.0" class="gu-val" text-anchor="end">79%</text>
+<text x="253.3" y="125.0" class="gu-val" style="fill:#2a78d6;font-weight:600">B</text>
+<rect x="274.1" y="113.8" width="45.8" height="13.5" rx="2" fill="#fff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="480.7" y="125.0" class="gu-val" text-anchor="end">29%</text>
+<text x="253.3" y="146.0" class="gu-val" style="fill:#0d7a6e;font-weight:600">C</text>
+<rect x="273.3" y="134.0" width="64.7" height="15.0" rx="2" fill="#0d7a6e"/>
+<text x="480.7" y="146.0" class="gu-val" text-anchor="end">40%</text>
+<line class="gu-base" x1="404.0" y1="88.0" x2="404.0" y2="158.0" style="stroke:#1c1f23;stroke-dasharray:4 3"/>
+<text x="404.0" y="183.0" class="gu-note" text-anchor="middle">80% ceiling</text>
+<text x="506.7" y="80.0" class="gu-note">Database writer, share of the writer&#x27;s vCPUs</text>
+<line class="gu-grid" x1="526.7" y1="88.0" x2="526.7" y2="155.0"/>
+<text x="526.7" y="169.0" class="gu-tick" text-anchor="middle">0%</text>
+<line class="gu-grid" x1="608.3" y1="88.0" x2="608.3" y2="155.0"/>
+<text x="608.3" y="169.0" class="gu-tick" text-anchor="middle">50%</text>
+<line class="gu-grid" x1="690.0" y1="88.0" x2="690.0" y2="155.0"/>
+<text x="690.0" y="169.0" class="gu-tick" text-anchor="middle">100%</text>
+<text x="506.7" y="104.0" class="gu-val" style="fill:#5b6770;font-weight:600">A</text>
+<rect x="526.7" y="92.0" width="129.6" height="15.0" rx="2" fill="#5b6770"/>
+<text x="734.0" y="104.0" class="gu-val" text-anchor="end" style="font-weight:600">79%</text>
+<text x="506.7" y="125.0" class="gu-val" style="fill:#2a78d6;font-weight:600">B</text>
+<rect x="527.4" y="113.8" width="48.6" height="13.5" rx="2" fill="#fff" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="734.0" y="125.0" class="gu-val" text-anchor="end">31%</text>
+<text x="506.7" y="146.0" class="gu-val" style="fill:#0d7a6e;font-weight:600">C</text>
+<rect x="526.7" y="134.0" width="100.6" height="15.0" rx="2" fill="#0d7a6e"/>
+<text x="734.0" y="146.0" class="gu-val" text-anchor="end">62%</text>
+<line class="gu-base" x1="657.3" y1="88.0" x2="657.3" y2="158.0" style="stroke:#1c1f23;stroke-dasharray:4 3"/>
+<text x="657.3" y="183.0" class="gu-note" text-anchor="middle">80% ceiling</text>
+<text x="0.0" y="221.0" style="font-weight:600">Response time</text>
+<text x="100.0" y="221.0" class="gu-note">log scale; lower is better</text>
+<line class="gu-grid" x1="217.5" y1="237.0" x2="217.5" y2="403.0"/>
+<text x="217.5" y="419.0" class="gu-tick" text-anchor="middle">3 ms</text>
+<line class="gu-grid" x1="316.7" y1="237.0" x2="316.7" y2="403.0"/>
+<text x="316.7" y="419.0" class="gu-tick" text-anchor="middle">5 ms</text>
+<line class="gu-grid" x1="451.4" y1="237.0" x2="451.4" y2="403.0"/>
+<text x="451.4" y="419.0" class="gu-tick" text-anchor="middle">10 ms</text>
+<line class="gu-grid" x1="586.1" y1="237.0" x2="586.1" y2="403.0"/>
+<text x="586.1" y="419.0" class="gu-tick" text-anchor="middle">20 ms</text>
+<line class="gu-grid" x1="664.8" y1="237.0" x2="664.8" y2="403.0"/>
+<text x="664.8" y="419.0" class="gu-tick" text-anchor="middle">30 ms</text>
+<text x="0.0" y="261.0" style="fill:#5b6770;font-weight:600">A  Graviton2 baseline</text>
+<text x="0.0" y="277.0" class="gu-note">3 x 590 seconds</text>
+<path d="M384.0 265.0 L605.4 265.0 L685.0 265.0" fill="none" stroke="#5b6770" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<line class="gu-base" x1="382.0" y1="265.0" x2="384.0" y2="265.0" style="stroke:#5b6770;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="384.0" cy="265.0" r="5" fill="#5b6770" stroke="#fff" stroke-width="1.5"/>
+<text x="384.0" y="254.0" class="gu-val" text-anchor="middle">p50 7.1 ms</text>
+<line class="gu-base" x1="597.6" y1="265.0" x2="605.4" y2="265.0" style="stroke:#5b6770;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="605.4" cy="265.0" r="5" fill="#5b6770" stroke="#fff" stroke-width="1.5"/>
+<text x="605.4" y="287.0" class="gu-val" text-anchor="middle">p95 22.1 ms</text>
+<line class="gu-base" x1="675.3" y1="265.0" x2="685.0" y2="265.0" style="stroke:#5b6770;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="685.0" cy="265.0" r="5" fill="#5b6770" stroke="#fff" stroke-width="1.5"/>
+<text x="685.0" y="254.0" class="gu-val" text-anchor="middle">p99 33.3 ms</text>
+<text x="0.0" y="315.0" style="fill:#2a78d6;font-weight:600">B  Graviton5, same size</text>
+<text x="0.0" y="331.0" class="gu-note">one 110-second step</text>
+<path d="M238.3 319.0 L413.1 319.0 L471.3 319.0" fill="none" stroke="#2a78d6" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<line class="gu-base" x1="238.3" y1="319.0" x2="238.3" y2="319.0" style="stroke:#2a78d6;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="238.3" cy="319.0" r="4.5" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<text x="238.3" y="308.0" class="gu-val" text-anchor="middle">p50 3.3 ms</text>
+<line class="gu-base" x1="413.1" y1="319.0" x2="413.1" y2="319.0" style="stroke:#2a78d6;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="413.1" cy="319.0" r="4.5" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<text x="413.1" y="341.0" class="gu-val" text-anchor="middle">p95 8.2 ms</text>
+<line class="gu-base" x1="471.3" y1="319.0" x2="471.3" y2="319.0" style="stroke:#2a78d6;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="471.3" cy="319.0" r="4.5" fill="#fff" stroke="#2a78d6" stroke-width="2"/>
+<text x="471.3" y="308.0" class="gu-val" text-anchor="middle">p99 11.1 ms</text>
+<text x="0.0" y="369.0" style="fill:#0d7a6e;font-weight:600">C  Graviton5, right-sized</text>
+<text x="0.0" y="385.0" class="gu-note">3 x 590 seconds</text>
+<path d="M263.4 373.0 L471.3 373.0 L537.4 373.0" fill="none" stroke="#0d7a6e" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<line class="gu-base" x1="263.4" y1="373.0" x2="265.4" y2="373.0" style="stroke:#0d7a6e;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="263.4" cy="373.0" r="5" fill="#0d7a6e" stroke="#fff" stroke-width="1.5"/>
+<text x="263.4" y="362.0" class="gu-val" text-anchor="middle">p50 3.8 ms</text>
+<line class="gu-base" x1="469.4" y1="373.0" x2="471.3" y2="373.0" style="stroke:#0d7a6e;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="471.3" cy="373.0" r="5" fill="#0d7a6e" stroke="#fff" stroke-width="1.5"/>
+<text x="471.3" y="395.0" class="gu-val" text-anchor="middle">p95 11.1 ms</text>
+<line class="gu-base" x1="537.4" y1="373.0" x2="539.4" y2="373.0" style="stroke:#0d7a6e;stroke-width:5;stroke-opacity:.3;stroke-linecap:round"/>
+<circle cx="537.4" cy="373.0" r="5" fill="#0d7a6e" stroke="#fff" stroke-width="1.5"/>
+<text x="537.4" y="362.0" class="gu-val" text-anchor="middle">p99 15.6 ms</text>
+</svg>

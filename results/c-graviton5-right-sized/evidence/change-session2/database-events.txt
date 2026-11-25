@@ -1,0 +1,23 @@
+$ aws rds describe-events --source-type db-instance --start-time 2026-11-24T09:19:59Z --end-time 2026-11-24T10:01:06Z --query 'Events[].[Date,SourceIdentifier,Message]' --output text | sed -E 's/\.[0-9]+\+00:00//; s/graviton-uplift-database-//g'
+2026-11-24T09:43:02	instance1-xxxxxxxxxxxx	Applying modification to database instance class
+2026-11-24T09:44:18	instance2-xxxxxxxxxxxx	DB instance shutdown
+2026-11-24T09:44:22	instance1-xxxxxxxxxxxx	A new writer was promoted. Restarting database as a reader.
+2026-11-24T09:44:23	instance2-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:44:32	instance1-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:44:48	instance1-xxxxxxxxxxxx	DB instance shutdown
+2026-11-24T09:47:38	instance1-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:48:19	instance1-xxxxxxxxxxxx	Finished applying modification to DB instance class
+2026-11-24T09:49:24	instance1-xxxxxxxxxxxx	Monitoring Interval changed to 15
+2026-11-24T09:49:24	instance1-xxxxxxxxxxxx	Performance Insights has been enabled
+2026-11-24T09:50:28	instance1-xxxxxxxxxxxx	Finished updating DB parameter group
+2026-11-24T09:50:40	instance2-xxxxxxxxxxxx	Applying modification to database instance class
+2026-11-24T09:51:54	instance1-xxxxxxxxxxxx	DB instance shutdown
+2026-11-24T09:51:58	instance2-xxxxxxxxxxxx	A new writer was promoted. Restarting database as a reader.
+2026-11-24T09:51:58	instance1-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:52:10	instance2-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:52:26	instance2-xxxxxxxxxxxx	DB instance shutdown
+2026-11-24T09:55:04	instance2-xxxxxxxxxxxx	DB instance restarted
+2026-11-24T09:55:46	instance2-xxxxxxxxxxxx	Finished applying modification to DB instance class
+2026-11-24T09:56:56	instance2-xxxxxxxxxxxx	Monitoring Interval changed to 15
+2026-11-24T09:56:56	instance2-xxxxxxxxxxxx	Performance Insights has been enabled
+2026-11-24T09:57:59	instance2-xxxxxxxxxxxx	Finished updating DB parameter group

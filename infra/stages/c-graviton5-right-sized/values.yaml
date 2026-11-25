@@ -1,0 +1,9 @@
+# Graviton5 right-sized: every tier at half the baseline size.
+# Replica counts fill the node groups defined in eks.json for this configuration.
+stage: c-graviton5-right-sized
+web:
+  replicas: 16
+api:
+  replicas: 3
+  # Connections per pod. Replicas times this is 144 in every configuration.
+  dbPoolSize: 48

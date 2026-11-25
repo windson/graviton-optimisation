@@ -1,0 +1,5 @@
+$ aws rds describe-events --source-type db-cluster --start-time 2026-11-23T20:08:41Z --end-time 2026-11-23T20:51:46Z --query 'Events[].[Date,Message]' --output text | sed -E 's/\.[0-9]+\+00:00//; s/graviton-uplift-database-//g'
+2026-11-23T20:31:18	Started cross AZ failover to DB instance: instance2-xxxxxxxxxxxx
+2026-11-23T20:31:33	Completed customer initiated failover to DB instance: instance2-xxxxxxxxxxxx
+2026-11-23T20:38:56	Started cross AZ failover to DB instance: instance1-xxxxxxxxxxxx
+2026-11-23T20:39:03	Completed customer initiated failover to DB instance: instance1-xxxxxxxxxxxx

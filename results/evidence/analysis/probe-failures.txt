@@ -1,0 +1,7 @@
+$ jq -r '.[] | select(.type == "Warning" and .reason == "Unhealthy" and (.object | contains("storefront-api")) and (.message | contains("deadline"))) | [.at[11:19], (.object | split("-") | last), (.count | tostring) + "x", (.message | sub("Get .http://[^ ]+ "; ""))] | @tsv' results/b-graviton5-same-size/bc-kubernetes-events.json
+20:31:40	hkmjt	2x	Liveness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+20:39:01	skn64	3x	Liveness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+20:39:05	dhnqd	6x	Readiness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+20:39:05	dhnqd	3x	Liveness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+20:39:05	hkmjt	6x	Readiness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+20:39:06	skn64	7x	Readiness probe failed: context deadline exceeded (Client.Timeout exceeded while awaiting headers)

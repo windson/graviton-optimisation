@@ -1,0 +1,33 @@
+2026-11-23T20:07:41Z observers running; 60 seconds of undisturbed traffic first
+2026-11-23T20:08:46Z waiting for the pipeline to apply 321a0fda283904b7ca65f5f75e3910be7908f8ec
+2026-11-23T20:14:03Z pipeline succeeded
+active stage: c-graviton5-right-sized
+2026-11-23T20:14:05Z waiting for the pipeline to apply bd20563a8240d34aa3a010b7a5acf7158e6be115
+2026-11-23T20:48:45Z pipeline succeeded
+2026-11-23T20:48:46Z three minutes of traffic on the new configuration
+2026-11-23T20:51:46Z waiting for the observation tests to end
+gu-bc-probe-11232004: 2026-11-23T20:07:19Z to 2026-11-23T21:07:49Z, 361421 requests, 2525 failed
+  api_cart_get: 507 failed in 28 s; periods: 20:31:24 +1s (1), 20:31:27 +22s (451), 20:39:00 +1s (2), 20:39:05 +4s (53)
+  api_cart_put: 268 failed in 29 s; periods: 20:31:24 +25s (241), 20:39:00 +1s (1), 20:39:05 +4s (26)
+  api_catalog: 97 failed in 25 s; periods: 20:31:27 +22s (84), 20:39:05 +4s (13)
+  api_home: 49 failed in 19 s; periods: 20:31:27 +1s (3), 20:31:30 +6s (9), 20:31:38 +11s (30), 20:39:06 +3s (7)
+  api_order_post: 114 failed in 26 s; periods: 20:31:27 +22s (106), 20:39:05 +4s (8)
+  api_orders: 357 failed in 26 s; periods: 20:31:27 +22s (324), 20:39:05 +4s (33)
+  api_product: 384 failed in 27 s; periods: 20:31:22 +1s (1), 20:31:27 +22s (337), 20:39:05 +4s (46)
+  api_search: 36 failed in 22 s; periods: 20:31:27 +3s (4), 20:31:32 +17s (28), 20:39:05 +3s (4)
+  page_category: 233 failed in 31 s; periods: 20:31:24 +24s (162), 20:39:03 +9s (71)
+  page_home: 134 failed in 30 s; periods: 20:31:24 +1s (1), 20:31:27 +20s (91), 20:39:03 +10s (42)
+  page_product: 282 failed in 31 s; periods: 20:31:24 +24s (206), 20:39:03 +9s (76)
+  page_search: 64 failed in 27 s; periods: 20:31:27 +20s (49), 20:39:05 +7s (15)
+  cause: {'operation': 'api_cart_get', 'status': '0', 'error_code': '1050', 'count': 296}
+  cause: {'operation': 'page_product', 'status': '0', 'error_code': '1050', 'count': 279}
+  cause: {'operation': 'api_product', 'status': '0', 'error_code': '1050', 'count': 236}
+  cause: {'operation': 'page_category', 'status': '0', 'error_code': '1050', 'count': 225}
+  cause: {'operation': 'api_cart_get', 'status': '503', 'error_code': '1503', 'count': 208}
+  cause: {'operation': 'api_orders', 'status': '0', 'error_code': '1050', 'count': 194}
+  cause: {'operation': 'api_orders', 'status': '503', 'error_code': '1503', 'count': 163}
+  cause: {'operation': 'api_product', 'status': '503', 'error_code': '1503', 'count': 146}
+  cause: {'operation': 'api_cart_put', 'status': '0', 'error_code': '1050', 'count': 140}
+  cause: {'operation': 'page_home', 'status': '0', 'error_code': '1050', 'count': 132}
+deleted 4 objects
+2026-11-23T21:12:28Z change b-graviton5-same-size -> c-graviton5-right-sized observed from 2026-11-23T20:08:41Z to 2026-11-23T20:51:46Z

@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-11-23T23:11:00Z",
+  "what": "On-Demand Linux prices in us-west-2 of four instance types, read through the AWS Pricing MCP server (get_pricing, AmazonEC2, price list version 20261123171005), next to results/pricing/us-west-2.json, which the bill is computed from.",
+  "prices": {
+    "c6g.4xlarge": {
+      "aws_pricing_mcp_server_usd_per_hour": 0.544,
+      "price_file_usd_per_hour": 0.544,
+      "equal": true
+    },
+    "c9g.4xlarge": {
+      "aws_pricing_mcp_server_usd_per_hour": 0.69552,
+      "price_file_usd_per_hour": 0.69552,
+      "equal": true
+    },
+    "m6g.xlarge": {
+      "aws_pricing_mcp_server_usd_per_hour": 0.154,
+      "price_file_usd_per_hour": 0.154,
+      "equal": true
+    },
+    "m9g.large": {
+      "aws_pricing_mcp_server_usd_per_hour": 0.09784,
+      "price_file_usd_per_hour": 0.09784,
+      "equal": true
+    }
+  }
+}

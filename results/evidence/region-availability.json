@@ -1,0 +1,113 @@
+{
+  "checked_at": "2026-11-24T04:17:00Z",
+  "what": "EC2 DescribeInstanceTypeOfferings (LocationType region) for c9g.4xlarge, c9g.2xlarge, m9g.xlarge, m9g.large and r9g.4xlarge in each of the 18 Regions enabled in the study's account, read through the AWS MCP server. This is EC2 availability; Aurora's db.r9g classes are offered per Region separately and were checked only in us-west-2.",
+  "regions_checked": 18,
+  "offered": {
+    "ap-northeast-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "ap-northeast-2": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "ap-southeast-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "ap-southeast-2": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "ca-central-1": [
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "eu-central-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge",
+      "r9g.4xlarge"
+    ],
+    "eu-west-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "sa-east-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "us-east-1": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge",
+      "r9g.4xlarge"
+    ],
+    "us-east-2": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge",
+      "r9g.4xlarge"
+    ],
+    "us-west-1": [
+      "m9g.large",
+      "m9g.xlarge"
+    ],
+    "us-west-2": [
+      "c9g.2xlarge",
+      "c9g.4xlarge",
+      "m9g.large",
+      "m9g.xlarge",
+      "r9g.4xlarge"
+    ]
+  },
+  "regions_with": {
+    "c9g": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "eu-central-1",
+      "eu-west-1",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-2"
+    ],
+    "m9g": [
+      "ap-northeast-1",
+      "ap-northeast-2",
+      "ap-southeast-1",
+      "ap-southeast-2",
+      "ca-central-1",
+      "eu-central-1",
+      "eu-west-1",
+      "sa-east-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-1",
+      "us-west-2"
+    ],
+    "r9g": [
+      "eu-central-1",
+      "us-east-1",
+      "us-east-2",
+      "us-west-2"
+    ]
+  }
+}

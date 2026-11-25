@@ -1,0 +1,9 @@
+$ scripts/pipeline-status.sh
+Source          Source         Succeeded  2026-11-24T08:26:41  
+Build           BuildAndTest   Succeeded  2026-11-24T08:27:44  
+Infrastructure  Network        Succeeded  2026-11-24T08:27:46  
+Infrastructure  Cluster        Succeeded  2026-11-24T08:27:48  
+Infrastructure  Database       Succeeded  2026-11-24T08:27:49  
+Platform        ClusterAddOns  Succeeded  2026-11-24T08:28:22  
+Deploy          Storefront     Succeeded  2026-11-24T08:29:26  
+Verify          SmokeTest      Succeeded  2026-11-24T08:30:29  

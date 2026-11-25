@@ -1,0 +1,659 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  graviton-uplift - source repository, container registries and the delivery pipeline.
+  Every change to the study's infrastructure or application, including the Graviton
+  upgrade and the right-sizing, is a commit that this pipeline builds and applies.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: graviton-uplift
+  BranchName:
+    Type: String
+    Default: main
+
+Resources:
+  # ---- Source and registries ------------------------------------------------------------
+  Repository:
+    Type: AWS::CodeCommit::Repository
+    Properties:
+      RepositoryName: !Ref ProjectName
+      RepositoryDescription: Graviton2 to Graviton5 upgrade and right-sizing study
+
+  ApiRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Sub ${ProjectName}/storefront-api
+      # Image tags are hashes of the application source and never move.
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EmptyOnDelete: true
+      LifecyclePolicy:
+        LifecyclePolicyText: |
+          {"rules":[{"rulePriority":1,"description":"Keep the 20 most recent images",
+          "selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":20},
+          "action":{"type":"expire"}}]}
+
+  WebRepository:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Sub ${ProjectName}/storefront-web
+      ImageTagMutability: IMMUTABLE
+      ImageScanningConfiguration:
+        ScanOnPush: true
+      EmptyOnDelete: true
+      LifecyclePolicy:
+        LifecyclePolicyText: |
+          {"rules":[{"rulePriority":1,"description":"Keep the 20 most recent images",
+          "selection":{"tagStatus":"any","countType":"imageCountMoreThan","countNumber":20},
+          "action":{"type":"expire"}}]}
+
+  ArtifactBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireArtifacts
+            Status: Enabled
+            ExpirationInDays: 14
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 1
+
+  ArtifactBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ArtifactBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              - !GetAtt ArtifactBucket.Arn
+              - !Sub ${ArtifactBucket.Arn}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: "false"
+
+  # ---- Roles ----------------------------------------------------------------------------
+  # Role CloudFormation assumes to create the network, cluster and database stacks.
+  # It is limited to the services those stacks use, and to IAM roles named after the project.
+  CloudFormationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: cloudformation.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: StackResources
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: StackServices
+                Effect: Allow
+                Action:
+                  - ec2:*
+                  - eks:*
+                  - rds:*
+                  - secretsmanager:*
+                  - logs:*
+                  - kms:DescribeKey
+                  - kms:CreateGrant
+                  - ssm:GetParameter
+                  - ssm:GetParameters
+                Resource: "*"
+              - Sid: ProjectRoles
+                Effect: Allow
+                Action:
+                  - iam:CreateRole
+                  - iam:DeleteRole
+                  - iam:GetRole
+                  - iam:TagRole
+                  - iam:UntagRole
+                  - iam:UpdateAssumeRolePolicy
+                  - iam:AttachRolePolicy
+                  - iam:DetachRolePolicy
+                  - iam:PutRolePolicy
+                  - iam:DeleteRolePolicy
+                  - iam:GetRolePolicy
+                  - iam:ListRolePolicies
+                  - iam:ListAttachedRolePolicies
+                  - iam:PassRole
+                Resource: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:role/${ProjectName}-*
+              - Sid: ServiceLinkedRoles
+                Effect: Allow
+                Action: iam:CreateServiceLinkedRole
+                Resource: "*"
+                Condition:
+                  StringEquals:
+                    iam:AWSServiceName:
+                      - eks.amazonaws.com
+                      - eks-nodegroup.amazonaws.com
+                      - rds.amazonaws.com
+                      - autoscaling.amazonaws.com
+              - Sid: ReadServiceLinkedRoles
+                Effect: Allow
+                Action: iam:GetRole
+                Resource: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:role/aws-service-role/*
+
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codepipeline.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: Pipeline
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Artifacts
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                  - s3:GetBucketVersioning
+                  - s3:GetBucketLocation
+                  - s3:ListBucket
+                Resource:
+                  - !GetAtt ArtifactBucket.Arn
+                  - !Sub ${ArtifactBucket.Arn}/*
+              - Sid: Source
+                Effect: Allow
+                Action:
+                  - codecommit:GetBranch
+                  - codecommit:GetCommit
+                  - codecommit:GetRepository
+                  - codecommit:UploadArchive
+                  - codecommit:GetUploadArchiveStatus
+                  - codecommit:CancelUploadArchive
+                Resource: !GetAtt Repository.Arn
+              - Sid: Builds
+                Effect: Allow
+                Action:
+                  - codebuild:StartBuild
+                  - codebuild:BatchGetBuilds
+                Resource:
+                  - !GetAtt BuildProject.Arn
+                  - !GetAtt PlatformProject.Arn
+                  - !GetAtt VerifyProject.Arn
+              - Sid: Stacks
+                Effect: Allow
+                Action:
+                  - cloudformation:CreateStack
+                  - cloudformation:UpdateStack
+                  - cloudformation:DeleteStack
+                  - cloudformation:DescribeStacks
+                  - cloudformation:DescribeStackEvents
+                  - cloudformation:DescribeStackResources
+                  - cloudformation:GetTemplate
+                  - cloudformation:ValidateTemplate
+                  - cloudformation:CreateChangeSet
+                  - cloudformation:DescribeChangeSet
+                  - cloudformation:ExecuteChangeSet
+                  - cloudformation:DeleteChangeSet
+                Resource: !Sub arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-*/*
+              - Sid: PassStackRole
+                Effect: Allow
+                Action: iam:PassRole
+                Resource: !GetAtt CloudFormationRole.Arn
+                Condition:
+                  StringEquals:
+                    iam:PassedToService: cloudformation.amazonaws.com
+              # Permissions the Amazon EKS deploy action needs for a cluster with a public endpoint.
+              - Sid: EksDeployAction
+                Effect: Allow
+                Action: eks:DescribeCluster
+                Resource: !Sub arn:${AWS::Partition}:eks:${AWS::Region}:${AWS::AccountId}:cluster/${ProjectName}
+              - Sid: EksDeployActionNetwork
+                Effect: Allow
+                Action:
+                  - ec2:DescribeDhcpOptions
+                  - ec2:DescribeNetworkInterfaces
+                  - ec2:DescribeRouteTables
+                  - ec2:DescribeSubnets
+                  - ec2:DescribeSecurityGroups
+                  - ec2:DescribeVpcs
+                Resource: "*"
+              - Sid: EksDeployActionLogs
+                Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codepipeline/${ProjectName}
+                  - !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codepipeline/${ProjectName}:*
+
+  BuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: Build
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Logs
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub ${BuildLogGroup.Arn}
+              - Sid: Artifacts
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                Resource: !Sub ${ArtifactBucket.Arn}/*
+              - Sid: RegistryLogin
+                Effect: Allow
+                Action:
+                  - ecr:GetAuthorizationToken
+                  - ecr-public:GetAuthorizationToken
+                  - sts:GetServiceBearerToken
+                Resource: "*"
+              - Sid: PushImages
+                Effect: Allow
+                Action:
+                  - ecr:BatchCheckLayerAvailability
+                  - ecr:BatchGetImage
+                  - ecr:CompleteLayerUpload
+                  - ecr:DescribeImages
+                  - ecr:GetDownloadUrlForLayer
+                  - ecr:InitiateLayerUpload
+                  - ecr:PutImage
+                  - ecr:UploadLayerPart
+                Resource:
+                  - !GetAtt ApiRepository.Arn
+                  - !GetAtt WebRepository.Arn
+
+  # Role of the pipeline steps that run kubectl and Helm. Cluster access is granted by an
+  # access entry in the EKS stack.
+  DeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: codebuild.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: Deploy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: Logs
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource:
+                  - !Sub ${PlatformLogGroup.Arn}
+                  - !Sub ${VerifyLogGroup.Arn}
+              - Sid: Artifacts
+                Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:GetObjectVersion
+                Resource: !Sub ${ArtifactBucket.Arn}/*
+              - Sid: Cluster
+                Effect: Allow
+                Action: eks:DescribeCluster
+                Resource: !Sub arn:${AWS::Partition}:eks:${AWS::Region}:${AWS::AccountId}:cluster/${ProjectName}
+              - Sid: StackOutputs
+                Effect: Allow
+                Action: cloudformation:DescribeStacks
+                Resource: !Sub arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}-*/*
+
+  # ---- Build projects -------------------------------------------------------------------
+  BuildLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub /aws/codebuild/${ProjectName}-build
+      RetentionInDays: 30
+
+  PlatformLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub /aws/codebuild/${ProjectName}-platform
+      RetentionInDays: 30
+
+  VerifyLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: !Sub /aws/codebuild/${ProjectName}-verify
+      RetentionInDays: 30
+
+  # Builds and tests on arm64, so the images are built natively for Graviton.
+  BuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${ProjectName}-build
+      Description: Lint templates, test and build the API and web tier, push arm64 images
+      ServiceRole: !GetAtt BuildRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: ci/buildspec-build.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: ARM_CONTAINER
+        ComputeType: BUILD_GENERAL1_LARGE
+        Image: aws/codebuild/amazonlinux-aarch64-standard:3.0
+        # Needed to run Docker: image builds and the MySQL container used by the API tests.
+        PrivilegedMode: true
+        EnvironmentVariables:
+          - Name: API_REPOSITORY_URI
+            Value: !GetAtt ApiRepository.RepositoryUri
+          - Name: WEB_REPOSITORY_URI
+            Value: !GetAtt WebRepository.RepositoryUri
+      Cache:
+        Type: LOCAL
+        Modes:
+          - LOCAL_DOCKER_LAYER_CACHE
+          - LOCAL_CUSTOM_CACHE
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Ref BuildLogGroup
+      TimeoutInMinutes: 30
+
+  PlatformProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${ProjectName}-platform
+      Description: Install cluster add-ons that the application needs (AWS Load Balancer Controller)
+      ServiceRole: !GetAtt DeployRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: ci/buildspec-platform.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: ARM_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux-aarch64-standard:3.0
+        EnvironmentVariables:
+          - Name: PROJECT_NAME
+            Value: !Ref ProjectName
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Ref PlatformLogGroup
+      TimeoutInMinutes: 20
+
+  VerifyProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Name: !Sub ${ProjectName}-verify
+      Description: Wait for the rollout, load the data set if needed, and smoke test through the load balancer
+      ServiceRole: !GetAtt DeployRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: ci/buildspec-verify.yml
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: ARM_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux-aarch64-standard:3.0
+        EnvironmentVariables:
+          - Name: PROJECT_NAME
+            Value: !Ref ProjectName
+          - Name: API_REPOSITORY_URI
+            Value: !GetAtt ApiRepository.RepositoryUri
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Ref VerifyLogGroup
+      TimeoutInMinutes: 60
+
+  # ---- Pipeline -------------------------------------------------------------------------
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      Name: !Ref ProjectName
+      PipelineType: V2
+      # Executions run one after another, so two configuration changes never overlap.
+      ExecutionMode: QUEUED
+      RoleArn: !GetAtt PipelineRole.Arn
+      ArtifactStore:
+        Type: S3
+        Location: !Ref ArtifactBucket
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: Source
+              Namespace: Source
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: CodeCommit
+                Version: "1"
+              Configuration:
+                RepositoryName: !GetAtt Repository.Name
+                BranchName: !Ref BranchName
+                PollForSourceChanges: "false"
+                OutputArtifactFormat: CODE_ZIP
+              OutputArtifacts:
+                - Name: SourceArtifact
+
+        - Name: Build
+          Actions:
+            - Name: BuildAndTest
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref BuildProject
+              InputArtifacts:
+                - Name: SourceArtifact
+              OutputArtifacts:
+                - Name: BuildArtifact
+
+        # The three stacks are applied in order. Parameters come from infra/config/*.json in
+        # the repository: switching Graviton generation or size is a change to those files.
+        - Name: Infrastructure
+          Actions:
+            - Name: Network
+              RunOrder: 1
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: "1"
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                StackName: !Sub ${ProjectName}-network
+                TemplatePath: SourceArtifact::infra/cfn/network.yaml
+                TemplateConfiguration: SourceArtifact::infra/config/network.json
+                RoleArn: !GetAtt CloudFormationRole.Arn
+              InputArtifacts:
+                - Name: SourceArtifact
+            - Name: Cluster
+              RunOrder: 2
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: "1"
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                StackName: !Sub ${ProjectName}-eks
+                TemplatePath: SourceArtifact::infra/cfn/eks.yaml
+                TemplateConfiguration: SourceArtifact::infra/config/eks.json
+                Capabilities: CAPABILITY_IAM
+                RoleArn: !GetAtt CloudFormationRole.Arn
+              InputArtifacts:
+                - Name: SourceArtifact
+            - Name: Database
+              RunOrder: 3
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: "1"
+              Configuration:
+                ActionMode: CREATE_UPDATE
+                StackName: !Sub ${ProjectName}-database
+                TemplatePath: SourceArtifact::infra/cfn/database.yaml
+                TemplateConfiguration: SourceArtifact::infra/config/database.json
+                Capabilities: CAPABILITY_IAM
+                RoleArn: !GetAtt CloudFormationRole.Arn
+              InputArtifacts:
+                - Name: SourceArtifact
+
+        - Name: Platform
+          Actions:
+            - Name: ClusterAddOns
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref PlatformProject
+              InputArtifacts:
+                - Name: SourceArtifact
+
+        # CodeDeploy has no Amazon EKS compute platform, so the application is released
+        # with the pipeline's own Amazon EKS deploy action, which runs Helm.
+        - Name: Deploy
+          Actions:
+            - Name: Storefront
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: EKS
+                Version: "1"
+              Configuration:
+                ClusterName: !Ref ProjectName
+                Namespace: storefront
+                HelmReleaseName: storefront
+                HelmChartLocation: chart
+                HelmValuesFiles: values-stage.yaml,values-image.yaml
+              InputArtifacts:
+                - Name: BuildArtifact
+
+        - Name: Verify
+          Actions:
+            - Name: SmokeTest
+              ActionTypeId:
+                Category: Test
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref VerifyProject
+              InputArtifacts:
+                - Name: SourceArtifact
+
+  # Start the pipeline when the branch changes.
+  SourceChangeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: events.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: StartPipeline
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: codepipeline:StartPipelineExecution
+                Resource: !Sub arn:${AWS::Partition}:codepipeline:${AWS::Region}:${AWS::AccountId}:${Pipeline}
+
+  SourceChangeRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Description: !Sub Start the ${ProjectName} pipeline when ${BranchName} changes
+      EventPattern:
+        source:
+          - aws.codecommit
+        detail-type:
+          - CodeCommit Repository State Change
+        resources:
+          - !GetAtt Repository.Arn
+        detail:
+          event:
+            - referenceCreated
+            - referenceUpdated
+          referenceType:
+            - branch
+          referenceName:
+            - !Ref BranchName
+      Targets:
+        - Id: pipeline
+          Arn: !Sub arn:${AWS::Partition}:codepipeline:${AWS::Region}:${AWS::AccountId}:${Pipeline}
+          RoleArn: !GetAtt SourceChangeRole.Arn
+
+Outputs:
+  RepositoryCloneUrl:
+    Description: HTTPS clone URL of the CodeCommit repository.
+    Value: !GetAtt Repository.CloneUrlHttp
+  PipelineName:
+    Value: !Ref Pipeline
+  ApiRepositoryUri:
+    Value: !GetAtt ApiRepository.RepositoryUri
+  WebRepositoryUri:
+    Value: !GetAtt WebRepository.RepositoryUri
+  ArtifactBucketName:
+    Value: !Ref ArtifactBucket
+  PipelineRoleArn:
+    Description: Role of the pipeline; granted cluster access in the EKS stack.
+    Value: !GetAtt PipelineRole.Arn
+    Export:
+      Name: !Sub ${ProjectName}:PipelineRoleArn
+  DeployRoleArn:
+    Description: Role of the kubectl and Helm pipeline steps; granted cluster access in the EKS stack.
+    Value: !GetAtt DeployRole.Arn
+    Export:
+      Name: !Sub ${ProjectName}:DeployRoleArn

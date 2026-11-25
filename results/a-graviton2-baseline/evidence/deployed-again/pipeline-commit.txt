@@ -1,0 +1,7 @@
+$ aws codepipeline list-pipeline-executions --pipeline-name graviton-uplift --query 'pipelineExecutionSummaries[0].{Status:status,Started:startTime,Commit:sourceRevisions[0].revisionId,Message:sourceRevisions[0].revisionSummary}' --output json
+{
+    "Status": "Succeeded",
+    "Started": "2026-11-24T01:06:22.009000+00:00",
+    "Commit": "952245adda31d03a750e4a59d9f595029083fe07",
+    "Message": "Back to the Graviton2 baseline (configuration A, deployed again)\n\nWeb nodes c6g.2xlarge to c6g.4xlarge, API nodes m6g.large to m6g.xlarge, Aurora\ndb.r6g.4xlarge to db.r6g.8xlarge, web pods 16 to 32, API pods 3 to 6: the same\nparameter files as the first deployment of the baseline.\n"
+}

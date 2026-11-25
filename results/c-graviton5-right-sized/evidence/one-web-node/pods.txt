@@ -1,0 +1,21 @@
+$ kubectl -n storefront get pods --sort-by=.metadata.name -o custom-columns='POD:.metadata.name,READY:.status.containerStatuses[0].ready,RESTARTS:.status.containerStatuses[0].restartCount,RUNNING_SINCE:.status.containerStatuses[0].state.running.startedAt,NODE:.spec.nodeName'
+POD                               READY    RESTARTS   RUNNING_SINCE          NODE
+storefront-api-866c48bf-6fnc4     true     0          2026-11-24T09:34:16Z   ip-10-80-72-177.us-west-2.compute.internal
+storefront-api-866c48bf-kqpkm     true     0          2026-11-24T09:31:03Z   ip-10-80-72-224.us-west-2.compute.internal
+storefront-api-866c48bf-qpmrj     true     0          2026-11-24T09:37:05Z   ip-10-80-85-49.us-west-2.compute.internal
+storefront-web-5798bb7c5b-4gh28   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-7zkfh   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-8krkj   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-ckvdb   true     0          2026-11-24T09:36:10Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-cqp2z   true     0          2026-11-24T09:31:08Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-f5xj4   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-gct6t   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-mg6sx   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-mq8nd   true     0          2026-11-24T09:35:09Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-ndjc5   true     0          2026-11-24T09:30:09Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-nvql9   true     0          2026-11-24T09:35:09Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-pwl5g   true     0          2026-11-24T09:36:10Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-qljq6   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-s76x7   <none>   <none>     <none>                 <none>
+storefront-web-5798bb7c5b-vl99b   true     0          2026-11-24T09:35:09Z   ip-10-80-93-174.us-west-2.compute.internal
+storefront-web-5798bb7c5b-xzqnp   true     0          2026-11-24T09:30:09Z   ip-10-80-93-174.us-west-2.compute.internal

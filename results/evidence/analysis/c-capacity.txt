@@ -1,0 +1,18 @@
+$ uv run -q analysis/summarize.py results/c-graviton5-right-sized/c-cap | grep -vE '^( {6}|$)'
+c-graviton5-right-sized / c-cap (capacity, complete)
+  web 2 x c9g.2xlarge, API 3 x m9g.large, database db.r9g.4xlarge; pods: web 16, API 3
+  load generators: 60/60 tasks, peak CPU 26% of reserved
+  Aurora datapoints cover the 60 s that start 1 s before their timestamp (measured in 5 steady runs: 1 to 1 s)
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  s01       8000   7999.7   0.000    3.8    9.0    11.9    44.4    29.3    43.3   0.887   0.192   0.866
+  s02       9600   9600.0   0.000    3.8    9.4    12.6    51.9    33.6    51.7   0.865   0.184   0.862
+  s03      11200  11200.1   0.000    4.0   10.8    15.4    62.3    39.9    59.6   0.889   0.187   0.851
+  s04      12000  12000.0   0.000    4.1   11.3    16.7    65.1    44.2    63.9   0.868   0.193   0.852
+  s05      12800  12800.0   0.000    4.2   12.2    18.3    69.3    46.5    67.8   0.866   0.191   0.848
+  s06      13600  13600.2   0.000    4.3   13.5    19.8    74.4    51.2    71.4   0.875   0.198   0.840
+  s07      14400  14400.0   0.000    4.5   14.7    21.9    77.1    54.4    75.0   0.857   0.199   0.833
+  s08      15200  15200.1   0.000    4.7   17.7    27.0    82.2    57.5    78.6   0.865   0.199   0.827
+  s09      16000  16000.2   0.000    4.9   21.4    33.0    86.5    59.4    81.5   0.865   0.195   0.815
+  s10      16800  16800.0   0.000    5.4   27.5    48.7    89.6    63.4    84.9   0.853   0.198   0.809
+  s11      17600  17600.2   0.000    6.1   74.8   178.6    94.2    67.1    87.7   0.856   0.200   0.797

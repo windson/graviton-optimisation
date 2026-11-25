@@ -1,0 +1,8 @@
+$ kubectl -n storefront logs storefront-api-866c48bf-hkmjt --timestamps --since-time=2026-11-23T20:38:36Z   # up to 2026-11-23T20:40:06Z, counted per second and kind of message
+20:39:00 WARN     48 x  ProxyConnection: storefront - Connection com.mysql.cj.jdbc.ConnectionImpl# marked as broken because of SQLSTATE(08S01), ErrorCode(#)
+20:39:00 ERROR    48 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.Recovera
+20:39:02 ERROR     3 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:39:03 ERROR    62 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:39:03 ERROR     2 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:39:04 ERROR     1 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:39:05 ERROR     3 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG

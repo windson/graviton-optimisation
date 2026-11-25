@@ -1,0 +1,9 @@
+$ aws rds describe-db-clusters --db-cluster-identifier graviton-uplift --query 'DBClusters[0].DBClusterMembers[].{Instance:DBInstanceIdentifier,Writer:IsClusterWriter}' --output table
+---------------------------------------------------------------
+|                     DescribeDBClusters                      |
++---------------------------------------------------+---------+
+|                     Instance                      | Writer  |
++---------------------------------------------------+---------+
+|  graviton-uplift-database-instance2-xxxxxxxxxxxx  |  False  |
+|  graviton-uplift-database-instance1-xxxxxxxxxxxx  |  True   |
++---------------------------------------------------+---------+

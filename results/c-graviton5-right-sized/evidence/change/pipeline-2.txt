@@ -1,0 +1,9 @@
+$ aws codepipeline list-action-executions --pipeline-name graviton-uplift --filter pipelineExecutionId=00000000-0000-0000-0000-000000000001 --query 'reverse(actionExecutionDetails)[].[stageName,actionName,status,startTime,lastUpdateTime]' --output text | sed -E 's/\.[0-9]+\+00:00//g' | column -t
+Source          Source         Succeeded  2026-11-23T20:14:15  2026-11-23T20:14:18
+Build           BuildAndTest   Succeeded  2026-11-23T20:14:19  2026-11-23T20:15:53
+Infrastructure  Network        Succeeded  2026-11-23T20:15:53  2026-11-23T20:15:55
+Infrastructure  Cluster        Succeeded  2026-11-23T20:15:55  2026-11-23T20:29:50
+Infrastructure  Database       Succeeded  2026-11-23T20:29:50  2026-11-23T20:45:49
+Platform        ClusterAddOns  Succeeded  2026-11-23T20:45:49  2026-11-23T20:46:22
+Deploy          Storefront     Succeeded  2026-11-23T20:46:22  2026-11-23T20:47:24
+Verify          SmokeTest      Succeeded  2026-11-23T20:47:25  2026-11-23T20:48:27

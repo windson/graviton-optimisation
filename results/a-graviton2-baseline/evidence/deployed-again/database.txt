@@ -1,0 +1,9 @@
+$ aws rds describe-db-instances --filters Name=db-cluster-id,Values=graviton-uplift --query 'DBInstances[].{Instance:DBInstanceIdentifier,Class:DBInstanceClass,Status:DBInstanceStatus,Zone:AvailabilityZone,Engine:EngineVersion}' --output table
+-----------------------------------------------------------------------------------------------------------------------------
+|                                                    DescribeDBInstances                                                    |
++----------------+--------------------------+---------------------------------------------------+------------+--------------+
+|      Class     |         Engine           |                     Instance                      |  Status    |    Zone      |
++----------------+--------------------------+---------------------------------------------------+------------+--------------+
+|  db.r6g.8xlarge|  8.0.mysql_aurora.3.10.6 |  graviton-uplift-database-instance1-xxxxxxxxxxxx  |  available |  us-west-2a  |
+|  db.r6g.8xlarge|  8.0.mysql_aurora.3.10.6 |  graviton-uplift-database-instance2-xxxxxxxxxxxx  |  available |  us-west-2b  |
++----------------+--------------------------+---------------------------------------------------+------------+--------------+

@@ -1,0 +1,15 @@
+{
+  "Parameters": {
+    "ProjectName": "graviton-uplift",
+    "AdminRoleArn": "arn:aws:iam::111122223333:role/REPLACE_WITH_YOUR_ADMIN_ROLE",
+    "SystemInstanceType": "m9g.large",
+    "SystemNodeCount": "2",
+    "WebInstanceType": "c9g.2xlarge",
+    "WebNodeCount": "2",
+    "ApiInstanceType": "m9g.large",
+    "ApiNodeCount": "3"
+  },
+  "Tags": {
+    "Project": "graviton-uplift"
+  }
+}

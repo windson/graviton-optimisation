@@ -1,0 +1,474 @@
+{
+ "from": "2026-11-23T20:08:41Z",
+ "to": "2026-11-23T20:51:46Z",
+ "events": [
+  {
+   "at": "2026-11-23T20:08:56Z",
+   "source": "pipeline",
+   "subject": "Source/Source",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:09:00Z",
+   "source": "pipeline",
+   "subject": "Build/BuildAndTest",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:09:00Z",
+   "source": "pipeline",
+   "subject": "Source/Source",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:10:05Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Network",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:10:05Z",
+   "source": "pipeline",
+   "subject": "Build/BuildAndTest",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:10:07Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Cluster",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:10:07Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Network",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:10:09Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Database",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:10:09Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Cluster",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:10:10Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Database",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:10:11Z",
+   "source": "pipeline",
+   "subject": "Platform/ClusterAddOns",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:10:43Z",
+   "source": "pipeline",
+   "subject": "Deploy/Storefront",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:10:43Z",
+   "source": "pipeline",
+   "subject": "Platform/ClusterAddOns",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:12:49Z",
+   "source": "pipeline",
+   "subject": "Deploy/Storefront",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:12:50Z",
+   "source": "pipeline",
+   "subject": "Verify/SmokeTest",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:13:52Z",
+   "source": "pipeline",
+   "subject": "Verify/SmokeTest",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:14:15Z",
+   "source": "pipeline",
+   "subject": "Source/Source",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:14:18Z",
+   "source": "pipeline",
+   "subject": "Source/Source",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:14:19Z",
+   "source": "pipeline",
+   "subject": "Build/BuildAndTest",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:15:53Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Network",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:15:53Z",
+   "source": "pipeline",
+   "subject": "Build/BuildAndTest",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:15:55Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Cluster",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:15:55Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Network",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:15:57Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/graviton-uplift-eks",
+   "event": "UPDATE_IN_PROGRESS: User Initiated"
+  },
+  {
+   "at": "2026-11-23T20:16:03Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/WebLaunchTemplate",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:16:03Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/ApiLaunchTemplate",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:16:05Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/WebLaunchTemplate",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:16:05Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/ApiLaunchTemplate",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:16:06Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/ApiNodeGroup",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:16:07Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/WebNodeGroup",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:16:08Z",
+   "source": "eks",
+   "subject": "api node group",
+   "event": "VersionUpdate started"
+  },
+  {
+   "at": "2026-11-23T20:16:08Z",
+   "source": "eks",
+   "subject": "web node group",
+   "event": "VersionUpdate started"
+  },
+  {
+   "at": "2026-11-23T20:29:34Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/WebNodeGroup",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:29:34Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/ApiNodeGroup",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:29:35Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/graviton-uplift-eks",
+   "event": "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:29:36Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-eks/graviton-uplift-eks",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:29:50Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Database",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:29:50Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Cluster",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:29:52Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/graviton-uplift-database",
+   "event": "UPDATE_IN_PROGRESS: User Initiated"
+  },
+  {
+   "at": "2026-11-23T20:29:57Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/Instance1",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:30:02Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "Applying modification to database instance class"
+  },
+  {
+   "at": "2026-11-23T20:31:18Z",
+   "source": "rds",
+   "subject": "graviton-uplift",
+   "event": "Started cross AZ failover to DB instance: graviton-uplift-database-instance2-xxxxxxxxxxxx"
+  },
+  {
+   "at": "2026-11-23T20:31:19Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "DB instance shutdown"
+  },
+  {
+   "at": "2026-11-23T20:31:22Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "A new writer was promoted. Restarting database as a reader."
+  },
+  {
+   "at": "2026-11-23T20:31:32Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:31:33Z",
+   "source": "rds",
+   "subject": "graviton-uplift",
+   "event": "Completed customer initiated failover to DB instance: graviton-uplift-database-instance2-xxxxxxxxxxxx"
+  },
+  {
+   "at": "2026-11-23T20:31:42Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:31:49Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "DB instance shutdown"
+  },
+  {
+   "at": "2026-11-23T20:34:25Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:35:10Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "Finished applying modification to DB instance class"
+  },
+  {
+   "at": "2026-11-23T20:36:18Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "Monitoring Interval changed to 15"
+  },
+  {
+   "at": "2026-11-23T20:36:18Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "Performance Insights has been enabled"
+  },
+  {
+   "at": "2026-11-23T20:37:20Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "Finished updating DB parameter group"
+  },
+  {
+   "at": "2026-11-23T20:37:36Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/Instance1",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:37:37Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/Instance2",
+   "event": "UPDATE_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:37:41Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "Applying modification to database instance class"
+  },
+  {
+   "at": "2026-11-23T20:38:56Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "DB instance shutdown"
+  },
+  {
+   "at": "2026-11-23T20:38:56Z",
+   "source": "rds",
+   "subject": "graviton-uplift",
+   "event": "Started cross AZ failover to DB instance: graviton-uplift-database-instance1-xxxxxxxxxxxx"
+  },
+  {
+   "at": "2026-11-23T20:39:00Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "A new writer was promoted. Restarting database as a reader."
+  },
+  {
+   "at": "2026-11-23T20:39:01Z",
+   "source": "rds",
+   "subject": "instance1",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:39:03Z",
+   "source": "rds",
+   "subject": "graviton-uplift",
+   "event": "Completed customer initiated failover to DB instance: graviton-uplift-database-instance1-xxxxxxxxxxxx"
+  },
+  {
+   "at": "2026-11-23T20:39:08Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:39:27Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "DB instance shutdown"
+  },
+  {
+   "at": "2026-11-23T20:42:02Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "DB instance restarted"
+  },
+  {
+   "at": "2026-11-23T20:42:43Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "Finished applying modification to DB instance class"
+  },
+  {
+   "at": "2026-11-23T20:43:51Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "Monitoring Interval changed to 15"
+  },
+  {
+   "at": "2026-11-23T20:43:51Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "Performance Insights has been enabled"
+  },
+  {
+   "at": "2026-11-23T20:44:54Z",
+   "source": "rds",
+   "subject": "instance2",
+   "event": "Finished updating DB parameter group"
+  },
+  {
+   "at": "2026-11-23T20:45:15Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/Instance2",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:45:18Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/graviton-uplift-database",
+   "event": "UPDATE_COMPLETE"
+  },
+  {
+   "at": "2026-11-23T20:45:18Z",
+   "source": "cloudformation",
+   "subject": "graviton-uplift-database/graviton-uplift-database",
+   "event": "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
+  },
+  {
+   "at": "2026-11-23T20:45:49Z",
+   "source": "pipeline",
+   "subject": "Platform/ClusterAddOns",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:45:49Z",
+   "source": "pipeline",
+   "subject": "Infrastructure/Database",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:46:22Z",
+   "source": "pipeline",
+   "subject": "Deploy/Storefront",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:46:22Z",
+   "source": "pipeline",
+   "subject": "Platform/ClusterAddOns",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:47:24Z",
+   "source": "pipeline",
+   "subject": "Deploy/Storefront",
+   "event": "succeeded"
+  },
+  {
+   "at": "2026-11-23T20:47:25Z",
+   "source": "pipeline",
+   "subject": "Verify/SmokeTest",
+   "event": "started"
+  },
+  {
+   "at": "2026-11-23T20:48:27Z",
+   "source": "pipeline",
+   "subject": "Verify/SmokeTest",
+   "event": "succeeded"
+  }
+ ]
+}

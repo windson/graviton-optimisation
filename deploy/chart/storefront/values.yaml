@@ -1,0 +1,39 @@
+# Defaults shared by every configuration of the study. Two files are layered on top by
+# the pipeline:
+#   values-stage.yaml  replica counts for the active configuration (deploy/values/active.yaml)
+#   values-image.yaml  image repositories and tags; a tag is a hash of the tier's source
+
+image:
+  apiRepository: ""
+  apiTag: ""
+  webRepository: ""
+  webTag: ""
+
+# Name of the ConfigMap, created by the pipeline's platform step from the database
+# stack outputs, that holds DB_HOST, DB_SECRET_ARN and AWS_REGION.
+environmentConfigMap: storefront-env
+
+ingress:
+  loadBalancerName: graviton-uplift
+  # Seconds the load balancer keeps sending requests to a pod that is being removed.
+  deregistrationDelaySeconds: 30
+
+api:
+  replicas: 2
+  port: 8080
+  nodeTier: api
+  # Requests equal limits, so the JVM sees the same CPU count (two) on every node size.
+  # 1750m lets two pods fit a 4-vCPU node and one pod fit a 2-vCPU node.
+  cpu: 1750m
+  memory: 4Gi
+  dbPoolSize: 24
+  # One container-sizing flag. No Graviton-specific JVM tuning is applied in any configuration.
+  javaToolOptions: "-XX:MaxRAMPercentage=70"
+
+web:
+  replicas: 2
+  port: 3000
+  nodeTier: web
+  # Node.js runs JavaScript on one thread, so each pod asks for about one core.
+  cpu: 950m
+  memory: 1Gi

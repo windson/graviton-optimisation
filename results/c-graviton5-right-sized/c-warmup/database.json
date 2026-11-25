@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 323199,
+    "Com_delete": 225,
+    "Com_insert": 1289868,
+    "Com_select": 16821132,
+    "Com_stmt_execute": 18749899,
+    "Com_update": 644497,
+    "Connections": 905,
+    "Created_tmp_disk_tables": 7,
+    "Created_tmp_tables": 6918114,
+    "Innodb_buffer_pool_read_requests": 2409557728,
+    "Innodb_buffer_pool_reads": 318244,
+    "Innodb_row_lock_time": 104,
+    "Innodb_row_lock_waits": 57,
+    "Innodb_rows_deleted": 4438424,
+    "Innodb_rows_inserted": 967667,
+    "Innodb_rows_read": 8329616229,
+    "Innodb_rows_updated": 1289061,
+    "Queries": 19971439,
+    "Questions": 19735525,
+    "Slow_queries": 0,
+    "Sort_rows": 73642213,
+    "Uptime": 2188,
+    "at": "2026-11-23T21:15:27Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 362323,
+    "Com_delete": 225,
+    "Com_insert": 1445647,
+    "Com_select": 18846774,
+    "Com_stmt_execute": 21008134,
+    "Com_update": 722359,
+    "Connections": 1020,
+    "Created_tmp_disk_tables": 8,
+    "Created_tmp_tables": 7752322,
+    "Innodb_buffer_pool_read_requests": 2684982630,
+    "Innodb_buffer_pool_reads": 318424,
+    "Innodb_row_lock_time": 113,
+    "Innodb_row_lock_waits": 67,
+    "Innodb_rows_deleted": 4438424,
+    "Innodb_rows_inserted": 1084598,
+    "Innodb_rows_read": 9341298064,
+    "Innodb_rows_updated": 1444662,
+    "Queries": 22379270,
+    "Questions": 22113817,
+    "Slow_queries": 0,
+    "Sort_rows": 82536420,
+    "Uptime": 2603,
+    "at": "2026-11-23T21:22:22Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 82115.0,
+      "container_cpu_cfs_throttled_periods_total": 112.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.889806
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 90079.0,
+      "container_cpu_cfs_throttled_periods_total": 112.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.889806
+    },
+    "web": {}
+  }
+}

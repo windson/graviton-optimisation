@@ -1,0 +1,47 @@
+{
+  "view": "timeSeries",
+  "stacked": false,
+  "width": 1520,
+  "height": 480,
+  "start": "2026-11-24T08:30:00Z",
+  "end": "2026-11-24T11:50:00Z",
+  "period": 60,
+  "timezone": "+0000",
+  "title": "Application Load Balancer: 5xx responses per minute (UTC)",
+  "annotations": {
+    "vertical": [
+      {
+        "label": "C: upgrade and right-sizing",
+        "value": "2026-11-24T09:20:13Z"
+      }
+    ]
+  },
+  "stat": "Sum",
+  "yAxis": {
+    "left": {
+      "min": 0,
+      "label": "5xx responses per minute",
+      "showUnits": false
+    }
+  },
+  "metrics": [
+    [
+      "AWS/ApplicationELB",
+      "HTTPCode_ELB_5XX_Count",
+      "LoadBalancer",
+      "app/graviton-uplift/0000000000000000",
+      {
+        "label": "from the load balancer"
+      }
+    ],
+    [
+      "AWS/ApplicationELB",
+      "HTTPCode_Target_5XX_Count",
+      "LoadBalancer",
+      "app/graviton-uplift/0000000000000000",
+      {
+        "label": "from the targets"
+      }
+    ]
+  ]
+}

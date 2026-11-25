@@ -1,0 +1,14 @@
+$ uv run -q analysis/ceiling.py estimate a
+a-cap: CPU utilization of each tier at the steps within the latency and error limits
+  requests/s     web     API  database writer
+        8000   50.9%   52.3%            56.9%
+        9600   61.0%   61.2%            67.4%
+       11200   69.4%   71.2%            76.4%
+       12000   74.1%   76.0%            80.8%
+       12800   78.5%   82.1%            84.9%
+       13600   83.3%   87.0%            88.4%
+       14400   88.2%   93.5%            92.0%
+  Web reaches 80% CPU utilization at about 13,054 requests per second
+  API reaches 80% CPU utilization at about 12,525 requests per second
+  Database writer reaches 80% CPU utilization at about 11,857 requests per second
+ceiling run: 11,800 requests per second with 42 load generator tasks (limited by: Database writer)

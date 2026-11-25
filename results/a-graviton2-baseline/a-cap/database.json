@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 530341,
+    "Com_delete": 100,
+    "Com_insert": 2121781,
+    "Com_select": 28437659,
+    "Com_stmt_execute": 31591756,
+    "Com_update": 1052649,
+    "Connections": 3311,
+    "Created_tmp_disk_tables": 26,
+    "Created_tmp_tables": 12132429,
+    "Innodb_buffer_pool_read_requests": 4365764531,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 424,
+    "Innodb_row_lock_waits": 232,
+    "Innodb_rows_deleted": 1578937,
+    "Innodb_rows_inserted": 49576340,
+    "Innodb_rows_read": 15464585988,
+    "Innodb_rows_updated": 2118356,
+    "Queries": 33659142,
+    "Questions": 33239612,
+    "Slow_queries": 32,
+    "Sort_rows": 133555757,
+    "Uptime": 7986,
+    "at": "2026-11-23T15:30:32Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 1335528,
+    "Com_delete": 100,
+    "Com_insert": 5342558,
+    "Com_select": 70306225,
+    "Com_stmt_execute": 78286273,
+    "Com_update": 2661962,
+    "Connections": 3909,
+    "Created_tmp_disk_tables": 32,
+    "Created_tmp_tables": 29343839,
+    "Innodb_buffer_pool_read_requests": 10004794234,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 12820,
+    "Innodb_row_lock_waits": 2019,
+    "Innodb_rows_deleted": 1578937,
+    "Innodb_rows_inserted": 51990937,
+    "Innodb_rows_read": 36062284976,
+    "Innodb_rows_updated": 5338887,
+    "Queries": 83338866,
+    "Questions": 82360846,
+    "Slow_queries": 32,
+    "Sort_rows": 316736930,
+    "Uptime": 9616,
+    "at": "2026-11-23T15:57:42Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 27971.0,
+      "container_cpu_cfs_throttled_periods_total": 478.0,
+      "container_cpu_cfs_throttled_seconds_total": 16.567134
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 119018.0,
+      "container_cpu_cfs_throttled_periods_total": 27529.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.161065
+    },
+    "web": {}
+  }
+}

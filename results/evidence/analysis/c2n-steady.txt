@@ -1,0 +1,4 @@
+$ uv run -q analysis/summarize.py results/c-graviton5-right-sized/c2n-r1 | awk '/^  (window|unit) / { if (!shown[$1]++) print; next } /^  steady /'
+  window  target achieved  errors    p50    p95     p99     web     API      DB     web     API      DB
+  unit     req/s    req/s       %     ms     ms      ms   %vCPU  %limit   %vCPU  ms/req  ms/req  ms/req
+  steady    8000   8000.1   0.000    3.6   23.7    38.7    44.5    26.7    41.9   0.891   0.175   0.838

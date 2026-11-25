@@ -1,0 +1,172 @@
+{
+  "stage": "a-graviton2-baseline",
+  "label": "ab",
+  "push": "2026-11-23T17:07:52Z",
+  "pipeline_finished": "2026-11-23T17:42:36Z",
+  "pipeline_seconds": 2084,
+  "pipeline_runs": 1,
+  "node_groups": {
+    "from": "2026-11-23T17:09:11Z",
+    "to": "2026-11-23T17:24:15Z",
+    "seconds": 904
+  },
+  "database": {
+    "from": "2026-11-23T17:24:35Z",
+    "to": "2026-11-23T17:39:53Z",
+    "seconds": 918
+  },
+  "failovers": [
+    {
+      "started": "2026-11-23T17:25:55Z",
+      "to": "2",
+      "completed": "2026-11-23T17:26:05Z",
+      "seconds": 10
+    },
+    {
+      "started": "2026-11-23T17:33:35Z",
+      "to": "1",
+      "completed": "2026-11-23T17:33:51Z",
+      "seconds": 16
+    }
+  ],
+  "probe": {
+    "rate": 100,
+    "whole_observation": {
+      "requests": 359621,
+      "failed": 1936,
+      "share": 0.0053834453494095175
+    },
+    "during_the_change": {
+      "requests": 208022,
+      "failed": 1936,
+      "share": 0.00930670794435204
+    },
+    "failure_periods": [
+      {
+        "from": "2026-11-23T17:26:03Z",
+        "to": "2026-11-23T17:26:09Z",
+        "seconds": 7,
+        "failed": 86,
+        "requests": 687,
+        "seconds_without_a_success": 0,
+        "consecutive_seconds_without_a_success": 0,
+        "seconds_without_any_response": 2,
+        "failover": 1,
+        "failed_after_rds_completed": 52,
+        "seconds_after_rds_completed": 4
+      },
+      {
+        "from": "2026-11-23T17:33:38Z",
+        "to": "2026-11-23T17:34:03Z",
+        "seconds": 26,
+        "failed": 1850,
+        "requests": 2422,
+        "seconds_without_a_success": 20,
+        "consecutive_seconds_without_a_success": 20,
+        "seconds_without_any_response": 3,
+        "failover": 2,
+        "failed_after_rds_completed": 1132,
+        "seconds_after_rds_completed": 12
+      }
+    ],
+    "response_time": {
+      "before_the_push": {
+        "mean_ms": 6.47,
+        "worst_10s_mean_ms": 6.69,
+        "best_10s_mean_ms": 6.22,
+        "seconds": 172
+      },
+      "while_nodes_were_replaced": {
+        "mean_ms": 5.59,
+        "worst_10s_mean_ms": 6.68,
+        "best_10s_mean_ms": 4.77
+      }
+    },
+    "failure_causes": {
+      "timeout": 1515,
+      "HTTP 503": 353,
+      "HTTP 500": 48,
+      "HTTP 502": 20
+    },
+    "failed_outside_failovers": 0,
+    "failed_at_failovers": 1936
+  },
+  "pods": {
+    "web": {
+      "most": 32,
+      "lowest": 24,
+      "lowest_at": "2026-11-23T17:11:23Z",
+      "samples_at_zero": 0,
+      "zero_at": [],
+      "at_start_of_node_replacement": 32,
+      "lowest_while_nodes_were_replaced": 24,
+      "before_node_replacement": {
+        "lowest": 32,
+        "lowest_at": "2026-11-23T17:08:00Z",
+        "settles_at": 32,
+        "below_from": null,
+        "below_to": null,
+        "samples_below": 0
+      }
+    },
+    "api": {
+      "most": 6,
+      "lowest": 0,
+      "lowest_at": "2026-11-23T17:33:57Z",
+      "samples_at_zero": 2,
+      "zero_at": [
+        "2026-11-23T17:33:57Z",
+        "2026-11-23T17:34:07Z"
+      ],
+      "at_start_of_node_replacement": 6,
+      "lowest_while_nodes_were_replaced": 4,
+      "before_node_replacement": {
+        "lowest": 6,
+        "lowest_at": "2026-11-23T17:08:00Z",
+        "settles_at": 6,
+        "below_from": null,
+        "below_to": null,
+        "samples_below": 0
+      }
+    }
+  },
+  "inventory_interval_seconds": 10,
+  "background_load": {
+    "requests": 14300026,
+    "failed": 44104,
+    "share": 0.003084190196577265,
+    "codes": {
+      "1050": 30311,
+      "200": 13614381,
+      "201": 641541,
+      "500": 1557,
+      "502": 732,
+      "503": 11504
+    },
+    "rate": 4000.0,
+    "scheduled": 14360000,
+    "not_sent": 59974
+  },
+  "writer_cpu": {
+    "before_window": [
+      "2026-11-23T17:07:52Z",
+      "2026-11-23T17:23:55Z"
+    ],
+    "after_window": [
+      "2026-11-23T17:36:51Z",
+      "2026-11-23T17:42:36Z"
+    ],
+    "before_minutes": 16,
+    "after_minutes": 6,
+    "before_percent": 29.572187893926852,
+    "after_percent": 10.328055297257562,
+    "before_class": "db.r6g.8xlarge",
+    "after_class": "db.r9g.8xlarge",
+    "requests_per_second_before": 4100.359375,
+    "requests_per_second_after": 4100.069444444444,
+    "classes_seen": [
+      "db.r6g.8xlarge",
+      "db.r9g.8xlarge"
+    ]
+  }
+}

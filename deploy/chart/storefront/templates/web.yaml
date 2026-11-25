@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront-web
+  labels:
+    app: storefront-web
+    {{- include "storefront.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.web.replicas }}
+  selector:
+    matchLabels:
+      app: storefront-web
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: storefront-web
+        {{- include "storefront.labels" . | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 60
+      {{- include "storefront.scheduling" (dict "tier" .Values.web.nodeTier "app" "storefront-web") | nindent 6 }}
+      containers:
+        - name: web
+          image: "{{ .Values.image.webRepository }}:{{ .Values.image.webTag }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.web.port }}
+          env:
+            - name: PORT
+              value: {{ .Values.web.port | quote }}
+            - name: API_BASE_URL
+              value: "http://storefront-api:{{ .Values.api.port }}"
+          resources:
+            # No CPU limit: a pod needs slightly more than one core at peak (JavaScript
+            # thread plus compression threads), and nodes are sized by the request.
+            requests:
+              cpu: {{ .Values.web.cpu }}
+              memory: {{ .Values.web.memory }}
+            limits:
+              memory: {{ .Values.web.memory }}
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 10
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              sleep:
+                seconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: storefront-web
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz
+spec:
+  selector:
+    app: storefront-web
+  ports:
+    - name: http
+      port: {{ .Values.web.port }}
+      targetPort: http
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: storefront-web
+  labels:
+    {{- include "storefront.labels" . | nindent 4 }}
+spec:
+  maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: storefront-web

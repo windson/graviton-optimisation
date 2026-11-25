@@ -1,0 +1,8 @@
+$ uv run -q analysis/ceiling.py
+Rated load: the request rate at which the busiest tier is at 80% CPU utilization
+  A:   11,900 requests per second  busiest tier: API              (ceiling run)  instances $614 per month per 1,000 requests per second
+       a2-ceiling: 11,800 requests per second; CPU utilization: Web 71.6%, API 79.4%, Database writer 78.8%; response time: p50 7.0 ms, p95 21.2 ms, p99 31.7 ms; errors 0.0000% of requests
+  B:   28,400 requests per second  busiest tier: Web              (ceiling run)  2.39 times A's  instances $284 per month per 1,000 requests per second
+       b-ceiling: 28,400 requests per second; CPU utilization: Web 80.0%, API 68.4%, Database writer 73.7%; response time: p50 3.8 ms, p95 13.1 ms, p99 19.6 ms; errors 0.0000% of requests
+  C:   14,900 requests per second  busiest tier: Web              (ceiling run)  1.25 times A's  instances $275 per month per 1,000 requests per second
+       c-ceiling: 14,800 requests per second; CPU utilization: Web 79.3%, API 53.2%, Database writer 76.4%; response time: p50 4.4 ms, p95 15.6 ms, p99 23.2 ms; errors 0.0000% of requests

@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 2298424,
+    "Com_delete": 445,
+    "Com_insert": 9179808,
+    "Com_select": 119580717,
+    "Com_stmt_execute": 133329953,
+    "Com_update": 4589359,
+    "Connections": 2947,
+    "Created_tmp_disk_tables": 26,
+    "Created_tmp_tables": 49193414,
+    "Innodb_buffer_pool_read_requests": 16369413052,
+    "Innodb_buffer_pool_reads": 309129,
+    "Innodb_row_lock_time": 1733,
+    "Innodb_row_lock_waits": 1383,
+    "Innodb_rows_deleted": 8587283,
+    "Innodb_rows_inserted": 6887837,
+    "Innodb_rows_read": 59068338816,
+    "Innodb_rows_updated": 9176224,
+    "Queries": 141897172,
+    "Questions": 140280477,
+    "Slow_queries": 0,
+    "Sort_rows": 523748995,
+    "Uptime": 7820,
+    "at": "2026-11-23T19:43:58Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 3112081,
+    "Com_delete": 445,
+    "Com_insert": 12432515,
+    "Com_select": 161960335,
+    "Com_stmt_execute": 180584163,
+    "Com_update": 6213499,
+    "Connections": 3262,
+    "Created_tmp_disk_tables": 29,
+    "Created_tmp_tables": 66628651,
+    "Innodb_buffer_pool_read_requests": 22101042594,
+    "Innodb_buffer_pool_reads": 309129,
+    "Innodb_row_lock_time": 2668,
+    "Innodb_row_lock_waits": 2185,
+    "Innodb_rows_deleted": 8587283,
+    "Innodb_rows_inserted": 9325645,
+    "Innodb_rows_read": 79904484961,
+    "Innodb_rows_updated": 12426202,
+    "Queries": 192156654,
+    "Questions": 189981704,
+    "Slow_queries": 0,
+    "Sort_rows": 709340843,
+    "Uptime": 8710,
+    "at": "2026-11-23T19:58:48Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 403633.0,
+      "container_cpu_cfs_throttled_periods_total": 1039.0,
+      "container_cpu_cfs_throttled_seconds_total": 16.491924
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 444996.0,
+      "container_cpu_cfs_throttled_periods_total": 1606.0,
+      "container_cpu_cfs_throttled_seconds_total": 21.257468
+    },
+    "web": {}
+  }
+}

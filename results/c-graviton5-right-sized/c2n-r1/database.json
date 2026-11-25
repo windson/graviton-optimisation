@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 2,
+    "Com_commit": 1284384,
+    "Com_delete": 257,
+    "Com_insert": 5132373,
+    "Com_select": 66769937,
+    "Com_stmt_execute": 74451974,
+    "Com_update": 2563266,
+    "Connections": 2029,
+    "Created_tmp_disk_tables": 18,
+    "Created_tmp_tables": 27469513,
+    "Innodb_buffer_pool_read_requests": 8995805196,
+    "Innodb_buffer_pool_reads": 306577,
+    "Innodb_row_lock_time": 860,
+    "Innodb_row_lock_waits": 638,
+    "Innodb_rows_deleted": 4857052,
+    "Innodb_rows_inserted": 3847728,
+    "Innodb_rows_read": 33044646371,
+    "Innodb_rows_updated": 5129536,
+    "Queries": 79257545,
+    "Questions": 78342712,
+    "Slow_queries": 9,
+    "Sort_rows": 292403471,
+    "Uptime": 5331,
+    "at": "2026-11-24T11:30:19Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 1514546,
+    "Com_delete": 257,
+    "Com_insert": 6049562,
+    "Com_select": 78705720,
+    "Com_stmt_execute": 87762422,
+    "Com_update": 3022963,
+    "Connections": 2314,
+    "Created_tmp_disk_tables": 21,
+    "Created_tmp_tables": 32377557,
+    "Innodb_buffer_pool_read_requests": 10589630197,
+    "Innodb_buffer_pool_reads": 306577,
+    "Innodb_row_lock_time": 955,
+    "Innodb_row_lock_waits": 707,
+    "Innodb_rows_deleted": 4857052,
+    "Innodb_rows_inserted": 4537608,
+    "Innodb_rows_read": 38974045555,
+    "Innodb_rows_updated": 6046533,
+    "Queries": 93427777,
+    "Questions": 92349481,
+    "Slow_queries": 9,
+    "Sort_rows": 344682005,
+    "Uptime": 6200,
+    "at": "2026-11-24T11:44:48Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 104897.0,
+      "container_cpu_cfs_throttled_periods_total": 67.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.656399
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 125569.0,
+      "container_cpu_cfs_throttled_periods_total": 67.0,
+      "container_cpu_cfs_throttled_seconds_total": 0.656399
+    },
+    "web": {}
+  }
+}

@@ -1,0 +1,207 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  graviton-uplift - Amazon Aurora MySQL cluster with a writer and one reader in a second
+  Availability Zone, and the IAM role that lets the API pods read the database credentials.
+  The instance class is a parameter: changing it is how the study moves the data tier
+  between Graviton generations and sizes.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: graviton-uplift
+  DBInstanceClass:
+    Type: String
+    Description: Instance class of both Aurora instances. Memory optimized (R family).
+    AllowedPattern: ^db\.r[0-9]+g\.[0-9]*[a-z]+$
+  EngineVersion:
+    Type: String
+    Description: Aurora MySQL engine version. The same version is used for every configuration.
+    Default: 8.0.mysql_aurora.3.10.6
+  DatabaseName:
+    Type: String
+    Default: storefront
+  ApiNamespace:
+    Type: String
+    Default: storefront
+  ApiServiceAccount:
+    Type: String
+    Default: storefront-api
+
+Resources:
+  SubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: !Sub ${ProjectName} isolated subnets
+      SubnetIds:
+        Fn::Split:
+          - ","
+          - Fn::ImportValue: !Sub ${ProjectName}:DataSubnetIds
+
+  # Only the EKS nodes can reach the database.
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Sub ${ProjectName} Aurora MySQL
+      VpcId:
+        Fn::ImportValue: !Sub ${ProjectName}:VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId:
+            Fn::ImportValue: !Sub ${ProjectName}:ClusterSecurityGroupId
+          Description: MySQL from EKS nodes and pods
+      Tags:
+        - Key: Name
+          Value: !Sub ${ProjectName}-aurora
+
+  # Engine defaults are kept so that every instance class runs the same configuration;
+  # memory-dependent settings such as the buffer pool scale with the instance class.
+  ClusterParameterGroup:
+    Type: AWS::RDS::DBClusterParameterGroup
+    Properties:
+      Description: !Sub ${ProjectName} Aurora MySQL 3
+      Family: aurora-mysql8.0
+      Parameters:
+        require_secure_transport: "ON"
+        slow_query_log: "1"
+        long_query_time: "1"
+
+  MonitoringRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: monitoring.rds.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole
+
+  Cluster:
+    Type: AWS::RDS::DBCluster
+    # The data set takes minutes to generate, so keep a snapshot if the stack is deleted.
+    DeletionPolicy: Snapshot
+    UpdateReplacePolicy: Snapshot
+    Properties:
+      DBClusterIdentifier: !Ref ProjectName
+      Engine: aurora-mysql
+      EngineVersion: !Ref EngineVersion
+      DatabaseName: !Ref DatabaseName
+      MasterUsername: storefront_admin
+      # Amazon RDS creates and rotates the password in AWS Secrets Manager.
+      ManageMasterUserPassword: true
+      StorageEncrypted: true
+      # Aurora Standard storage: I/O is billed per request.
+      StorageType: aurora
+      BackupRetentionPeriod: 1
+      CopyTagsToSnapshot: true
+      DeletionProtection: false
+      # The RDS Data API lets the study run SQL (plans, statistics, cleanup) without a network path.
+      EnableHttpEndpoint: true
+      EnableCloudwatchLogsExports:
+        - error
+        - slowquery
+      DBSubnetGroupName: !Ref SubnetGroup
+      VpcSecurityGroupIds:
+        - !Ref SecurityGroup
+      DBClusterParameterGroupName: !Ref ClusterParameterGroup
+
+  # Two instances of the same class. The first one created becomes the writer; the second
+  # is a reader in another Availability Zone and the failover target.
+  Instance1:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBClusterIdentifier: !Ref Cluster
+      Engine: aurora-mysql
+      DBInstanceClass: !Ref DBInstanceClass
+      AvailabilityZone:
+        Fn::ImportValue: !Sub ${ProjectName}:AvailabilityZoneA
+      PromotionTier: 0
+      # Stay on the chosen long-term-support minor version for the whole study.
+      AutoMinorVersionUpgrade: false
+      PubliclyAccessible: false
+      EnablePerformanceInsights: true
+      PerformanceInsightsRetentionPeriod: 7
+      MonitoringInterval: 15
+      MonitoringRoleArn: !GetAtt MonitoringRole.Arn
+
+  Instance2:
+    Type: AWS::RDS::DBInstance
+    # Created and updated after Instance1, so the two instances never restart together.
+    DependsOn: Instance1
+    Properties:
+      DBClusterIdentifier: !Ref Cluster
+      Engine: aurora-mysql
+      DBInstanceClass: !Ref DBInstanceClass
+      AvailabilityZone:
+        Fn::ImportValue: !Sub ${ProjectName}:AvailabilityZoneB
+      PromotionTier: 1
+      AutoMinorVersionUpgrade: false
+      PubliclyAccessible: false
+      EnablePerformanceInsights: true
+      PerformanceInsightsRetentionPeriod: 7
+      MonitoringInterval: 15
+      MonitoringRoleArn: !GetAtt MonitoringRole.Arn
+
+  # ---- API pod identity -----------------------------------------------------------------
+  # The API reads the database credentials from Secrets Manager at start-up using this role,
+  # so no password is stored in Kubernetes or passed through the pipeline.
+  ApiPodRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: pods.eks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+              - sts:TagSession
+      Policies:
+        - PolicyName: ReadDatabaseSecret
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                  - secretsmanager:DescribeSecret
+                Resource: !GetAtt Cluster.MasterUserSecret.SecretArn
+
+  ApiPodIdentity:
+    Type: AWS::EKS::PodIdentityAssociation
+    Properties:
+      ClusterName:
+        Fn::ImportValue: !Sub ${ProjectName}:ClusterName
+      Namespace: !Ref ApiNamespace
+      ServiceAccount: !Ref ApiServiceAccount
+      RoleArn: !GetAtt ApiPodRole.Arn
+
+Outputs:
+  WriterEndpoint:
+    Description: Cluster (writer) endpoint used by the API.
+    Value: !GetAtt Cluster.Endpoint.Address
+  ReaderEndpoint:
+    Description: Reader endpoint.
+    Value: !GetAtt Cluster.ReadEndpoint.Address
+  SecretArn:
+    Description: Secrets Manager secret holding the database user name and password.
+    Value: !GetAtt Cluster.MasterUserSecret.SecretArn
+  ClusterArn:
+    Description: Cluster ARN, used with the RDS Data API.
+    Value: !GetAtt Cluster.DBClusterArn
+  ClusterIdentifier:
+    Value: !Ref Cluster
+  Instance1Identifier:
+    Value: !Ref Instance1
+  Instance2Identifier:
+    Value: !Ref Instance2
+  DatabaseName:
+    Value: !Ref DatabaseName
+  InstanceClass:
+    Description: Instance class as deployed, for the run records.
+    Value: !Ref DBInstanceClass

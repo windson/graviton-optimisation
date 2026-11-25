@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 1794060,
+    "Com_delete": 298,
+    "Com_insert": 7175351,
+    "Com_select": 94313326,
+    "Com_stmt_execute": 105035330,
+    "Com_update": 3577126,
+    "Connections": 4777,
+    "Created_tmp_disk_tables": 40,
+    "Created_tmp_tables": 39233666,
+    "Innodb_buffer_pool_read_requests": 13265485314,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 13169,
+    "Innodb_row_lock_waits": 2237,
+    "Innodb_rows_deleted": 5365143,
+    "Innodb_rows_inserted": 53364678,
+    "Innodb_rows_read": 47981950585,
+    "Innodb_rows_updated": 7170955,
+    "Queries": 111811109,
+    "Questions": 110502322,
+    "Slow_queries": 32,
+    "Sort_rows": 421979407,
+    "Uptime": 11967,
+    "at": "2026-11-23T16:36:53Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 2024278,
+    "Com_delete": 298,
+    "Com_insert": 8093399,
+    "Com_select": 106243070,
+    "Com_stmt_execute": 118340361,
+    "Com_update": 4036560,
+    "Connections": 5089,
+    "Created_tmp_disk_tables": 42,
+    "Created_tmp_tables": 44148462,
+    "Innodb_buffer_pool_read_requests": 14856216236,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 13325,
+    "Innodb_row_lock_waits": 2343,
+    "Innodb_rows_deleted": 5365143,
+    "Innodb_rows_inserted": 54054199,
+    "Innodb_rows_read": 53891661404,
+    "Innodb_rows_updated": 8088436,
+    "Queries": 125977727,
+    "Questions": 124503912,
+    "Slow_queries": 32,
+    "Sort_rows": 474291059,
+    "Uptime": 12836,
+    "at": "2026-11-23T16:51:22Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 210776.0,
+      "container_cpu_cfs_throttled_periods_total": 27574.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.4934890000001
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 252811.0,
+      "container_cpu_cfs_throttled_periods_total": 27584.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.641721
+    },
+    "web": {}
+  }
+}

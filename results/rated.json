@@ -1,0 +1,1419 @@
+{
+  "rate_rps": 11800.0,
+  "ceiling": 0.8,
+  "baseline_rated_rps_exact": 11890.5,
+  "stages": {
+    "a-graviton2-baseline": {
+      "runs": [
+        "a2-ceiling",
+        "a3-rated-1",
+        "a3-rated-2"
+      ],
+      "seconds_per_run": [
+        590,
+        590,
+        590
+      ],
+      "target_rps": 11800.0,
+      "achieved_share": {
+        "median": 0.99999,
+        "min": 0.99999,
+        "max": 0.99999,
+        "runs": 3
+      },
+      "error_rate": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "runs": 3
+      },
+      "latency_ms": {
+        "p50": {
+          "median": 7.068,
+          "min": 6.997,
+          "max": 7.068,
+          "runs": 3
+        },
+        "p95": {
+          "median": 22.092,
+          "min": 21.228,
+          "max": 22.092,
+          "runs": 3
+        },
+        "p99": {
+          "median": 33.285,
+          "min": 31.662,
+          "max": 33.285,
+          "runs": 3
+        }
+      },
+      "utilization": {
+        "web": {
+          "median": 0.7319,
+          "min": 0.7162,
+          "max": 0.7346,
+          "runs": 3
+        },
+        "api": {
+          "median": 0.7867619047619047,
+          "min": 0.7835238095238095,
+          "max": 0.7939047619047619,
+          "runs": 3
+        },
+        "db": {
+          "median": 0.793283,
+          "min": 0.788309,
+          "max": 0.793909,
+          "runs": 3
+        }
+      },
+      "api_pods_only": {
+        "median": 0.7519047619047619,
+        "min": 0.7507619047619047,
+        "max": 0.7528571428571429,
+        "runs": 3
+      },
+      "cpu_ms_per_request": {
+        "web": {
+          "median": 1.9848,
+          "min": 1.9424,
+          "max": 1.9923,
+          "runs": 3
+        },
+        "api": {
+          "median": 0.7001,
+          "min": 0.6972,
+          "max": 0.7064,
+          "runs": 3
+        },
+        "db": {
+          "median": 2.1513,
+          "min": 2.1378,
+          "max": 2.153,
+          "runs": 3
+        }
+      },
+      "api_throttled_share": {
+        "median": 0.00781,
+        "min": 0.00463,
+        "max": 0.00951,
+        "runs": 3
+      },
+      "busiest_node": {
+        "web": 0.7397,
+        "api": 0.8782857142857142
+      },
+      "per_run": [
+        {
+          "busiest_node": {
+            "web": 0.7163,
+            "api": 0.8782857142857142
+          },
+          "busiest_tier": "api",
+          "busiest_utilization": 0.7939047619047619,
+          "rating_rps": 11890.484165067179,
+          "run": "a2-ceiling",
+          "from": "2026-11-24T02:20:40Z",
+          "to": "2026-11-24T02:30:30Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.89,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 6.997,
+          "p95_ms": 21.228,
+          "p99_ms": 31.662,
+          "utilization": {
+            "web": 0.7162,
+            "api": 0.7939047619047619,
+            "api_share_of_node_vcpus": 0.6946,
+            "api_pods_only": 0.7507619047619047,
+            "db": 0.788309
+          },
+          "node_utilization": {
+            "web": [
+              0.7161,
+              0.7163
+            ],
+            "api": [
+              0.7685,
+              0.6584,
+              0.6571
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 1.9424,
+            "api": 0.7064,
+            "db": 2.1378
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.1593,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 1.988
+          },
+          "api_throttled_share": 0.00781,
+          "operations_p99_ms": {
+            "api_cart_get": 3.8,
+            "api_cart_put": 17.555,
+            "api_catalog": 31.981,
+            "api_home": 10.861,
+            "api_order_post": 22.315,
+            "api_orders": 6.022,
+            "api_product": 9.829,
+            "api_search": 26.45,
+            "page_category": 44.043,
+            "page_home": 35.698,
+            "page_product": 28.367,
+            "page_search": 41.479
+          }
+        },
+        {
+          "busiest_node": {
+            "web": 0.7358,
+            "api": 0.8358857142857143
+          },
+          "busiest_tier": "db",
+          "busiest_utilization": 0.793283,
+          "rating_rps": 11899.803727043187,
+          "run": "a3-rated-1",
+          "from": "2026-11-24T08:49:06Z",
+          "to": "2026-11-24T08:58:56Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.89,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 7.068,
+          "p95_ms": 22.092,
+          "p99_ms": 33.285,
+          "utilization": {
+            "web": 0.7319,
+            "api": 0.7835238095238095,
+            "api_share_of_node_vcpus": 0.6856,
+            "api_pods_only": 0.7519047619047619,
+            "db": 0.793283
+          },
+          "node_utilization": {
+            "web": [
+              0.728,
+              0.7358
+            ],
+            "api": [
+              0.7314,
+              0.6498,
+              0.6756
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 1.9848,
+            "api": 0.6972,
+            "db": 2.1513
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.2521,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 1.848
+          },
+          "api_throttled_share": 0.00951,
+          "operations_p99_ms": {
+            "api_cart_get": 3.995,
+            "api_cart_put": 18.092,
+            "api_catalog": 32.302,
+            "api_home": 11.533,
+            "api_order_post": 23.227,
+            "api_orders": 6.331,
+            "api_product": 10.229,
+            "api_search": 27.255,
+            "page_category": 45.384,
+            "page_home": 37.906,
+            "page_product": 30.422,
+            "page_search": 43.604
+          }
+        },
+        {
+          "busiest_node": {
+            "web": 0.7397,
+            "api": 0.8478857142857142
+          },
+          "busiest_tier": "db",
+          "busiest_utilization": 0.793909,
+          "rating_rps": 11890.430767254182,
+          "run": "a3-rated-2",
+          "from": "2026-11-24T09:06:44Z",
+          "to": "2026-11-24T09:16:34Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.9,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 7.068,
+          "p95_ms": 22.092,
+          "p99_ms": 33.285,
+          "utilization": {
+            "web": 0.7346,
+            "api": 0.7867619047619047,
+            "api_share_of_node_vcpus": 0.6884,
+            "api_pods_only": 0.7528571428571429,
+            "db": 0.793909
+          },
+          "node_utilization": {
+            "web": [
+              0.7296,
+              0.7397
+            ],
+            "api": [
+              0.7419,
+              0.6403,
+              0.6831
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 1.9923,
+            "api": 0.7001,
+            "db": 2.153
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.1708,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 2.114
+          },
+          "api_throttled_share": 0.00463,
+          "operations_p99_ms": {
+            "api_cart_get": 3.878,
+            "api_cart_put": 17.911,
+            "api_catalog": 32.302,
+            "api_home": 11.305,
+            "api_order_post": 22.996,
+            "api_orders": 6.144,
+            "api_product": 10.128,
+            "api_search": 27.528,
+            "page_category": 45.384,
+            "page_home": 37.906,
+            "page_product": 30.422,
+            "page_search": 43.604
+          }
+        }
+      ],
+      "busiest_tier": "db",
+      "busiest_utilization": 0.793283,
+      "second_busiest_tier": "api",
+      "second_busiest_utilization": 0.7867619047619047,
+      "rating_from_these_runs_rps": {
+        "median": 11890.484165067179,
+        "min": 11890.430767254182,
+        "max": 11899.803727043187,
+        "runs": 3
+      },
+      "rating_by_busiest_node_rps": {
+        "median": 11133.481601293975,
+        "min": 10748.110605074822,
+        "max": 11293.304621274268,
+        "runs": 3
+      },
+      "source": "runs",
+      "missing_runs": [],
+      "letter": "A",
+      "title": "Graviton2 baseline",
+      "rated_rps": 11900.0,
+      "rated_rps_exact": 11890.5,
+      "room_above_rate_rps": 90.5,
+      "room_above_rate": 0.007669491525423622
+    },
+    "b-graviton5-same-size": {
+      "runs": [
+        "b-cap"
+      ],
+      "seconds_per_run": [
+        110
+      ],
+      "target_rps": 12000.0,
+      "achieved_share": {
+        "median": 0.99992,
+        "min": 0.99992,
+        "max": 0.99992,
+        "runs": 1
+      },
+      "error_rate": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "runs": 1
+      },
+      "latency_ms": {
+        "p50": {
+          "median": 3.339,
+          "min": 3.339,
+          "max": 3.339,
+          "runs": 1
+        },
+        "p95": {
+          "median": 8.211,
+          "min": 8.211,
+          "max": 8.211,
+          "runs": 1
+        },
+        "p99": {
+          "median": 11.081,
+          "min": 11.081,
+          "max": 11.081,
+          "runs": 1
+        }
+      },
+      "utilization": {
+        "web": {
+          "median": 0.3311,
+          "min": 0.3311,
+          "max": 0.3311,
+          "runs": 1
+        },
+        "api": {
+          "median": 0.2895238095238095,
+          "min": 0.2895238095238095,
+          "max": 0.2895238095238095,
+          "runs": 1
+        },
+        "db": {
+          "median": 0.306717,
+          "min": 0.306717,
+          "max": 0.306717,
+          "runs": 1
+        }
+      },
+      "api_pods_only": {
+        "median": 0.2801904761904762,
+        "min": 0.2801904761904762,
+        "max": 0.2801904761904762,
+        "runs": 1
+      },
+      "cpu_ms_per_request": {
+        "web": {
+          "median": 0.8832,
+          "min": 0.8832,
+          "max": 0.8832,
+          "runs": 1
+        },
+        "api": {
+          "median": 0.2534,
+          "min": 0.2534,
+          "max": 0.2534,
+          "runs": 1
+        },
+        "db": {
+          "median": 0.818,
+          "min": 0.818,
+          "max": 0.818,
+          "runs": 1
+        }
+      },
+      "api_throttled_share": {
+        "median": 0.01105,
+        "min": 0.01105,
+        "max": 0.01105,
+        "runs": 1
+      },
+      "busiest_node": {
+        "web": 0.3353,
+        "api": 0.3045714285714286
+      },
+      "per_run": [
+        {
+          "busiest_node": {
+            "web": 0.3353,
+            "api": 0.3045714285714286
+          },
+          "busiest_tier": "web",
+          "busiest_utilization": 0.3311,
+          "rating_rps": 28991.845363938388,
+          "run": "b-cap",
+          "from": "2026-11-23T18:27:42Z",
+          "to": "2026-11-23T18:29:32Z",
+          "seconds": 110,
+          "target_rps": 12000.0,
+          "achieved_rps": 11999.0,
+          "achieved_share": 0.99992,
+          "error_rate": 0.0,
+          "p50_ms": 3.339,
+          "p95_ms": 8.211,
+          "p99_ms": 11.081,
+          "utilization": {
+            "web": 0.3311,
+            "api": 0.2895238095238095,
+            "api_share_of_node_vcpus": 0.2534,
+            "api_pods_only": 0.2801904761904762,
+            "db": 0.306717
+          },
+          "node_utilization": {
+            "web": [
+              0.3353,
+              0.327
+            ],
+            "api": [
+              0.2611,
+              0.2665,
+              0.2326
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 0.8832,
+            "api": 0.2534,
+            "db": 0.818
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.242,
+          "tasks": {
+            "requested": 110,
+            "reporting": 110,
+            "start_spread_seconds": 1.963
+          },
+          "api_throttled_share": 0.01105,
+          "operations_p99_ms": {}
+        }
+      ],
+      "busiest_tier": "web",
+      "busiest_utilization": 0.3311,
+      "second_busiest_tier": "db",
+      "second_busiest_utilization": 0.306717,
+      "rating_from_these_runs_rps": {
+        "median": 28991.845363938388,
+        "min": 28991.845363938388,
+        "max": 28991.845363938388,
+        "runs": 1
+      },
+      "rating_by_busiest_node_rps": {
+        "median": 28628.690724724132,
+        "min": 28628.690724724132,
+        "max": 28628.690724724132,
+        "runs": 1
+      },
+      "source": "capacity step",
+      "step_run": "b-cap",
+      "missing_runs": [],
+      "letter": "B",
+      "title": "Graviton5, same size",
+      "rated_rps": 28400.0,
+      "rated_rps_exact": 28407.1,
+      "room_above_rate_rps": 16607.1,
+      "room_above_rate": 1.4073813559322033
+    },
+    "c-graviton5-right-sized": {
+      "runs": [
+        "c2-rated-1",
+        "c2-rated-2",
+        "c2-rated-3"
+      ],
+      "seconds_per_run": [
+        590,
+        590,
+        590
+      ],
+      "target_rps": 11800.0,
+      "achieved_share": {
+        "median": 0.99999,
+        "min": 0.99999,
+        "max": 0.99999,
+        "runs": 3
+      },
+      "error_rate": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "runs": 3
+      },
+      "latency_ms": {
+        "p50": {
+          "median": 3.8,
+          "min": 3.8,
+          "max": 3.839,
+          "runs": 3
+        },
+        "p95": {
+          "median": 11.081,
+          "min": 10.97,
+          "max": 11.081,
+          "runs": 3
+        },
+        "p99": {
+          "median": 15.569,
+          "min": 15.569,
+          "max": 15.726,
+          "runs": 3
+        }
+      },
+      "utilization": {
+        "web": {
+          "median": 0.6558,
+          "min": 0.6554,
+          "max": 0.6567,
+          "runs": 3
+        },
+        "api": {
+          "median": 0.396,
+          "min": 0.3958095238095238,
+          "max": 0.4013333333333334,
+          "runs": 3
+        },
+        "db": {
+          "median": 0.616109,
+          "min": 0.615719,
+          "max": 0.616444,
+          "runs": 3
+        }
+      },
+      "api_pods_only": {
+        "median": 0.3676190476190476,
+        "min": 0.3660952380952381,
+        "max": 0.3742857142857143,
+        "runs": 3
+      },
+      "cpu_ms_per_request": {
+        "web": {
+          "median": 0.8892,
+          "min": 0.8887,
+          "max": 0.8904,
+          "runs": 3
+        },
+        "api": {
+          "median": 0.1762,
+          "min": 0.1761,
+          "max": 0.1786,
+          "runs": 3
+        },
+        "db": {
+          "median": 0.8354,
+          "min": 0.8349,
+          "max": 0.8359,
+          "runs": 3
+        }
+      },
+      "api_throttled_share": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "runs": 3
+      },
+      "busiest_node": {
+        "web": 0.6599,
+        "api": 0.4565714285714286
+      },
+      "per_run": [
+        {
+          "busiest_node": {
+            "web": 0.6582,
+            "api": 0.4565714285714286
+          },
+          "busiest_tier": "web",
+          "busiest_utilization": 0.6554,
+          "rating_rps": 14403.283490997865,
+          "run": "c2-rated-1",
+          "from": "2026-11-24T10:19:33Z",
+          "to": "2026-11-24T10:29:23Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.89,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 3.839,
+          "p95_ms": 11.081,
+          "p99_ms": 15.726,
+          "utilization": {
+            "web": 0.6554,
+            "api": 0.4013333333333334,
+            "api_share_of_node_vcpus": 0.3512,
+            "api_pods_only": 0.3742857142857143,
+            "db": 0.616444
+          },
+          "node_utilization": {
+            "web": [
+              0.6527,
+              0.6582
+            ],
+            "api": [
+              0.3337,
+              0.3204,
+              0.3995
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 0.8887,
+            "api": 0.1786,
+            "db": 0.8359
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.1869,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 1.906
+          },
+          "api_throttled_share": 0.0,
+          "operations_p99_ms": {
+            "api_cart_get": 2.652,
+            "api_cart_put": 10.97,
+            "api_catalog": 13.134,
+            "api_home": 6.524,
+            "api_order_post": 14.373,
+            "api_orders": 3.689,
+            "api_product": 5.56,
+            "api_search": 10.435,
+            "page_category": 21.017,
+            "page_home": 19.401,
+            "page_product": 16.205,
+            "page_search": 19.208
+          }
+        },
+        {
+          "busiest_node": {
+            "web": 0.6599,
+            "api": 0.4547428571428571
+          },
+          "busiest_tier": "web",
+          "busiest_utilization": 0.6567,
+          "rating_rps": 14374.770823816052,
+          "run": "c2-rated-2",
+          "from": "2026-11-24T10:37:34Z",
+          "to": "2026-11-24T10:47:24Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.89,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 3.8,
+          "p95_ms": 11.081,
+          "p99_ms": 15.569,
+          "utilization": {
+            "web": 0.6567,
+            "api": 0.396,
+            "api_share_of_node_vcpus": 0.3466,
+            "api_pods_only": 0.3676190476190476,
+            "db": 0.616109
+          },
+          "node_utilization": {
+            "web": [
+              0.6535,
+              0.6599
+            ],
+            "api": [
+              0.3356,
+              0.3063,
+              0.3979
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 0.8904,
+            "api": 0.1762,
+            "db": 0.8354
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.2111,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 1.89
+          },
+          "api_throttled_share": 0.0,
+          "operations_p99_ms": {
+            "api_cart_get": 2.573,
+            "api_cart_put": 10.861,
+            "api_catalog": 13.134,
+            "api_home": 6.268,
+            "api_order_post": 14.23,
+            "api_orders": 3.615,
+            "api_product": 5.45,
+            "api_search": 10.332,
+            "page_category": 21.228,
+            "page_home": 19.401,
+            "page_product": 16.044,
+            "page_search": 19.208
+          }
+        },
+        {
+          "busiest_node": {
+            "web": 0.6578,
+            "api": 0.44948571428571427
+          },
+          "busiest_tier": "web",
+          "busiest_utilization": 0.6558,
+          "rating_rps": 14394.510521500457,
+          "run": "c2-rated-3",
+          "from": "2026-11-24T10:56:00Z",
+          "to": "2026-11-24T11:05:50Z",
+          "seconds": 590,
+          "target_rps": 11800.0,
+          "achieved_rps": 11799.9,
+          "achieved_share": 0.99999,
+          "error_rate": 0.0,
+          "p50_ms": 3.8,
+          "p95_ms": 10.97,
+          "p99_ms": 15.569,
+          "utilization": {
+            "web": 0.6558,
+            "api": 0.3958095238095238,
+            "api_share_of_node_vcpus": 0.3463,
+            "api_pods_only": 0.3660952380952381,
+            "db": 0.615719
+          },
+          "node_utilization": {
+            "web": [
+              0.6538,
+              0.6578
+            ],
+            "api": [
+              0.3347,
+              0.311,
+              0.3933
+            ]
+          },
+          "cpu_ms_per_request": {
+            "web": 0.8892,
+            "api": 0.1761,
+            "db": 0.8349
+          },
+          "buffer_cache_hit_ratio": 100.0,
+          "generator_peak_cpu_share": 0.2005,
+          "tasks": {
+            "requested": 42,
+            "reporting": 42,
+            "start_spread_seconds": 1.97
+          },
+          "api_throttled_share": 0.0,
+          "operations_p99_ms": {
+            "api_cart_get": 2.573,
+            "api_cart_put": 10.861,
+            "api_catalog": 13.134,
+            "api_home": 6.268,
+            "api_order_post": 14.089,
+            "api_orders": 3.615,
+            "api_product": 5.45,
+            "api_search": 10.332,
+            "page_category": 21.017,
+            "page_home": 19.401,
+            "page_product": 16.044,
+            "page_search": 19.208
+          }
+        }
+      ],
+      "busiest_tier": "web",
+      "busiest_utilization": 0.6558,
+      "second_busiest_tier": "db",
+      "second_busiest_utilization": 0.616109,
+      "rating_from_these_runs_rps": {
+        "median": 14394.510521500457,
+        "min": 14374.770823816052,
+        "max": 14403.283490997865,
+        "runs": 3
+      },
+      "rating_by_busiest_node_rps": {
+        "median": 14342.011546642358,
+        "min": 14305.06440369753,
+        "max": 14350.744907266646,
+        "runs": 3
+      },
+      "source": "runs",
+      "missing_runs": [],
+      "letter": "C",
+      "title": "Graviton5, right-sized",
+      "rated_rps": 14900.0,
+      "rated_rps_exact": 14927.0,
+      "room_above_rate_rps": 3127.0,
+      "room_above_rate": 0.2649999999999999
+    }
+  },
+  "criteria": [
+    {
+      "criterion": "Achieved request rate, share of the target rate",
+      "unit": "share",
+      "value": 0.99999,
+      "baseline": 0.99999,
+      "threshold": "at least 99.5%",
+      "met": true
+    },
+    {
+      "criterion": "Error rate, share of requests",
+      "unit": "share",
+      "value": 0.0,
+      "baseline": 0.0,
+      "threshold": "at most 0.1%, and at most the baseline's plus 0.05 percentage points",
+      "met": true
+    },
+    {
+      "criterion": "p50 response time",
+      "unit": "ms",
+      "value": 3.8,
+      "baseline": 7.068,
+      "change": -0.4623655913978495,
+      "threshold": "at most 5% above the baseline's",
+      "met": true
+    },
+    {
+      "criterion": "p95 response time",
+      "unit": "ms",
+      "value": 11.081,
+      "baseline": 22.092,
+      "change": -0.4984157160963244,
+      "threshold": "at most 5% above the baseline's",
+      "met": true
+    },
+    {
+      "criterion": "p99 response time",
+      "unit": "ms",
+      "value": 15.569,
+      "baseline": 33.285,
+      "change": -0.5322517650593359,
+      "threshold": "at most 10% above the baseline's",
+      "met": true
+    },
+    {
+      "criterion": "CPU utilization of the busiest tier",
+      "unit": "share",
+      "value": 0.6558,
+      "baseline": 0.793283,
+      "tier": "web",
+      "baseline_tier": "db",
+      "highest_in_a_run": 0.6567,
+      "threshold": "at most 80%",
+      "met": true
+    }
+  ],
+  "holds": true,
+  "holds_against_baseline_runs_of_second_session_only": {
+    "runs": [
+      "a3-rated-1",
+      "a3-rated-2"
+    ],
+    "holds": true,
+    "criteria_met": 6,
+    "criteria": 6
+  },
+  "minutes_from_baseline_runs_to_right_sized_runs": 63,
+  "right_sized_rating_from_second_session": {
+    "web_cpu_ms_per_request": {
+      "in_its_ceiling_run": 0.8576,
+      "in_these_runs": 0.8892,
+      "change": 0.03684701492537301
+    },
+    "runs": [
+      "c2-rated-1",
+      "c2-rated-2",
+      "c2-rated-3"
+    ],
+    "scaled_from_utilization": 0.6558,
+    "rated_rps": 14400.0,
+    "rated_rps_exact": 14394.510521500457,
+    "lowest": 14374.770823816052,
+    "highest": 14403.283490997865,
+    "above_comparison_rate_rps": 2600.0,
+    "vs_baseline_rating": 0.2100840336134453
+  },
+  "expected": {
+    "between_steps_rps": [
+      11200.0,
+      12000.0
+    ],
+    "step_seconds": 110,
+    "utilization": {
+      "web": 0.6440983797974746,
+      "api": 0.4312356520755571,
+      "db": 0.627935573071634
+    },
+    "busiest_tier": "web",
+    "busiest_utilization": 0.6440983797974746,
+    "p50_ms": 4.056495386923365,
+    "p95_ms": 11.166718889861233,
+    "p99_ms": 16.37842765345668
+  },
+  "work_backwards": {
+    "load_rps": 11890.5,
+    "ceiling": 0.8,
+    "cpu_per_request_from": [
+      "b-r1",
+      "b-r2",
+      "b-r3"
+    ],
+    "cpu_per_request_at_rps": 8000.0,
+    "tiers": {
+      "web": {
+        "cpu_ms_per_request_graviton5": 0.8907,
+        "cores_at_load": 10.590868350000001,
+        "capacity_needed": 13.238585437500001,
+        "baseline_capacity": 32,
+        "needed_share_of_baseline": 0.41370579492187504,
+        "chosen_capacity": 16,
+        "next_size_down": 8.0,
+        "predicted_utilization": 0.6619292718750001,
+        "measured_utilization": 0.6558,
+        "measured_at_rps": 11800.0,
+        "calculated_utilization_at_measured_rate": 0.65689125,
+        "measured_cpu_ms_per_request": 0.8892,
+        "measured_utilization_on_next_size_down": 1.3116
+      },
+      "api": {
+        "cpu_ms_per_request_graviton5": 0.2412,
+        "cores_at_load": 2.8679886000000003,
+        "capacity_needed": 3.5849857500000004,
+        "baseline_capacity": 10.5,
+        "needed_share_of_baseline": 0.3414272142857143,
+        "chosen_capacity": 5.25,
+        "next_size_down": 2.625,
+        "predicted_utilization": 0.5462835428571429,
+        "measured_utilization": 0.396,
+        "measured_at_rps": 11800.0,
+        "calculated_utilization_at_measured_rate": 0.5421257142857142,
+        "measured_cpu_ms_per_request": 0.1762,
+        "measured_utilization_on_next_size_down": 0.792
+      },
+      "db": {
+        "cpu_ms_per_request_graviton5": 0.8137,
+        "cores_at_load": 9.67529985,
+        "capacity_needed": 12.094124812499999,
+        "baseline_capacity": 32,
+        "needed_share_of_baseline": 0.37794140039062496,
+        "chosen_capacity": 16,
+        "next_size_down": 8.0,
+        "predicted_utilization": 0.604706240625,
+        "measured_utilization": 0.616109,
+        "measured_at_rps": 11800.0,
+        "calculated_utilization_at_measured_rate": 0.6001037499999999,
+        "measured_cpu_ms_per_request": 0.8354,
+        "measured_utilization_on_next_size_down": 1.232218
+      }
+    }
+  },
+  "one_web_node_out": {
+    "run": "c2n-r1",
+    "from": "2026-11-24T11:33:31Z",
+    "to": "2026-11-24T11:43:21Z",
+    "seconds": 590,
+    "target_rps": 8000.0,
+    "achieved_rps": 8000.07,
+    "achieved_share": 1.00001,
+    "error_rate": 0.0,
+    "p50_ms": 3.58,
+    "p95_ms": 23.695,
+    "p99_ms": 38.672,
+    "cpu_ms_per_request": {
+      "web": 0.8906,
+      "api": 0.1755,
+      "db": 0.838
+    },
+    "buffer_cache_hit_ratio": 100.0,
+    "generator_peak_cpu_share": 0.1534,
+    "tasks": {
+      "requested": 28,
+      "reporting": 28,
+      "start_spread_seconds": 1.937
+    },
+    "api_throttled_share": 0.0,
+    "operations_p99_ms": {
+      "api_cart_get": 2.423,
+      "api_cart_put": 6.859,
+      "api_catalog": 12.745,
+      "api_home": 5.845,
+      "api_order_post": 10.54,
+      "api_orders": 3.372,
+      "api_product": 5.236,
+      "api_search": 10.027,
+      "page_category": 51.174,
+      "page_home": 50.16,
+      "page_product": 45.841,
+      "page_search": 48.192
+    },
+    "web_pods_wanted": 16,
+    "web_pods_running": 8,
+    "web_pods_per_node": [
+      0,
+      8
+    ],
+    "web_node_utilization": [
+      0.0019,
+      0.8887
+    ],
+    "surviving_node_utilization": 0.8887,
+    "web_cores_used": 7.125,
+    "rate_at_ceiling_on_the_node_left_rps": 7201.593338584449,
+    "within_limits": true,
+    "reasons": [],
+    "both_nodes": {
+      "run": "c2-r1",
+      "p50_ms": 3.545,
+      "p95_ms": 9.075,
+      "p99_ms": 11.765,
+      "error_rate": 0.0,
+      "achieved_share": 1.00001,
+      "web_utilization": 0.448
+    }
+  },
+  "sessions": {
+    "a": {
+      "rate_rps": 11800.0,
+      "measures": {
+        "p50_ms": {
+          "first": {
+            "median": 6.997,
+            "min": 6.997,
+            "max": 6.997,
+            "runs": 1
+          },
+          "second": {
+            "median": 7.068,
+            "min": 7.068,
+            "max": 7.068,
+            "runs": 2
+          },
+          "change": 0.01014720594540508,
+          "difference": 0.07099999999999973
+        },
+        "p95_ms": {
+          "first": {
+            "median": 21.228,
+            "min": 21.228,
+            "max": 21.228,
+            "runs": 1
+          },
+          "second": {
+            "median": 22.092,
+            "min": 22.092,
+            "max": 22.092,
+            "runs": 2
+          },
+          "change": 0.04070096099491227,
+          "difference": 0.8639999999999972
+        },
+        "p99_ms": {
+          "first": {
+            "median": 31.662,
+            "min": 31.662,
+            "max": 31.662,
+            "runs": 1
+          },
+          "second": {
+            "median": 33.285,
+            "min": 33.285,
+            "max": 33.285,
+            "runs": 2
+          },
+          "change": 0.05126018571157842,
+          "difference": 1.6229999999999976
+        },
+        "cpu_ms_per_request_web": {
+          "first": {
+            "median": 1.9424,
+            "min": 1.9424,
+            "max": 1.9424,
+            "runs": 1
+          },
+          "second": {
+            "median": 1.98855,
+            "min": 1.9848,
+            "max": 1.9923,
+            "runs": 2
+          },
+          "change": 0.023759266886326236,
+          "difference": 0.046150000000000135
+        },
+        "utilization_web": {
+          "first": {
+            "median": 0.7162,
+            "min": 0.7162,
+            "max": 0.7162,
+            "runs": 1
+          },
+          "second": {
+            "median": 0.73325,
+            "min": 0.7319,
+            "max": 0.7346,
+            "runs": 2
+          },
+          "change": 0.02380619938564643,
+          "difference": 0.01705000000000001
+        },
+        "cpu_ms_per_request_api": {
+          "first": {
+            "median": 0.7064,
+            "min": 0.7064,
+            "max": 0.7064,
+            "runs": 1
+          },
+          "second": {
+            "median": 0.69865,
+            "min": 0.6972,
+            "max": 0.7001,
+            "runs": 2
+          },
+          "change": -0.010971121177802967,
+          "difference": -0.007750000000000035
+        },
+        "utilization_api": {
+          "first": {
+            "median": 0.7939047619047619,
+            "min": 0.7939047619047619,
+            "max": 0.7939047619047619,
+            "runs": 1
+          },
+          "second": {
+            "median": 0.7851428571428571,
+            "min": 0.7835238095238095,
+            "max": 0.7867619047619047,
+            "runs": 2
+          },
+          "change": -0.011036468330134386,
+          "difference": -0.008761904761904749
+        },
+        "cpu_ms_per_request_db": {
+          "first": {
+            "median": 2.1378,
+            "min": 2.1378,
+            "max": 2.1378,
+            "runs": 1
+          },
+          "second": {
+            "median": 2.15215,
+            "min": 2.1513,
+            "max": 2.153,
+            "runs": 2
+          },
+          "change": 0.006712508185985566,
+          "difference": 0.014349999999999863
+        },
+        "utilization_db": {
+          "first": {
+            "median": 0.788309,
+            "min": 0.788309,
+            "max": 0.788309,
+            "runs": 1
+          },
+          "second": {
+            "median": 0.793596,
+            "min": 0.793283,
+            "max": 0.793909,
+            "runs": 2
+          },
+          "change": 0.006706760927504218,
+          "difference": 0.005286999999999931
+        }
+      },
+      "first": {
+        "runs": [
+          "a2-ceiling"
+        ],
+        "from": "2026-11-24T02:20:40Z",
+        "to": "2026-11-24T02:30:30Z"
+      },
+      "second": {
+        "runs": [
+          "a3-rated-1",
+          "a3-rated-2"
+        ],
+        "from": "2026-11-24T08:49:06Z",
+        "to": "2026-11-24T09:16:34Z"
+      }
+    },
+    "c": {
+      "rate_rps": 8000.0,
+      "measures": {
+        "p50_ms": {
+          "first": {
+            "median": 3.652,
+            "min": 3.652,
+            "max": 3.689,
+            "runs": 3
+          },
+          "second": {
+            "median": 3.545,
+            "min": 3.545,
+            "max": 3.545,
+            "runs": 1
+          },
+          "change": -0.029299014238773347,
+          "difference": -0.1070000000000002
+        },
+        "p95_ms": {
+          "first": {
+            "median": 8.806,
+            "min": 8.719,
+            "max": 8.806,
+            "runs": 3
+          },
+          "second": {
+            "median": 9.075,
+            "min": 9.075,
+            "max": 9.075,
+            "runs": 1
+          },
+          "change": 0.030547354076765787,
+          "difference": 0.26900000000000013
+        },
+        "p99_ms": {
+          "first": {
+            "median": 11.765,
+            "min": 11.648,
+            "max": 11.765,
+            "runs": 3
+          },
+          "second": {
+            "median": 11.765,
+            "min": 11.765,
+            "max": 11.765,
+            "runs": 1
+          },
+          "change": 0.0,
+          "difference": 0.0
+        },
+        "cpu_ms_per_request_web": {
+          "first": {
+            "median": 0.8676,
+            "min": 0.8545,
+            "max": 0.8686,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.8961,
+            "min": 0.8961,
+            "max": 0.8961,
+            "runs": 1
+          },
+          "change": 0.032849239280774434,
+          "difference": 0.02849999999999997
+        },
+        "utilization_web": {
+          "first": {
+            "median": 0.4338,
+            "min": 0.4273,
+            "max": 0.4343,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.448,
+            "min": 0.448,
+            "max": 0.448,
+            "runs": 1
+          },
+          "change": 0.03273397879206996,
+          "difference": 0.01419999999999999
+        },
+        "cpu_ms_per_request_api": {
+          "first": {
+            "median": 0.1835,
+            "min": 0.1834,
+            "max": 0.1841,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.1751,
+            "min": 0.1751,
+            "max": 0.1751,
+            "runs": 1
+          },
+          "change": -0.04577656675749309,
+          "difference": -0.00839999999999999
+        },
+        "utilization_api": {
+          "first": {
+            "median": 0.2796190476190476,
+            "min": 0.27942857142857147,
+            "max": 0.2805714285714286,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.26685714285714285,
+            "min": 0.26685714285714285,
+            "max": 0.26685714285714285,
+            "runs": 1
+          },
+          "change": -0.04564032697547682,
+          "difference": -0.012761904761904752
+        },
+        "cpu_ms_per_request_db": {
+          "first": {
+            "median": 0.8502,
+            "min": 0.8495,
+            "max": 0.8542,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.8324,
+            "min": 0.8324,
+            "max": 0.8324,
+            "runs": 1
+          },
+          "change": -0.02093625029404833,
+          "difference": -0.017799999999999927
+        },
+        "utilization_db": {
+          "first": {
+            "median": 0.425142,
+            "min": 0.424724,
+            "max": 0.42713,
+            "runs": 3
+          },
+          "second": {
+            "median": 0.41621699999999995,
+            "min": 0.41621699999999995,
+            "max": 0.41621699999999995,
+            "runs": 1
+          },
+          "change": -0.020992985872955505,
+          "difference": -0.008925000000000072
+        }
+      },
+      "first": {
+        "runs": [
+          "c-r1",
+          "c-r2",
+          "c-r3"
+        ],
+        "from": "2026-11-23T21:59:28Z",
+        "to": "2026-11-23T22:44:39Z"
+      },
+      "second": {
+        "runs": [
+          "c2-r1"
+        ],
+        "from": "2026-11-24T11:13:44Z",
+        "to": "2026-11-24T11:23:34Z"
+      }
+    }
+  },
+  "direct_change": {
+    "pipeline_runs": [
+      {
+        "from": "2026-11-24T09:20:13",
+        "to": "2026-11-24T09:25:40",
+        "seconds": 327,
+        "succeeded": true,
+        "node_groups_seconds": 2,
+        "database_seconds": 2
+      },
+      {
+        "from": "2026-11-24T09:26:15",
+        "to": "2026-11-24T10:00:58",
+        "seconds": 2083,
+        "succeeded": true,
+        "node_groups_seconds": 926,
+        "database_seconds": 929
+      }
+    ],
+    "from": "2026-11-24T09:20:13",
+    "to": "2026-11-24T10:00:58",
+    "seconds": 2445,
+    "failovers": [
+      {
+        "started": "2026-11-24T09:44:17",
+        "completed": "2026-11-24T09:44:25",
+        "seconds": 8
+      },
+      {
+        "started": "2026-11-24T09:51:54",
+        "completed": "2026-11-24T09:52:03",
+        "seconds": 9
+      }
+    ],
+    "changed_lines": 20,
+    "observed_under_load": false
+  }
+}

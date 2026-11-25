@@ -1,0 +1,70 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 1335635,
+    "Com_delete": 224,
+    "Com_insert": 5342665,
+    "Com_select": 70437901,
+    "Com_stmt_execute": 78417508,
+    "Com_update": 2661962,
+    "Connections": 4011,
+    "Created_tmp_disk_tables": 32,
+    "Created_tmp_tables": 29409232,
+    "Innodb_buffer_pool_read_requests": 10069839915,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 12820,
+    "Innodb_row_lock_waits": 2019,
+    "Innodb_rows_deleted": 3992622,
+    "Innodb_rows_inserted": 51990937,
+    "Innodb_rows_read": 36165722933,
+    "Innodb_rows_updated": 5338887,
+    "Queries": 83473320,
+    "Questions": 82494381,
+    "Slow_queries": 32,
+    "Sort_rows": 317473104,
+    "Uptime": 9830,
+    "at": "2026-11-23T16:01:16Z"
+  },
+  "after": {
+    "Aborted_clients": 1,
+    "Com_commit": 1565004,
+    "Com_delete": 224,
+    "Com_insert": 6258968,
+    "Com_select": 82375270,
+    "Com_stmt_execute": 91727819,
+    "Com_update": 3120827,
+    "Connections": 4313,
+    "Created_tmp_disk_tables": 35,
+    "Created_tmp_tables": 34319196,
+    "Innodb_buffer_pool_read_requests": 11656529910,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 12965,
+    "Innodb_row_lock_waits": 2110,
+    "Innodb_rows_deleted": 3992622,
+    "Innodb_rows_inserted": 52679191,
+    "Innodb_rows_read": 42073516686,
+    "Innodb_rows_updated": 6255754,
+    "Queries": 97640812,
+    "Questions": 96498717,
+    "Slow_queries": 32,
+    "Sort_rows": 369710228,
+    "Uptime": 10704,
+    "at": "2026-11-23T16:15:50Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 122521.0,
+      "container_cpu_cfs_throttled_periods_total": 27529.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.161065
+    },
+    "web": {}
+  },
+  "throttling_after": {
+    "api": {
+      "container_cpu_cfs_periods_total": 164795.0,
+      "container_cpu_cfs_throttled_periods_total": 27561.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.3588970000001
+    },
+    "web": {}
+  }
+}

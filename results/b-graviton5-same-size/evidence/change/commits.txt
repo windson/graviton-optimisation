@@ -1,0 +1,10 @@
+$ git log --reverse --stat --format='commit %h  %cI%n    %s%n' 6ee587d..0dcf6f5 -- infra/config deploy/values/active.yaml
+commit 0dcf6f5  2026-11-23T17:07:37Z
+    Upgrade every tier to Graviton5 at the same sizes (configuration B)
+
+
+ deploy/values/active.yaml  | 4 ++--
+ infra/config/ACTIVE_STAGE  | 2 +-
+ infra/config/database.json | 2 +-
+ infra/config/eks.json      | 6 +++---
+ 4 files changed, 7 insertions(+), 7 deletions(-)

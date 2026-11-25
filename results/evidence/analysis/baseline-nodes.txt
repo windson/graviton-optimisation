@@ -1,0 +1,8 @@
+$ jq -r '.nodes[] | [.tier, .type, .zone, .kernel, .kubelet] | @tsv' results/a-graviton2-baseline/environment.json | column -t
+api     m6g.xlarge   us-west-2a  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+api     m6g.xlarge   us-west-2b  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+api     m6g.xlarge   us-west-2b  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+system  m6g.large    us-west-2a  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+system  m6g.large    us-west-2b  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+web     c6g.4xlarge  us-west-2a  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea
+web     c6g.4xlarge  us-west-2b  6.18.62-127.179.amzn2023.aarch64  v1.37.1-eks-9adbfea

@@ -1,0 +1,31 @@
+2026-11-24T09:20:02Z waiting for the pipeline to apply 84e9c8a101bcce09506727568f511c09227d5a27
+2026-11-24T09:26:01Z pipeline succeeded
+active stage: c-graviton5-right-sized
+2026-11-24T09:26:04Z waiting for the pipeline to apply 5f10eebd00e872c8afa34ee927b0f92076c6bfe8
+2026-11-24T10:01:06Z pipeline succeeded
+2026-11-24T10:01:06Z change a-graviton2-baseline -> c-graviton5-right-sized applied from 2026-11-24T09:19:59Z to 2026-11-24T10:01:06Z
+2026-11-24T10:01:09Z writer graviton-uplift-database-instance1-xxxxxxxxxxxx is in us-west-2a, with 2 API node(s) in that zone; wanted: 1
+2026-11-24T10:01:12Z failing over to graviton-uplift-database-instance2-xxxxxxxxxxxx in us-west-2b
+2026-11-24T10:02:43Z writer graviton-uplift-database-instance2-xxxxxxxxxxxx is in us-west-2b, with 1 API node(s) in that zone
+wrote results/c-graviton5-right-sized/environment-session2.json
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/nodes.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/deployments.txt (4 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/images.txt (4 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/pods-per-node.txt (6 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/pods.txt (21 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/database.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/database-roles.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/instance-types.txt (14 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/data-size.txt (11 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/stacks.txt (11 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/pipeline.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/deployed-session2/pipeline-commit.txt (7 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/commits.txt (15 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/diff.txt (59 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/changed-lines.txt (25 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/pipeline-1.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/pipeline-2.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/stack-events-eks.txt (16 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/stack-events-database.txt (8 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/database-events.txt (23 lines)
+wrote results/c-graviton5-right-sized/evidence/change-session2/cluster-events.txt (5 lines)

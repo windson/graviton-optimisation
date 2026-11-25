@@ -1,0 +1,28 @@
+$ kubectl -n storefront logs storefront-api-866c48bf-dhnqd --timestamps --since-time=2026-11-23T20:30:58Z   # up to 2026-11-23T20:32:28Z, counted per second and kind of message
+20:31:21 WARN     28 x  PoolBase: storefront - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl# (No operations allowed after connection closed.). Possibly consider using
+20:31:21 WARN      6 x  ProxyConnection: storefront - Connection com.mysql.cj.jdbc.ConnectionImpl# marked as broken because of SQLSTATE(08S01), ErrorCode(#)
+20:31:21 ERROR     3 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.Recovera
+20:31:22 ERROR     8 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.Recovera
+20:31:22 WARN      6 x  ProxyConnection: storefront - Connection com.mysql.cj.jdbc.ConnectionImpl# marked as broken because of SQLSTATE(08S01), ErrorCode(#)
+20:31:22 ERROR     1 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:22 WARN      8 x  PoolBase: storefront - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl# (No operations allowed after connection closed.). Possibly consider using
+20:31:24 ERROR   132 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:24 ERROR     6 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:25 ERROR    59 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:25 ERROR     3 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:27 ERROR   115 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:27 ERROR     2 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:28 ERROR    80 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:28 ERROR     3 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:30 ERROR   111 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:30 ERROR     6 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:31 ERROR    81 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:31 ERROR     2 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:33 ERROR   111 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:33 ERROR     6 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:34 ERROR    77 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:34 ERROR     6 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:36 ERROR   110 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:36 ERROR     7 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.
+20:31:37 ERROR    75 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.jdbc.CannotG
+20:31:37 ERROR     8 x  [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.

@@ -1,0 +1,18 @@
+{
+  "description": "Share of each operation in the request mix (weights sum to 100). Pages are rendered by the web tier and make one API call each; api_* operations are direct API calls from browsers and mobile clients.",
+  "weights": {
+    "page_home": 6,
+    "page_category": 10,
+    "page_product": 12,
+    "page_search": 3,
+    "api_home": 2,
+    "api_catalog": 4,
+    "api_product": 14,
+    "api_search": 1.5,
+    "api_orders": 14,
+    "api_cart_get": 20,
+    "api_cart_put": 9,
+    "api_order_post": 4.5
+  },
+  "oneWordSearchShare": 0.25
+}

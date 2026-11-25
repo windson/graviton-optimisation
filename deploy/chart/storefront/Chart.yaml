@@ -1,0 +1,6 @@
+apiVersion: v2
+name: storefront
+description: Storefront web tier (React SSR) and API tier (Spring Boot) behind one Application Load Balancer
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

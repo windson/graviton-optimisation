@@ -1,0 +1,9 @@
+{
+  "Parameters": {
+    "ProjectName": "graviton-uplift",
+    "ClusterName": "graviton-uplift"
+  },
+  "Tags": {
+    "Project": "graviton-uplift"
+  }
+}

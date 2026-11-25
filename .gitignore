@@ -1,0 +1,20 @@
+# Build output and dependencies
+node_modules/
+dist/
+target/
+*.class
+
+# Local tooling, caches and scratch data
+.venv/
+__pycache__/
+*.pyc
+.cache/
+tmp/
+*.log
+# ...except the console output and pod logs recorded as evidence under results/.
+!results/**/*.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

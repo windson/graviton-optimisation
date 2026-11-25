@@ -1,0 +1,378 @@
+{
+  "test_id": "gu-c-r2-11232212",
+  "stage": "c-graviton5-right-sized",
+  "kind": "steady",
+  "name": "c-r2",
+  "status": "complete",
+  "tasks": {
+    "requested": 28,
+    "reporting": 28,
+    "start_spread_seconds": 1.956
+  },
+  "shape": {
+    "nodes": {
+      "system": [
+        "m9g.large"
+      ],
+      "web": [
+        "c9g.2xlarge"
+      ],
+      "api": [
+        "m9g.large"
+      ]
+    },
+    "node_count": {
+      "system": 2,
+      "web": 2,
+      "api": 3
+    },
+    "pods": {
+      "storefront-web": 16,
+      "storefront-api": 3
+    },
+    "database": [
+      "db.r9g.4xlarge"
+    ]
+  },
+  "rds_metric_lag": {
+    "seconds": 1.1,
+    "source": "measured",
+    "runs": 5,
+    "min": 0.8,
+    "max": 1.2
+  },
+  "windows": [
+    {
+      "from": "2026-11-23T22:17:12Z",
+      "to": "2026-11-23T22:27:02Z",
+      "seconds": 590,
+      "target_rps": 8000.0,
+      "achieved_rps": 8000.07,
+      "achieved_share": 1.00001,
+      "client": {
+        "requests": 4720044,
+        "failed": 0,
+        "error_rate": 0.0,
+        "codes": {
+          "200": 4507670,
+          "201": 212374
+        },
+        "mean_ms": 4.156,
+        "min_ms": 0.646,
+        "p50_ms": 3.652,
+        "p90_ms": 7.81,
+        "p95_ms": 8.719,
+        "p99_ms": 11.648,
+        "p99_9_ms": 16.533,
+        "max_ms": 242.0
+      },
+      "tiers": {
+        "api": {
+          "vcpus": 6,
+          "nodes": 3,
+          "cores_used": 1.467,
+          "app_cores_used": 1.357,
+          "span_seconds": 580.427,
+          "node_utilization": [
+            0.2822,
+            0.2224,
+            0.2288
+          ],
+          "utilization": 0.2445,
+          "cpu_ms_per_request": 0.1834
+        },
+        "web": {
+          "vcpus": 16,
+          "nodes": 2,
+          "cores_used": 6.836,
+          "app_cores_used": 6.846,
+          "span_seconds": 580.656,
+          "node_utilization": [
+            0.4246,
+            0.4299
+          ],
+          "utilization": 0.4273,
+          "cpu_ms_per_request": 0.8545
+        },
+        "db_writer": {
+          "class": "db.r9g.4xlarge",
+          "cpu_percent": 42.5142,
+          "cpu_percent_max_minute": 42.678333333333335,
+          "minutes": 9,
+          "connections": 144.0,
+          "commit_latency_ms": 1.9089,
+          "select_latency_ms": 0.287,
+          "dml_latency_ms": 0.0458,
+          "queries_per_second": 22266.1049,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": null,
+          "vcpus": 16,
+          "cores_used": 6.802,
+          "cpu_ms_per_request": 0.8502
+        },
+        "db_reader": {
+          "class": "db.r9g.4xlarge",
+          "cpu_percent": 0.7437,
+          "cpu_percent_max_minute": 0.8083333333333332,
+          "minutes": 9,
+          "connections": 0.0,
+          "commit_latency_ms": 0.0,
+          "select_latency_ms": 0.1367,
+          "dml_latency_ms": 0.0,
+          "queries_per_second": 9.4982,
+          "buffer_cache_hit_ratio": 100.0,
+          "replica_lag_ms": 3.0,
+          "vcpus": 16,
+          "cores_used": 0.119,
+          "cpu_ms_per_request": 0.0149
+        }
+      },
+      "load_balancer": {
+        "minutes": 9,
+        "requests_per_second": 8000.05,
+        "target_5xx": 0,
+        "elb_5xx": 0,
+        "target_connection_errors": 0,
+        "rejected_connections": 0,
+        "consumed_lcus_per_hour": 0.0,
+        "processed_bytes_per_second": 32338337,
+        "web_target_p50_ms": 5.8,
+        "web_target_p99_ms": 12.3,
+        "api_target_p50_ms": 1.9,
+        "api_target_p99_ms": 8.3
+      },
+      "label": "steady",
+      "operations": {
+        "api_cart_get": {
+          "requests": 942193,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 942193
+          },
+          "mean_ms": 1.523,
+          "min_ms": 0.649,
+          "p50_ms": 1.516,
+          "p90_ms": 1.964,
+          "p95_ms": 2.086,
+          "p99_ms": 2.398,
+          "p99_9_ms": 7.283,
+          "max_ms": 220.169
+        },
+        "api_cart_put": {
+          "requests": 425901,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 425901
+          },
+          "mean_ms": 4.345,
+          "min_ms": 1.996,
+          "p50_ms": 4.329,
+          "p90_ms": 5.395,
+          "p95_ms": 5.729,
+          "p99_ms": 7.068,
+          "p99_9_ms": 11.533,
+          "max_ms": 210.259
+        },
+        "api_catalog": {
+          "requests": 189279,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 189279
+          },
+          "mean_ms": 4.695,
+          "min_ms": 2.423,
+          "p50_ms": 4.415,
+          "p90_ms": 6.022,
+          "p95_ms": 7.21,
+          "p99_ms": 12.874,
+          "p99_9_ms": 14.23,
+          "max_ms": 27.011
+        },
+        "api_home": {
+          "requests": 94277,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 94277
+          },
+          "mean_ms": 3.95,
+          "min_ms": 1.997,
+          "p50_ms": 4.2,
+          "p90_ms": 4.979,
+          "p95_ms": 5.183,
+          "p99_ms": 5.845,
+          "p99_9_ms": 10.645,
+          "max_ms": 43.952
+        },
+        "api_order_post": {
+          "requests": 212374,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "201": 212374
+          },
+          "mean_ms": 6.911,
+          "min_ms": 3.249,
+          "p50_ms": 7.21,
+          "p90_ms": 8.806,
+          "p95_ms": 9.259,
+          "p99_ms": 10.645,
+          "p99_9_ms": 14.663,
+          "max_ms": 26.097
+        },
+        "api_orders": {
+          "requests": 661413,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 661413
+          },
+          "mean_ms": 2.136,
+          "min_ms": 0.646,
+          "p50_ms": 2.149,
+          "p90_ms": 2.76,
+          "p95_ms": 2.903,
+          "p99_ms": 3.405,
+          "p99_9_ms": 7.889,
+          "max_ms": 231.27
+        },
+        "api_product": {
+          "requests": 660677,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 660677
+          },
+          "mean_ms": 3.109,
+          "min_ms": 1.268,
+          "p50_ms": 3.052,
+          "p90_ms": 4.286,
+          "p95_ms": 4.642,
+          "p99_ms": 5.289,
+          "p99_9_ms": 8.719,
+          "max_ms": 242.0
+        },
+        "api_search": {
+          "requests": 71048,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 71048
+          },
+          "mean_ms": 3.783,
+          "min_ms": 1.162,
+          "p50_ms": 2.17,
+          "p90_ms": 9.166,
+          "p95_ms": 9.445,
+          "p99_ms": 10.027,
+          "p99_9_ms": 12.003,
+          "max_ms": 18.256
+        },
+        "page_category": {
+          "requests": 471440,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 471440
+          },
+          "mean_ms": 8.155,
+          "min_ms": 4.99,
+          "p50_ms": 7.733,
+          "p90_ms": 10.128,
+          "p95_ms": 11.418,
+          "p99_ms": 16.205,
+          "p99_9_ms": 19.401,
+          "max_ms": 217.5
+        },
+        "page_home": {
+          "requests": 282817,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 282817
+          },
+          "mean_ms": 7.311,
+          "min_ms": 4.349,
+          "p50_ms": 7.21,
+          "p90_ms": 8.895,
+          "p95_ms": 9.54,
+          "p99_ms": 11.765,
+          "p99_9_ms": 16.044,
+          "max_ms": 65.431
+        },
+        "page_product": {
+          "requests": 567028,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 567028
+          },
+          "mean_ms": 5.37,
+          "min_ms": 2.617,
+          "p50_ms": 5.183,
+          "p90_ms": 6.859,
+          "p95_ms": 7.579,
+          "p99_ms": 9.445,
+          "p99_9_ms": 13.535,
+          "max_ms": 99.559
+        },
+        "page_search": {
+          "requests": 141597,
+          "failed": 0,
+          "error_rate": 0.0,
+          "codes": {
+            "200": 141597
+          },
+          "mean_ms": 6.437,
+          "min_ms": 2.976,
+          "p50_ms": 4.783,
+          "p90_ms": 11.765,
+          "p95_ms": 12.493,
+          "p99_ms": 14.089,
+          "p99_9_ms": 17.207,
+          "max_ms": 215.838
+        }
+      }
+    }
+  ],
+  "generator": {
+    "peak_cpu_share": 0.2815,
+    "tasks": 28
+  },
+  "database_counters": {
+    "Aborted_clients": 0,
+    "Com_commit": 229497,
+    "Com_delete": 0,
+    "Com_insert": 917481,
+    "Com_select": 11936338,
+    "Com_stmt_execute": 13309028,
+    "Com_update": 457437,
+    "Connections": 323,
+    "Created_tmp_disk_tables": 3,
+    "Created_tmp_tables": 4912270,
+    "Innodb_buffer_pool_read_requests": 1584816452,
+    "Innodb_buffer_pool_reads": 0,
+    "Innodb_row_lock_time": 87,
+    "Innodb_row_lock_waits": 82,
+    "Innodb_rows_deleted": 0,
+    "Innodb_rows_inserted": 686952,
+    "Innodb_rows_read": 5917914457,
+    "Innodb_rows_updated": 916361,
+    "Queries": 14167842,
+    "Questions": 14003526,
+    "Slow_queries": 0,
+    "Sort_rows": 52299283,
+    "statements_per_request": 2.752,
+    "rows_read_per_request": 1163.1
+  },
+  "cpu_throttling": {
+    "api": {
+      "periods": 20741.0,
+      "throttled_periods": 0.0,
+      "throttled_share": 0.0
+    }
+  }
+}

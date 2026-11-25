@@ -1,0 +1,19 @@
+$ uv run -q analysis/change_summary.py a-graviton2-baseline ab
+Change observed in results/a-graviton2-baseline/ab-*
+  pushed 2026-11-23T17:07:52Z, pipeline finished 2026-11-23T17:42:36Z (34 min 44 s, 1 pipeline run(s))
+  node groups: 17:09:11 to 17:24:15 (15 min 04 s)
+  database instances: 17:24:35 to 17:39:53 (15 min 18 s)
+  failover 1: 17:25:55 to 17:26:05 (10 s by RDS events), to instance 2
+  failover 2: 17:33:35 to 17:33:51 (16 s by RDS events), to instance 1
+  probe, push to pipeline end: 1,936 of 208,022 requests failed (0.93%)
+  probe, whole observation:    1,936 of 359,621 requests failed (0.54%)
+    17:26:03 to 17:26:09 (  7 s):    86 of   687 failed,  0 s without a success, 2 s without any response; failover 1
+    17:33:38 to 17:34:03 ( 26 s): 1,850 of 2,422 failed, 20 s without a success, 3 s without any response; failover 2
+  failed at failovers: 1,936; at any other time: 0
+  failures by cause: 1,515 timeout, 353 HTTP 503, 48 HTTP 500, 20 HTTP 502
+  probe mean response time before the push: 6.5 ms (10-second means from 6.2 to 6.7 ms)
+  probe mean response time while nodes were replaced: 5.6 ms (10-second means from 4.8 to 6.7 ms)
+  web pods ready: lowest 24 of 32 (at 17:11:23); samples with none ready: 0 (one sample every 10 s); lowest while nodes were replaced: 24 of 32
+  api pods ready: lowest 0 of 6 (at 17:33:57); samples with none ready: 2 (one sample every 10 s); lowest while nodes were replaced: 4 of 6
+  background load: 44,104 of 14,300,026 requests failed (0.31%); 59,974 of 14,360,000 scheduled requests were not sent
+  writer CPU at the constant load: 29.6% on db.r6g.8xlarge (4,100 req/s) before, 10.3% on db.r9g.8xlarge (4,100 req/s) after

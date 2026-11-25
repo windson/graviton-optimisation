@@ -1,0 +1,49 @@
+$ uv run -q analysis/bom.py
+
+A: Graviton2 baseline
+  Compute an Web tier nodes: 2 x c6g.4xlarge                                 1,460.0 instance-hours   x 0.544      =     794.24
+  Compute an API tier nodes: 3 x m6g.xlarge                                  2,190.0 instance-hours   x 0.154      =     337.26
+  Compute an System nodes: 2 x m6g.large                                     1,460.0 instance-hours   x 0.077      =     112.42
+  Compute an Aurora MySQL writer and reader: 2 x db.r6g.8xlarge              1,460.0 instance-hours   x 4.153      =   6,063.38
+  Rest of th Amazon EKS control plane                                          730.0 cluster-hours    x 0.1        =      73.00
+  Rest of th Node volumes: 7 x 40 GiB gp3                                      280.0 GB-months        x 0.08       =      22.40
+  Rest of th Application Load Balancer                                         730.0 hours            x 0.0225     =      16.43
+  Rest of th Load balancer capacity units                                   42,509.1 LCU-hours        x 0.008      =     340.07
+  Rest of th NAT gateway                                                       730.0 hours            x 0.045      =      32.85
+  Rest of th Aurora storage                                                      6.4 GB-months        x 0.1        =       0.64
+  Rest of th Aurora I/O requests                                             5,383.4 million requests x 0.2        =   1,076.67
+  Rest of th Secrets Manager secret                                              1.0 secrets          x 0.4        =       0.40
+  Rest of th Data transfer out to the internet                              40,383.6 GB               x 0.0863     =   3,483.81
+             On-Demand total                                                                                          12,353.57   (committed: 9,801.34)
+
+B: Graviton5, same size
+  Compute an Web tier nodes: 2 x c9g.4xlarge                                 1,460.0 instance-hours   x 0.69552    =   1,015.46
+  Compute an API tier nodes: 3 x m9g.xlarge                                  2,190.0 instance-hours   x 0.19568    =     428.54
+  Compute an System nodes: 2 x m9g.large                                     1,460.0 instance-hours   x 0.09784    =     142.85
+  Compute an Aurora MySQL writer and reader: 2 x db.r9g.8xlarge              1,460.0 instance-hours   x 4.4384     =   6,480.06
+  Rest of th Amazon EKS control plane                                          730.0 cluster-hours    x 0.1        =      73.00
+  Rest of th Node volumes: 7 x 40 GiB gp3                                      280.0 GB-months        x 0.08       =      22.40
+  Rest of th Application Load Balancer                                         730.0 hours            x 0.0225     =      16.43
+  Rest of th Load balancer capacity units                                   42,509.1 LCU-hours        x 0.008      =     340.07
+  Rest of th NAT gateway                                                       730.0 hours            x 0.045      =      32.85
+  Rest of th Aurora storage                                                      6.4 GB-months        x 0.1        =       0.64
+  Rest of th Aurora I/O requests                                             5,541.0 million requests x 0.2        =   1,108.20
+  Rest of th Secrets Manager secret                                              1.0 secrets          x 0.4        =       0.40
+  Rest of th Data transfer out to the internet                              40,383.6 GB               x 0.0863     =   3,483.81
+             On-Demand total                                                                                          13,144.71   (committed: 12,604.97)
+
+C: Graviton5, right-sized
+  Compute an Web tier nodes: 2 x c9g.2xlarge                                 1,460.0 instance-hours   x 0.34776    =     507.73
+  Compute an API tier nodes: 3 x m9g.large                                   2,190.0 instance-hours   x 0.09784    =     214.27
+  Compute an System nodes: 2 x m9g.large                                     1,460.0 instance-hours   x 0.09784    =     142.85
+  Compute an Aurora MySQL writer and reader: 2 x db.r9g.4xlarge              1,460.0 instance-hours   x 2.2192     =   3,240.03
+  Rest of th Amazon EKS control plane                                          730.0 cluster-hours    x 0.1        =      73.00
+  Rest of th Node volumes: 7 x 40 GiB gp3                                      280.0 GB-months        x 0.08       =      22.40
+  Rest of th Application Load Balancer                                         730.0 hours            x 0.0225     =      16.43
+  Rest of th Load balancer capacity units                                   42,509.1 LCU-hours        x 0.008      =     340.07
+  Rest of th NAT gateway                                                       730.0 hours            x 0.045      =      32.85
+  Rest of th Aurora storage                                                      6.4 GB-months        x 0.1        =       0.64
+  Rest of th Aurora I/O requests                                             5,659.2 million requests x 0.2        =   1,131.84
+  Rest of th Secrets Manager secret                                              1.0 secrets          x 0.4        =       0.40
+  Rest of th Data transfer out to the internet                              40,383.6 GB               x 0.0863     =   3,483.81
+             On-Demand total                                                                                           9,206.32   (committed: 8,912.27)

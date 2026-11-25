@@ -1,0 +1,15 @@
+$ git log --reverse --stat --format='commit %h  %cI%n    %s%n' 7f86837..5f10eeb -- infra/config deploy/values/active.yaml
+commit 84e9c8a  2026-11-24T09:19:59Z
+    Scale pods to the c-graviton5-right-sized replica counts before resizing nodes
+
+
+ deploy/values/active.yaml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+commit 5f10eeb  2026-11-24T09:26:01Z
+    Upgrade to Graviton5 and right-size in one change (configuration C, from A)
+
+
+ infra/config/ACTIVE_STAGE  | 2 +-
+ infra/config/database.json | 2 +-
+ infra/config/eks.json      | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)

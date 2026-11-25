@@ -1,0 +1,338 @@
+{
+  "region": "us-west-2",
+  "retrieved_at": "2026-11-23T13:02:53Z",
+  "source": "AWS Price List API, Savings Plans API, Amazon RDS reserved DB instance offerings API",
+  "currency": "USD",
+  "ec2": {
+    "c6g.4xlarge": {
+      "sku": "M4ASNAR9GSSTZQCK",
+      "usagetype": "USW2-BoxUsage:c6g.4xlarge",
+      "description": "$0.544 per On Demand Linux c6g.4xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.544,
+      "tiers": null,
+      "vcpu": 16,
+      "memory": "32 GiB",
+      "processor": "AWS Graviton2 Processor",
+      "family": "Compute optimized",
+      "compute_sp_1yr_no_upfront_usd": 0.392,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.3427
+    },
+    "c9g.2xlarge": {
+      "sku": "PZHDYTY345358BEX",
+      "usagetype": "USW2-BoxUsage:c9g.2xlarge",
+      "description": "$0.34776 per On Demand Linux c9g.2xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.34776,
+      "tiers": null,
+      "vcpu": 8,
+      "memory": "16.0 GiB",
+      "processor": "AWS Graviton5 Processor",
+      "family": "Compute optimized",
+      "compute_sp_1yr_no_upfront_usd": 0.24931,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.22916
+    },
+    "c9g.4xlarge": {
+      "sku": "WNWJJAR6U6FMDMPQ",
+      "usagetype": "USW2-BoxUsage:c9g.4xlarge",
+      "description": "$0.69552 per On Demand Linux c9g.4xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.69552,
+      "tiers": null,
+      "vcpu": 16,
+      "memory": "32.0 GiB",
+      "processor": "AWS Graviton5 Processor",
+      "family": "Compute optimized",
+      "compute_sp_1yr_no_upfront_usd": 0.49862,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.45832
+    },
+    "m6g.2xlarge": {
+      "sku": "7QYDJUSNAP67XK7K",
+      "usagetype": "USW2-BoxUsage:m6g.2xlarge",
+      "description": "$0.308 per On Demand Linux m6g.2xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.308,
+      "tiers": null,
+      "vcpu": 8,
+      "memory": "32 GiB",
+      "processor": "AWS Graviton2 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.2268,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.1932
+    },
+    "m6g.large": {
+      "sku": "YD35UKCJ3R87S3NE",
+      "usagetype": "USW2-BoxUsage:m6g.large",
+      "description": "$0.077 per On Demand Linux m6g.large Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.077,
+      "tiers": null,
+      "vcpu": 2,
+      "memory": "8 GiB",
+      "processor": "AWS Graviton2 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.0567,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.0483
+    },
+    "m6g.xlarge": {
+      "sku": "FVJBRP4MUDAYHHJT",
+      "usagetype": "USW2-BoxUsage:m6g.xlarge",
+      "description": "$0.154 per On Demand Linux m6g.xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.154,
+      "tiers": null,
+      "vcpu": 4,
+      "memory": "16 GiB",
+      "processor": "AWS Graviton2 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.1134,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.0966
+    },
+    "m9g.2xlarge": {
+      "sku": "ZPY43E6NMX89BXHU",
+      "usagetype": "USW2-BoxUsage:m9g.2xlarge",
+      "description": "$0.39136 per On Demand Linux m9g.2xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.39136,
+      "tiers": null,
+      "vcpu": 8,
+      "memory": "32 GiB",
+      "processor": "AWS Graviton5 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.28752,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.25888
+    },
+    "m9g.large": {
+      "sku": "DCDSZNZUTMPTZGSJ",
+      "usagetype": "USW2-BoxUsage:m9g.large",
+      "description": "$0.09784 per On Demand Linux m9g.large Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.09784,
+      "tiers": null,
+      "vcpu": 2,
+      "memory": "8 GiB",
+      "processor": "AWS Graviton5 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.07188,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.06472
+    },
+    "m9g.xlarge": {
+      "sku": "KYWJFBPE8A7Y67R8",
+      "usagetype": "USW2-BoxUsage:m9g.xlarge",
+      "description": "$0.19568 per On Demand Linux m9g.xlarge Instance Hour",
+      "unit": "Hrs",
+      "usd": 0.19568,
+      "tiers": null,
+      "vcpu": 4,
+      "memory": "16 GiB",
+      "processor": "AWS Graviton5 Processor",
+      "family": "General purpose",
+      "compute_sp_1yr_no_upfront_usd": 0.14376,
+      "ec2_instance_sp_1yr_no_upfront_usd": 0.12944
+    }
+  },
+  "aurora_mysql": {
+    "db.r6g.8xlarge": {
+      "io_optimized": {
+        "sku": "CAFWJ8EKSPGJ63S5",
+        "usagetype": "USW2-InstanceUsageIOOptimized:db.r6g.8xl",
+        "description": "USD 5.399 per RDS db.r6g.8xlarge IO-optimized Single-AZ instance hour (or partial hour) running Aurora MySQL.",
+        "unit": "Hrs",
+        "usd": 5.399,
+        "tiers": null,
+        "vcpu": 32,
+        "memory": "256 GiB",
+        "processor": "AWS Graviton2"
+      },
+      "standard": {
+        "sku": "M223A48NJJWH6TVD",
+        "usagetype": "USW2-InstanceUsage:db.r6g.8xl",
+        "description": "$ 4.153 per RDS db.r6g.8xlarge Single-AZ instance hour (or partial hour) running Aurora MySQL",
+        "unit": "Hrs",
+        "usd": 4.153,
+        "tiers": null,
+        "vcpu": 32,
+        "memory": "256 GiB",
+        "processor": "AWS Graviton2"
+      },
+      "commitments": {
+        "reserved_1yr_no_upfront_usd": 2.721,
+        "database_sp_1yr_no_upfront_usd": null
+      }
+    },
+    "db.r9g.4xlarge": {
+      "io_optimized": {
+        "sku": "74WVZZSUSKZ4DUH8",
+        "usagetype": "USW2-InstanceUsageIOOptimized:db.r9g.4xl",
+        "description": "USD 2.8864 per RDS db.r9g.4xlarge IO-optimized Single-AZ instance hour (or partial hour) running Aurora MySQL.",
+        "unit": "Hrs",
+        "usd": 2.8864,
+        "tiers": null,
+        "vcpu": 16,
+        "memory": "128 GiB",
+        "processor": "AWS Graviton5"
+      },
+      "standard": {
+        "sku": "W45JZRSYXJ7EAYTE",
+        "usagetype": "USW2-InstanceUsage:db.r9g.4xl",
+        "description": "USD 2.2192 per RDS db.r9g.4xlarge Single-AZ instance hour (or partial hour) running Aurora MySQL",
+        "unit": "Hrs",
+        "usd": 2.2192,
+        "tiers": null,
+        "vcpu": 16,
+        "memory": "128 GiB",
+        "processor": "AWS Graviton5"
+      },
+      "commitments": {
+        "reserved_1yr_no_upfront_usd": null,
+        "database_sp_1yr_no_upfront_usd": null
+      }
+    },
+    "db.r9g.8xlarge": {
+      "io_optimized": {
+        "sku": "3JFKJPGNSRM6JMWY",
+        "usagetype": "USW2-InstanceUsageIOOptimized:db.r9g.8xl",
+        "description": "USD 5.7728 per RDS db.r9g.8xlarge IO-optimized Single-AZ instance hour (or partial hour) running Aurora MySQL.",
+        "unit": "Hrs",
+        "usd": 5.7728,
+        "tiers": null,
+        "vcpu": 32,
+        "memory": "256 GiB",
+        "processor": "AWS Graviton5"
+      },
+      "standard": {
+        "sku": "E5PQU8BWAV9GHQE9",
+        "usagetype": "USW2-InstanceUsage:db.r9g.8xl",
+        "description": "USD 4.4384 per RDS db.r9g.8xlarge Single-AZ instance hour (or partial hour) running Aurora MySQL",
+        "unit": "Hrs",
+        "usd": 4.4384,
+        "tiers": null,
+        "vcpu": 32,
+        "memory": "256 GiB",
+        "processor": "AWS Graviton5"
+      },
+      "commitments": {
+        "reserved_1yr_no_upfront_usd": null,
+        "database_sp_1yr_no_upfront_usd": null
+      }
+    }
+  },
+  "aurora_storage_gb_month": {
+    "sku": "RJZ7DACQSFYYK838",
+    "usagetype": "USW2-Aurora:StorageUsage",
+    "description": "$0.10 per GB-month of consumed storage (Aurora)",
+    "unit": "GB-Mo",
+    "usd": 0.1,
+    "tiers": null
+  },
+  "aurora_io_request": {
+    "sku": "U3HAYWCUAYH5S6QW",
+    "usagetype": "USW2-Aurora:StorageIOUsage",
+    "description": "$0.20 per 1 million I/O requests (Aurora)",
+    "unit": "IOs",
+    "usd": 2e-07,
+    "tiers": null
+  },
+  "aurora_backup_gb_month": {
+    "sku": "6XE4VD6RXXFFUNAR",
+    "usagetype": "USW2-Aurora:BackupUsage",
+    "description": "USD 0.021 per GB-month of backup storage exceeding free allocation for Aurora MySQL",
+    "unit": "GB-Mo",
+    "usd": 0.021,
+    "tiers": null
+  },
+  "eks_cluster_hour": {
+    "sku": "DYQZA4NFAQKBU6H4",
+    "usagetype": "USW2-AmazonEKS-Hours:perCluster",
+    "description": "Amazon EKS cluster usage in US West (Oregon)",
+    "unit": "Hours",
+    "usd": 0.1,
+    "tiers": null
+  },
+  "alb_hour": {
+    "sku": "7AKU6NT3G9ZEJTB5",
+    "usagetype": "USW2-LoadBalancerUsage",
+    "description": "$0.0225 per Application LoadBalancer-hour (or partial hour)",
+    "unit": "Hrs",
+    "usd": 0.0225,
+    "tiers": null
+  },
+  "alb_lcu_hour": {
+    "sku": "2ETY8Y426S4237JU",
+    "usagetype": "USW2-LCUUsage",
+    "description": "$0.008 per used Application load balancer capacity unit-hour (or partial hour)",
+    "unit": "LCU-Hrs",
+    "usd": 0.008,
+    "tiers": null
+  },
+  "nat_gateway_hour": {
+    "sku": "44T683R45QPT8RYQ",
+    "usagetype": "USW2-NatGateway-Hours",
+    "description": "$0.045 per NAT Gateway Hour",
+    "unit": "Hrs",
+    "usd": 0.045,
+    "tiers": null
+  },
+  "nat_gateway_gb": {
+    "sku": "9AXD6XJT8GZWPQED",
+    "usagetype": "USW2-NatGateway-Bytes",
+    "description": "$0.045 per GB Data Processed by NAT Gateways",
+    "unit": "GB",
+    "usd": 0.045,
+    "tiers": null
+  },
+  "ebs_gp3_gb_month": {
+    "sku": "BB8UJWJ4XPFJB95G",
+    "usagetype": "USW2-EBS:VolumeUsage.gp3",
+    "description": "$0.08 per GB-month of General Purpose (gp3) provisioned storage - US West (Oregon)",
+    "unit": "GB-Mo",
+    "usd": 0.08,
+    "tiers": null
+  },
+  "data_transfer_out_gb": {
+    "sku": "5M4327XEUKBBTWAT",
+    "usagetype": "USW2-DataTransfer-Out-Bytes",
+    "description": "$0.090 per GB - first 10 TB / month data transfer out beyond the global free tier",
+    "unit": "GB",
+    "usd": 0.09,
+    "tiers": [
+      {
+        "from": "0",
+        "to": "10240",
+        "usd": 0.09
+      },
+      {
+        "from": "10240",
+        "to": "51200",
+        "usd": 0.085
+      },
+      {
+        "from": "51200",
+        "to": "153600",
+        "usd": 0.07
+      },
+      {
+        "from": "153600",
+        "to": "Inf",
+        "usd": 0.05
+      }
+    ]
+  },
+  "secrets_manager_secret_month": {
+    "sku": "DWJP9S4V3HP98UNC",
+    "usagetype": "USW2-AWSSecretsManager-Secrets",
+    "description": "$0.40 per Secret",
+    "unit": "Secrets",
+    "usd": 0.4,
+    "tiers": null
+  },
+  "aurora_io_optimized_storage_gb_month": {
+    "sku": "KWCJW67MYTKTHMGQ",
+    "usagetype": "USW2-Aurora:IO-OptimizedStorageUsage",
+    "description": "USD 0.225 per GB-month of I/O-Optimized consumed storage (Aurora MySQL)",
+    "unit": "GB-Mo",
+    "usd": 0.225,
+    "tiers": null,
+    "added": "2026-11-24T03:40:00Z, read through the AWS Pricing MCP server (price list version 20261120224619); the snapshot of 23 Nov did not query it because the bill does not use it. It is used only for the comparison of Aurora Standard with Aurora I/O-Optimized."
+  }
+}

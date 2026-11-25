@@ -1,0 +1,62 @@
+$ uv run -q analysis/rated.py
+Comparison at 11,800 requests per second, the rate of the baseline's ceiling run
+  CPU utilization by the rule of section 12: web nodes' vCPUs, API pods' CPU limits, database writer
+  config  runs  errors %  p50 ms  p95 ms  p99 ms  web CPU %  API CPU %  DB CPU %  busiest tier     rated req/s  room above this rate
+  A      3 x 590 s    0.0000     7.1    22.1    33.3       73.2       78.7      79.3  Database writer     11,900                +0.8%
+         a2-ceiling    0.0000     7.0    21.2    31.7       71.6       79.4      78.8
+         a3-rated-1    0.0000     7.1    22.1    33.3       73.2       78.4      79.3
+         a3-rated-2    0.0000     7.1    22.1    33.3       73.5       78.7      79.4
+  B      step, 110 s  0.0000     3.3     8.2    11.1       33.1       29.0      30.7  Web                 28,400              +140.7%
+         from the step of b-cap at 12,000 requests per second; not run at the comparison rate
+  C      3 x 590 s    0.0000     3.8    11.1    15.6       65.6       39.6      61.6  Web                 14,900               +26.5%
+         c2-rated-1    0.0000     3.8    11.1    15.7       65.5       40.1      61.6
+         c2-rated-2    0.0000     3.8    11.1    15.6       65.7       39.6      61.6
+         c2-rated-3    0.0000     3.8    11.0    15.6       65.6       39.6      61.6
+
+Does C carry the baseline's rated load? yes
+  met      Achieved request rate, share of the target rate: C 100%, A 100%; at least 99.5%
+  met      Error rate, share of requests: C 0%, A 0%; at most 0.1%, and at most the baseline's plus 0.05 percentage points
+  met      p50 response time: C 3.8 ms (-46.2%), A 7.1 ms; at most 5% above the baseline's
+  met      p95 response time: C 11.1 ms (-49.8%), A 22.1 ms; at most 5% above the baseline's
+  met      p99 response time: C 15.6 ms (-53.2%), A 33.3 ms; at most 10% above the baseline's
+  met      CPU utilization of the busiest tier: C 65.58%, A 79.33%; at most 80%
+
+Expected from C's capacity run (steps at 11,200 and 12,000 requests per second, 110 s each): busiest tier Web at 64.4% CPU utilization, p99 16.4 ms
+
+Working backwards from 11,890 requests per second at an 80% CPU ceiling
+  tier             CPU ms/request  cores at   capacity  baseline  share of   deployed  next size  CPU utilization
+                   on Graviton5    that load  needed    capacity  baseline   capacity  down       predicted  measured
+  Web                      0.891      10.59     13.24     32.00       41%      16.00       8.00      66.2%     65.6%
+  API                      0.241       2.87      3.58     10.50       34%       5.25       2.62      54.6%     39.6%
+  Database writer          0.814       9.68     12.09     32.00       38%      16.00       8.00      60.5%     61.6%
+  capacity: vCPUs of the web nodes, CPU limits of the API pods, vCPUs of the database writer
+
+One of two web nodes out of service, 8,000 requests per second (c2n-r1, 590 s): 8 of 16 web pods running
+  achieved 100.00% of the target rate, errors 0.0000%, p50 3.6 ms, p95 23.7 ms, p99 38.7 ms; remaining web node at 88.9% CPU utilization; within the limits of section 7
+  with both nodes (c2-r1): p50 3.5 ms, p95 9.1 ms, p99 11.8 ms, web tier at 44.8% CPU utilization
+
+The change from A to C in the second session, with no load generator running: 2 pipeline runs of 5 min 27 s and 34 min 43 s, 40 min 45 s from the start of the first to the end of the last; 2 database failovers of 8 s and 9 s as Amazon RDS logged them
+
+Configuration A at 11,800 requests per second in both sessions: a2-ceiling against a3-rated-1, a3-rated-2
+  measure                                 first session              second session             difference
+  p50 response time, ms                   6.997                      7.068 (7.068 to 7.068)     +1.0%
+  p95 response time, ms                   21.228                     22.092 (22.092 to 22.092)  +4.1%
+  p99 response time, ms                   31.662                     33.285 (33.285 to 33.285)  +5.1%
+  Web: CPU ms per request                 1.942                      1.989 (1.985 to 1.992)     +2.4%
+  Web: CPU utilization, %                 71.620                     73.325 (73.190 to 73.460)  +2.4%
+  API: CPU ms per request                 0.706                      0.699 (0.697 to 0.700)     -1.1%
+  API: CPU utilization, %                 79.390                     78.514 (78.352 to 78.676)  -1.1%
+  Database writer: CPU ms per request     2.138                      2.152 (2.151 to 2.153)     +0.7%
+  Database writer: CPU utilization, %     78.831                     79.360 (79.328 to 79.391)  +0.7%
+
+Configuration C at 8,000 requests per second in both sessions: c-r1, c-r2, c-r3 against c2-r1
+  measure                                 first session              second session             difference
+  p50 response time, ms                   3.652 (3.652 to 3.689)     3.545                      -2.9%
+  p95 response time, ms                   8.806 (8.719 to 8.806)     9.075                      +3.1%
+  p99 response time, ms                   11.765 (11.648 to 11.765)  11.765                     +0.0%
+  Web: CPU ms per request                 0.868 (0.855 to 0.869)     0.896                      +3.3%
+  Web: CPU utilization, %                 43.380 (42.730 to 43.430)  44.800                     +3.3%
+  API: CPU ms per request                 0.183 (0.183 to 0.184)     0.175                      -4.6%
+  API: CPU utilization, %                 27.962 (27.943 to 28.057)  26.686                     -4.6%
+  Database writer: CPU ms per request     0.850 (0.850 to 0.854)     0.832                      -2.1%
+  Database writer: CPU utilization, %     42.514 (42.472 to 42.713)  41.622                     -2.1%

@@ -1,0 +1,172 @@
+{
+  "stage": "b-graviton5-same-size",
+  "label": "bc",
+  "push": "2026-11-23T20:08:56Z",
+  "pipeline_finished": "2026-11-23T20:48:27Z",
+  "pipeline_seconds": 2371,
+  "pipeline_runs": 2,
+  "node_groups": {
+    "from": "2026-11-23T20:16:06Z",
+    "to": "2026-11-23T20:29:34Z",
+    "seconds": 808
+  },
+  "database": {
+    "from": "2026-11-23T20:29:57Z",
+    "to": "2026-11-23T20:45:15Z",
+    "seconds": 918
+  },
+  "failovers": [
+    {
+      "started": "2026-11-23T20:31:18Z",
+      "to": "2",
+      "completed": "2026-11-23T20:31:33Z",
+      "seconds": 15
+    },
+    {
+      "started": "2026-11-23T20:38:56Z",
+      "to": "1",
+      "completed": "2026-11-23T20:39:03Z",
+      "seconds": 7
+    }
+  ],
+  "probe": {
+    "rate": 100,
+    "whole_observation": {
+      "requests": 359622,
+      "failed": 2525,
+      "share": 0.00702126121316271
+    },
+    "during_the_change": {
+      "requests": 236722,
+      "failed": 2525,
+      "share": 0.010666520222032596
+    },
+    "failure_periods": [
+      {
+        "from": "2026-11-23T20:31:22Z",
+        "to": "2026-11-23T20:31:48Z",
+        "seconds": 27,
+        "failed": 2128,
+        "requests": 2360,
+        "seconds_without_a_success": 24,
+        "consecutive_seconds_without_a_success": 24,
+        "seconds_without_any_response": 2,
+        "failover": 1,
+        "failed_after_rds_completed": 1645,
+        "seconds_after_rds_completed": 15
+      },
+      {
+        "from": "2026-11-23T20:39:00Z",
+        "to": "2026-11-23T20:39:12Z",
+        "seconds": 13,
+        "failed": 397,
+        "requests": 1258,
+        "seconds_without_a_success": 3,
+        "consecutive_seconds_without_a_success": 2,
+        "seconds_without_any_response": 0,
+        "failover": 2,
+        "failed_after_rds_completed": 390,
+        "seconds_after_rds_completed": 9
+      }
+    ],
+    "response_time": {
+      "before_the_push": {
+        "mean_ms": 3.45,
+        "worst_10s_mean_ms": 3.51,
+        "best_10s_mean_ms": 3.39,
+        "seconds": 57
+      },
+      "while_nodes_were_replaced": {
+        "mean_ms": 3.62,
+        "worst_10s_mean_ms": 4.3,
+        "best_10s_mean_ms": 3.2
+      }
+    },
+    "failure_causes": {
+      "timeout": 1744,
+      "HTTP 503": 758,
+      "HTTP 502": 13,
+      "HTTP 500": 10
+    },
+    "failed_outside_failovers": 0,
+    "failed_at_failovers": 2525
+  },
+  "pods": {
+    "web": {
+      "most": 32,
+      "lowest": 12,
+      "lowest_at": "2026-11-23T20:18:31Z",
+      "samples_at_zero": 0,
+      "zero_at": [],
+      "at_start_of_node_replacement": 16,
+      "lowest_while_nodes_were_replaced": 12,
+      "before_node_replacement": {
+        "lowest": 16,
+        "lowest_at": "2026-11-23T20:11:26Z",
+        "settles_at": 16,
+        "below_from": null,
+        "below_to": null,
+        "samples_below": 0
+      }
+    },
+    "api": {
+      "most": 6,
+      "lowest": 0,
+      "lowest_at": "2026-11-23T20:31:42Z",
+      "samples_at_zero": 2,
+      "zero_at": [
+        "2026-11-23T20:31:42Z",
+        "2026-11-23T20:31:52Z"
+      ],
+      "at_start_of_node_replacement": 3,
+      "lowest_while_nodes_were_replaced": 2,
+      "before_node_replacement": {
+        "lowest": 2,
+        "lowest_at": "2026-11-23T20:11:26Z",
+        "settles_at": 3,
+        "below_from": "2026-11-23T20:11:26Z",
+        "below_to": "2026-11-23T20:12:16Z",
+        "samples_below": 6
+      }
+    }
+  },
+  "inventory_interval_seconds": 10,
+  "background_load": {
+    "requests": 14306756,
+    "failed": 72740,
+    "share": 0.005084311216323253,
+    "codes": {
+      "1050": 41210,
+      "200": 13592672,
+      "201": 641344,
+      "500": 723,
+      "502": 277,
+      "503": 30530
+    },
+    "rate": 4000.0,
+    "scheduled": 14360000,
+    "not_sent": 53244
+  },
+  "writer_cpu": {
+    "before_window": [
+      "2026-11-23T20:08:56Z",
+      "2026-11-23T20:29:18Z"
+    ],
+    "after_window": [
+      "2026-11-23T20:42:03Z",
+      "2026-11-23T20:48:27Z"
+    ],
+    "before_minutes": 21,
+    "after_minutes": 6,
+    "before_percent": 10.276428571428571,
+    "after_percent": 21.71694444444444,
+    "before_class": "db.r9g.8xlarge",
+    "after_class": "db.r9g.4xlarge",
+    "requests_per_second_before": 4100.045238095238,
+    "requests_per_second_after": 4100.083333333333,
+    "classes_seen": [
+      "db.r9g.4xlarge",
+      "db.r9g.8xlarge"
+    ]
+  }
+}

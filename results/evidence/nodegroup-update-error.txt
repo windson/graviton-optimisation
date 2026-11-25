@@ -1,0 +1,2 @@
+$ aws cloudformation describe-stack-events --stack-name graviton-uplift-eks --query 'StackEvents[?contains(ResourceStatus, `FAILED`)].[Timestamp,LogicalResourceId,ResourceStatus,ResourceStatusReason]' --output text | sed -E 's/\.[0-9]+\+00:00/Z/; s/ \(RequestToken.*//'
+2026-11-23T14:46:48Z	ApiNodeGroup	UPDATE_FAILED	Resource handler returned message: "Version and release version updates cannot be combined with other updates"

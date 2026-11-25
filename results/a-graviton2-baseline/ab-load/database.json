@@ -1,0 +1,63 @@
+{
+  "before": {
+    "Aborted_clients": 1,
+    "Com_commit": 2044161,
+    "Com_delete": 298,
+    "Com_insert": 8171655,
+    "Com_select": 107253972,
+    "Com_stmt_execute": 119466906,
+    "Com_update": 4075629,
+    "Connections": 5340,
+    "Created_tmp_disk_tables": 45,
+    "Created_tmp_tables": 44564267,
+    "Innodb_buffer_pool_read_requests": 14991109035,
+    "Innodb_buffer_pool_reads": 14,
+    "Innodb_row_lock_time": 13326,
+    "Innodb_row_lock_waits": 2344,
+    "Innodb_rows_deleted": 5365143,
+    "Innodb_rows_inserted": 54113278,
+    "Innodb_rows_read": 54390940687,
+    "Innodb_rows_updated": 8166325,
+    "Queries": 127187246,
+    "Questions": 125694729,
+    "Slow_queries": 32,
+    "Sort_rows": 478712711,
+    "Uptime": 13496,
+    "at": "2026-11-23T17:02:22Z"
+  },
+  "after": {
+    "Aborted_clients": 2,
+    "Com_commit": 349264,
+    "Com_delete": 0,
+    "Com_insert": 1394319,
+    "Com_select": 18157141,
+    "Com_stmt_execute": 20242814,
+    "Com_update": 696774,
+    "Connections": 861,
+    "Created_tmp_disk_tables": 7,
+    "Created_tmp_tables": 7470052,
+    "Innodb_buffer_pool_read_requests": 2505611444,
+    "Innodb_buffer_pool_reads": 308987,
+    "Innodb_row_lock_time": 82,
+    "Innodb_row_lock_waits": 39,
+    "Innodb_rows_deleted": 0,
+    "Innodb_rows_inserted": 1046046,
+    "Innodb_rows_read": 8976186297,
+    "Innodb_rows_updated": 1393622,
+    "Queries": 21559942,
+    "Questions": 21305360,
+    "Slow_queries": 0,
+    "Sort_rows": 79470910,
+    "Uptime": 2123,
+    "at": "2026-11-23T18:09:01Z"
+  },
+  "throttling_before": {
+    "api": {
+      "container_cpu_cfs_periods_total": 266405.0,
+      "container_cpu_cfs_throttled_periods_total": 27584.0,
+      "container_cpu_cfs_throttled_seconds_total": 538.641721
+    },
+    "web": {}
+  },
+  "throttling_after": {}
+}

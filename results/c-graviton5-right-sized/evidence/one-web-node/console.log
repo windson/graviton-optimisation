@@ -1,0 +1,70 @@
+2026-11-24T11:27:00Z taking web node ip-10-80-79-24.us-west-2.compute.internal out of service
+node/ip-10-80-79-24.us-west-2.compute.internal cordoned
+pod "storefront-web-5798bb7c5b-4nld4" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-5l64x" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-5sqg5" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-9w8jj" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-dx9pp" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-gwgdj" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-prvv6" deleted from storefront namespace
+pod "storefront-web-5798bb7c5b-zm2dg" deleted from storefront namespace
+wrote results/c-graviton5-right-sized/evidence/one-web-node/nodes.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/deployments.txt (4 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/images.txt (4 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/pods-per-node.txt (6 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/pods.txt (21 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/database.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/database-roles.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/instance-types.txt (14 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/data-size.txt (11 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/stacks.txt (11 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/pipeline.txt (9 lines)
+wrote results/c-graviton5-right-sized/evidence/one-web-node/pipeline-commit.txt (7 lines)
+[11:29:25] reset: {'order_item': 455393, 'orders': 227834}
+[11:30:19] starting gu-c2n-r1-11241129: steady, 8000.0 req/s over 28 tasks, 660 s
+[11:30:21] DLT gu-c2n-r1-11241129: queued
+[11:30:42] DLT gu-c2n-r1-11241129: provisioning
+[11:32:25] DLT gu-c2n-r1-11241129: running
+[11:44:07] DLT gu-c2n-r1-11241129: cleaning up
+[11:44:48] DLT gu-c2n-r1-11241129: complete
+[11:44:57] waiting 105 s for CloudWatch metrics
+[11:46:46] deleted 56 raw k6 output objects
+[11:46:46] gu-c2n-r1-11241129: status=complete tasks=28/28 requests=4720044 failed=0 mean=7.106 p50=3.58 p95=23.695 p99=38.672 ms
+[11:46:46] achieved 8000.1 req/s of 8000.0 target
+
+c-graviton5-right-sized / c2n-r1 (steady, complete)
+  web 2 x c9g.2xlarge, API 3 x m9g.large, database db.r9g.4xlarge; pods: web 8, API 3
+  load generators: 28/28 tasks, peak CPU 15% of reserved
+  Aurora datapoints cover the 60 s that start 20 s before their timestamp (measured in 1 steady runs: 20 to 20 s)
+  window  target achieved   err%   p50    p95     p99  web%  api%   db% web ms api ms  db ms
+  steady    8000   8000.1  0.000   3.6   23.7    38.7  44.5  23.4  41.9  0.891  0.175  0.838
+      api_cart_get     n=  943166 err=0.0000% p50=    1.5 p95=    2.1 p99=     2.4
+      api_cart_put     n=  424393 err=0.0000% p50=    4.4 p95=    6.0 p99=     6.9
+      api_catalog      n=  189768 err=0.0000% p50=    4.4 p95=    7.1 p99=    12.7
+      api_home         n=   94675 err=0.0000% p50=    4.2 p95=    5.3 p99=     5.8
+      api_order_post   n=  212915 err=0.0000% p50=    7.4 p95=    9.5 p99=    10.5
+      api_orders       n=  661390 err=0.0000% p50=    2.0 p95=    3.0 p99=     3.4
+      api_product      n=  660703 err=0.0000% p50=    3.0 p95=    4.6 p99=     5.2
+      api_search       n=   70645 err=0.0000% p50=    2.1 p95=    9.5 p99=    10.0
+      page_category    n=  471730 err=0.0000% p50=   16.0 p95=   36.8 p99=    51.2
+      page_home        n=  283530 err=0.0000% p50=   15.1 p95=   35.3 p99=    50.2
+      page_product     n=  565360 err=0.0000% p50=   12.2 p95=   31.3 p99=    45.8
+      page_search      n=  141769 err=0.0000% p50=   13.8 p95=   34.0 p99=    48.2
+node/ip-10-80-79-24.us-west-2.compute.internal uncordoned
+pod/storefront-web-5798bb7c5b-4gh28 condition met
+pod/storefront-web-5798bb7c5b-7zkfh condition met
+pod/storefront-web-5798bb7c5b-8krkj condition met
+pod/storefront-web-5798bb7c5b-ckvdb condition met
+pod/storefront-web-5798bb7c5b-cqp2z condition met
+pod/storefront-web-5798bb7c5b-f5xj4 condition met
+pod/storefront-web-5798bb7c5b-gct6t condition met
+pod/storefront-web-5798bb7c5b-mg6sx condition met
+pod/storefront-web-5798bb7c5b-mq8nd condition met
+pod/storefront-web-5798bb7c5b-ndjc5 condition met
+pod/storefront-web-5798bb7c5b-nvql9 condition met
+pod/storefront-web-5798bb7c5b-pwl5g condition met
+pod/storefront-web-5798bb7c5b-qljq6 condition met
+pod/storefront-web-5798bb7c5b-s76x7 condition met
+pod/storefront-web-5798bb7c5b-vl99b condition met
+pod/storefront-web-5798bb7c5b-xzqnp condition met
+2026-11-24T11:47:08Z web node ip-10-80-79-24.us-west-2.compute.internal is back in service

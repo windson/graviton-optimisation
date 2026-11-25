@@ -1,0 +1,31 @@
+version: 0.2
+
+# Runs on an arm64 build host, so images are built natively for Graviton.
+env:
+  shell: bash
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+      nodejs: 22
+    commands:
+      - python3 -m pip install --quiet cfn-lint
+      - bash ci/install-tools.sh
+  pre_build:
+    commands:
+      - cfn-lint infra/cfn/*.yaml
+      - aws ecr get-login-password | docker login --username AWS --password-stdin "${API_REPOSITORY_URI%%/*}"
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+  build:
+    commands:
+      - bash ci/build.sh
+
+artifacts:
+  base-directory: build-output
+  files:
+    - "**/*"
+
+cache:
+  paths:
+    - /root/.m2/**/*

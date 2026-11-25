@@ -1,0 +1,9 @@
+$ kubectl get nodes --sort-by=.metadata.labels.tier -o custom-columns='NODE:.metadata.name,TIER:.metadata.labels.tier,TYPE:.metadata.labels.node\.kubernetes\.io/instance-type,ZONE:.metadata.labels.topology\.kubernetes\.io/zone,VCPU:.status.capacity.cpu,KUBELET:.status.nodeInfo.kubeletVersion'
+NODE                                         TIER     TYPE          ZONE         VCPU   KUBELET
+ip-10-80-64-52.us-west-2.compute.internal    api      m6g.xlarge    us-west-2a   4      v1.37.1-eks-9adbfea
+ip-10-80-84-22.us-west-2.compute.internal    api      m6g.xlarge    us-west-2b   4      v1.37.1-eks-9adbfea
+ip-10-80-86-250.us-west-2.compute.internal   api      m6g.xlarge    us-west-2b   4      v1.37.1-eks-9adbfea
+ip-10-80-71-166.us-west-2.compute.internal   system   m6g.large     us-west-2a   2      v1.37.1-eks-9adbfea
+ip-10-80-91-157.us-west-2.compute.internal   system   m6g.large     us-west-2b   2      v1.37.1-eks-9adbfea
+ip-10-80-68-42.us-west-2.compute.internal    web      c6g.4xlarge   us-west-2a   16     v1.37.1-eks-9adbfea
+ip-10-80-83-206.us-west-2.compute.internal   web      c6g.4xlarge   us-west-2b   16     v1.37.1-eks-9adbfea

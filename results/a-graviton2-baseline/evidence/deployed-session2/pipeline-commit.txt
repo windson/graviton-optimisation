@@ -1,0 +1,7 @@
+$ aws codepipeline list-pipeline-executions --pipeline-name graviton-uplift --query 'pipelineExecutionSummaries[0].{Status:status,Started:startTime,Commit:sourceRevisions[0].revisionId,Message:sourceRevisions[0].revisionSummary}' --output json
+{
+    "Status": "Succeeded",
+    "Started": "2026-11-24T08:26:37.596000+00:00",
+    "Commit": "7f86837aedd874ecc0c7df2250625fdb9cc86b47",
+    "Message": "Set the cluster administrator role\n"
+}

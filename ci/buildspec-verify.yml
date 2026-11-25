@@ -1,0 +1,12 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  install:
+    commands:
+      - bash ci/install-tools.sh
+  build:
+    commands:
+      - bash ci/verify.sh

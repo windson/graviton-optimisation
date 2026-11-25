@@ -1,0 +1,168 @@
+{
+  "test_id": "gu-cal1-11231351",
+  "kind": "steady",
+  "name": "cal1",
+  "stage": "a-graviton2-baseline",
+  "target_rps": 3000.0,
+  "tasks": 12,
+  "script_seconds": 360,
+  "windows": [
+    {
+      "label": null,
+      "seconds": 290,
+      "factor": 1.0
+    }
+  ],
+  "mix": {
+    "description": "Share of each operation in the request mix (weights sum to 100). Pages are rendered by the web tier and make one API call each; api_* operations are direct API calls from browsers and mobile clients.",
+    "weights": {
+      "page_home": 5,
+      "page_category": 16,
+      "page_product": 18,
+      "page_search": 6,
+      "api_home": 2,
+      "api_catalog": 10,
+      "api_product": 14,
+      "api_search": 6,
+      "api_orders": 5,
+      "api_cart_get": 8,
+      "api_cart_put": 7,
+      "api_order_post": 3
+    },
+    "oneWordSearchShare": 0.25
+  },
+  "k6": {
+    "baseUrl": "http://graviton-uplift-000000000.us-west-2.elb.amazonaws.com",
+    "oneWordSearchShare": 0.25,
+    "timeout": "5s",
+    "timeUnit": "1m",
+    "preAllocatedVUs": 63,
+    "maxVUs": 600,
+    "startRate": 3000,
+    "stages": [
+      {
+        "target": 15000,
+        "duration": "60s"
+      },
+      {
+        "target": 15000,
+        "duration": "300s"
+      }
+    ],
+    "windows": [
+      {
+        "fromMs": 0,
+        "toMs": 70000,
+        "label": "ramp"
+      },
+      {
+        "fromMs": 70000,
+        "toMs": 360000,
+        "label": null
+      }
+    ]
+  },
+  "data_set": {
+    "version": "v1",
+    "categories": 500,
+    "products": 1000000,
+    "customers": 2000000,
+    "orders": 8000000,
+    "max_order_id": 8000000,
+    "reviews": 5000000
+  },
+  "facts": {
+    "stage": "a-graviton2-baseline",
+    "kubernetes": "v1.37.1-eks-91f89a9",
+    "nodes": [
+      {
+        "name": "ip-10-80-76-61.us-west-2.compute.internal",
+        "tier": "api",
+        "instance_type": "m6g.2xlarge",
+        "zone": "us-west-2a",
+        "instance_id": "i-00000000000000014",
+        "cpu": "8",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      },
+      {
+        "name": "ip-10-80-83-121.us-west-2.compute.internal",
+        "tier": "api",
+        "instance_type": "m6g.2xlarge",
+        "zone": "us-west-2b",
+        "instance_id": "i-00000000000000005",
+        "cpu": "8",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      },
+      {
+        "name": "ip-10-80-67-238.us-west-2.compute.internal",
+        "tier": "system",
+        "instance_type": "m6g.large",
+        "zone": "us-west-2a",
+        "instance_id": "i-00000000000000002",
+        "cpu": "2",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      },
+      {
+        "name": "ip-10-80-87-224.us-west-2.compute.internal",
+        "tier": "system",
+        "instance_type": "m6g.large",
+        "zone": "us-west-2b",
+        "instance_id": "i-00000000000000011",
+        "cpu": "2",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      },
+      {
+        "name": "ip-10-80-69-118.us-west-2.compute.internal",
+        "tier": "web",
+        "instance_type": "c6g.4xlarge",
+        "zone": "us-west-2a",
+        "instance_id": "i-00000000000000020",
+        "cpu": "16",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      },
+      {
+        "name": "ip-10-80-85-70.us-west-2.compute.internal",
+        "tier": "web",
+        "instance_type": "c6g.4xlarge",
+        "zone": "us-west-2b",
+        "instance_id": "i-00000000000000028",
+        "cpu": "16",
+        "kernel": "6.18.62-127.179.amzn2023.aarch64",
+        "os": "Amazon Linux 2023.12.20261118"
+      }
+    ],
+    "pods": {
+      "storefront-web": 32,
+      "storefront-api": 8
+    },
+    "images": [
+      "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-api:218b4fe27aa06a0b6abcdf00993e28ed8e7ad6e7",
+      "<account-id>.dkr.ecr.us-west-2.amazonaws.com/graviton-uplift/storefront-web:218b4fe27aa06a0b6abcdf00993e28ed8e7ad6e7"
+    ],
+    "database": {
+      "engine_version": "8.0.mysql_aurora.3.10.6",
+      "storage_type": "aurora",
+      "instances": [
+        {
+          "id": "graviton-uplift-database-instance2-xxxxxxxxxxxx",
+          "class": "db.r6g.8xlarge",
+          "writer": false,
+          "zone": "us-west-2b",
+          "status": "available"
+        },
+        {
+          "id": "graviton-uplift-database-instance1-xxxxxxxxxxxx",
+          "class": "db.r6g.8xlarge",
+          "writer": true,
+          "zone": "us-west-2a",
+          "status": "available"
+        }
+      ]
+    }
+  }
+}

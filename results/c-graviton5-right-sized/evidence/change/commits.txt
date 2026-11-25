@@ -1,0 +1,15 @@
+$ git log --reverse --stat --format='commit %h  %cI%n    %s%n' 4dc8e5c..57fa045 -- infra/config deploy/values/active.yaml
+commit 321a0fd  2026-11-23T20:08:41Z
+    Scale pods to the c-graviton5-right-sized replica counts before resizing nodes
+
+
+ deploy/values/active.yaml | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+commit bd20563  2026-11-23T20:14:03Z
+    Right-size every tier on Graviton5 to half the baseline's vCPUs (configuration C)
+
+
+ infra/config/ACTIVE_STAGE  | 2 +-
+ infra/config/database.json | 2 +-
+ infra/config/eks.json      | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)

@@ -1,0 +1,11 @@
+$ uv run -q tools/bench.py sql "SELECT table_name, table_rows, ROUND((data_length + index_length) / 1e9, 2) AS gb FROM information_schema.tables WHERE table_schema = DATABASE() ORDER BY (data_length + index_length) DESC" | jq -r '.[] | [.TABLE_NAME, .TABLE_ROWS, .gb] | @tsv' | column -t
+order_item             23453967  2.22
+review                 4926319   1.47
+orders                 7978707   0.72
+product                974904    0.66
+customer               1990521   0.28
+cart_item              6128925   0.27
+inventory              922807    0.06
+category               500       0.0
+flyway_schema_history  1         0.0
+seed_meta              1         0.0

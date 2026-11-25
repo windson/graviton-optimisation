@@ -1,0 +1,55 @@
+Graviton2 to Graviton5: rated at 80% CPU utilization, right-sized, measured
+Copyright (c) 2026 नवुले पवन कुमार राव
+
+The MIT license in LICENSE covers the code, the recorded results and the texts of this
+repository, which were made under the author's direction with an AI coding agent. The
+material below comes from others and keeps its own terms.
+
+IAM policy of the AWS Load Balancer Controller
+  The policy AWSLoadBalancerControllerIAMPolicy in infra/cfn/eks.yaml is
+  docs/install/iam_policy.json of kubernetes-sigs/aws-load-balancer-controller at tag
+  v3.6.3, the controller that the Helm chart 3.6.3 installs (ci/platform.sh), converted
+  from JSON to YAML and otherwise unchanged.
+  https://github.com/kubernetes-sigs/aws-load-balancer-controller
+  Licensed under the Apache License, Version 2.0: LICENSES/Apache-2.0.txt.
+
+Latency histogram layout of Distributed Load Testing on AWS
+  tools/dlthist.py builds, in Python, the bucket table that
+  source/common/src/streaming-statistics/latency-layout.ts of
+  aws-solutions/distributed-load-testing-on-aws defines at tag v4.3.4.
+  Copyright Amazon.com, Inc. or its affiliates.
+  https://github.com/aws-solutions/distributed-load-testing-on-aws
+  Licensed under the Apache License, Version 2.0: LICENSES/Apache-2.0.txt.
+
+AWS Architecture Icons
+  report/assets/aws-icons/*.svg, and the same icons embedded in
+  report/figures/architecture*.svg. Amazon Web Services, release of 31 July 2026,
+  https://aws.amazon.com/architecture/icons/. See report/assets/aws-icons/README.md.
+
+Quotations, and a table
+  docs/01-research-notes.md and report/assets/aws-icons/README.md quote AWS and other
+  sources verbatim. Each quotation belongs to the source named with it. The table in
+  section 2 of the research notes is taken from the processor table of the AWS Graviton
+  Technical Guide, https://github.com/aws/aws-graviton-getting-started, whose
+  documentation is under the Creative Commons Attribution-ShareAlike 4.0 International
+  license.
+
+Recorded output
+  The recordings under results/ hold what AWS services and the software in use printed or
+  returned, as it came: listings, events, log lines and error messages.
+  results/evidence/cloudwatch/*.png were drawn by Amazon CloudWatch
+  (GetMetricWidgetImage) from this study's metrics, and
+  results/evidence/region-availability.json was read through the AWS MCP server.
+
+AWS prices
+  results/pricing/*.json holds prices read from the AWS Price List API, the Savings Plans
+  API and the Amazon RDS reserved DB instance offerings API, and one price read through
+  the AWS Pricing MCP server. results/evidence/price-cross-check.json holds four more
+  that were read through that server. The prices are AWS's; results/bom.json,
+  report/tables and section 6 of docs/01-research-notes.md repeat them or compute with
+  them.
+
+Dependencies
+  The application and the tools depend on software that is not in this repository and
+  that keeps its own licenses: see app/api/pom.xml, app/web/package.json and the
+  dependencies named at the top of each Python script.

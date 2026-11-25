@@ -1,0 +1,9 @@
+# Graviton2 baseline.
+# Replica counts fill the node groups defined in eks.json for this configuration.
+stage: a-graviton2-baseline
+web:
+  replicas: 32
+api:
+  replicas: 6
+  # Connections per pod. Replicas times this is 144 in every configuration.
+  dbPoolSize: 24
